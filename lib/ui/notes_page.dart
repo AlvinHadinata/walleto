@@ -76,23 +76,26 @@ class NotesPage extends StatelessWidget {
   }
 
   Widget background() {
-    return Container(
-        height: 200,
-        decoration: BoxDecoration(
-            color: Colors.cyanAccent),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Text('Catatanku', style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 30,
-            fontFamily: 'TC',
-          )),
-        ),
-      ],
-    )
+    return Builder(builder: (BuildContext context) {
+      return Container(
+          height: MediaQuery.of(context).size.width / 4,
+          decoration: BoxDecoration(
+              color: Colors.cyanAccent),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text('Catatanku', style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                  fontFamily: 'TC',
+                )),
+              ),
+            ],
+          )
+      );
+    }
     );
   }
 }

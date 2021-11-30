@@ -43,7 +43,7 @@ Widget carousel() {
 Widget background() {
   return Builder(builder: (BuildContext context) {
     return Container(
-        height: MediaQuery.of(context).size.width / 3,
+        height: MediaQuery.of(context).size.width / 4,
         decoration: BoxDecoration(
             color: Colors.cyanAccent,
             borderRadius: BorderRadius.only(
