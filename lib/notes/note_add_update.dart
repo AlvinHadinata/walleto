@@ -41,7 +41,7 @@ class _NoteAddUpdatePageState extends State<NoteAddUpdatePage> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20.0,
-                fontFamily: 'TC',
+                fontFamily: 'Nunito',
               ),
               controller: _titleController,
               decoration: InputDecoration(
@@ -53,7 +53,7 @@ class _NoteAddUpdatePageState extends State<NoteAddUpdatePage> {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 14.0,
-                  fontFamily: 'TC',
+                  fontFamily: 'Nunito',
                 ),
                 maxLines: null,
                 controller: _descriptionController,

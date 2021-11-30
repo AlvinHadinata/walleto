@@ -66,6 +66,9 @@ flutter:
     - family: TC
       fonts:
         - asset: fonts/TCM___.TTF
+    - family: Nunito
+      fonts:
+        - asset: fonts/Nunito-Black.TTF
 
   assets:
     - images/

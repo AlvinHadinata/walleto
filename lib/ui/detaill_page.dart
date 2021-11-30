@@ -32,8 +32,8 @@ Widget background() {
             Text('Detail Tabunganku',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                  fontFamily: 'TC',
+                  fontSize: 22,
+                  fontFamily: 'Nunito',
                 ))
           ],
         ));

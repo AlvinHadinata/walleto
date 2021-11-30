@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:walleto/model/category.dart';
 
@@ -36,7 +35,7 @@ class Carousel extends StatelessWidget {
                   child: Text(
                     category.name,
                     style: TextStyle(
-                      fontFamily: 'TC',
+                      fontFamily: 'Nunito',
                       color: Colors.white,
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,

@@ -49,11 +49,11 @@ class NotesPage extends StatelessWidget {
                   title: Text(note.title, style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14.0,
-                    fontFamily: 'TC',
+                    fontFamily: 'Nunito',
                   )),
                   subtitle: Text(note.description, style: TextStyle(
                     fontSize: 14.0,
-                    fontFamily: 'TC',
+                    fontFamily: 'Nunito',
                   )),
                   onTap: () async {
                     final selectedNote = await provider.getNoteById(note.id!);
@@ -88,8 +88,8 @@ class NotesPage extends StatelessWidget {
                 padding: const EdgeInsets.all(16.0),
                 child: Text('Catatanku', style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                  fontFamily: 'TC',
+                  fontSize: 22,
+                  fontFamily: 'Nunito',
                 )),
               ),
             ],

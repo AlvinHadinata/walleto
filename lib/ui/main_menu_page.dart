@@ -57,8 +57,8 @@ Widget background() {
               Text('Walleto',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                    fontFamily: 'TC',
+                    fontSize: 26,
+                    fontFamily: 'Nunito',
                   ))
             ],
           ),
@@ -85,14 +85,14 @@ Widget saldo() {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 14.0,
-                      fontFamily: 'TC',
+                      fontFamily: 'Nunito',
                     )),
                 SizedBox(height: 10),
                 Text('Rp 0',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 19.0,
-                      fontFamily: 'TC',
+                      fontFamily: 'Nunito',
                     )),
               ],
             ),
@@ -125,7 +125,7 @@ Widget item2() {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 17.0,
-                  fontFamily: 'TC',
+                  fontFamily: 'Nunito',
                 )),
           ],
         ),
