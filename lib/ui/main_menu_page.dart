@@ -109,39 +109,40 @@ Widget addButton(context) => FloatingActionButton(
       child: Icon(Icons.add),
       backgroundColor: Colors.black,
       onPressed: () {
-        showModalBottomSheet(context: context, builder: (context){
-          return Container(
-            height: 200,
-            color: Colors.transparent,
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Text(
-                    'Masukkan jumlah saldo',
-                     style: TextStyle(fontFamily: 'Nunito'),
-                  ),
-                ),
-                TextField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10)))
-                  ),
-                ),
-                SizedBox(height: 20),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    child: Text('Simpan'),
-                    onPressed: () {},
-                  ),
-                )
-              ],
-            )
-          );
-        }
-        );
+        showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return Container(
+                  height: 200,
+                  color: Colors.transparent,
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Text(
+                          'Masukkan jumlah saldo',
+                          style: TextStyle(fontFamily: 'Nunito'),
+                        ),
+                      ),
+                      TextField(
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)))),
+                      ),
+                      SizedBox(height: 20),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          child: Text('Simpan'),
+                          onPressed: () {},
+                        ),
+                      )
+                    ],
+                  ));
+            });
       },
     );
 
