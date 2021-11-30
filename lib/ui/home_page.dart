@@ -1,7 +1,7 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:walleto/ui/history_page.dart';
+import 'package:walleto/ui/detaill_page.dart';
 import 'package:walleto/ui/main_menu_page.dart';
 import 'package:walleto/ui/notes_page.dart';
 import 'package:walleto/ui/settings_page.dart';
@@ -39,8 +39,8 @@ class _HomePageState extends State<HomePage> {
             inactiveColor: inactiveColor,
             activeColor: Colors.red),
         BottomNavyBarItem(
-            icon: Icon(Icons.history),
-            title: Text('Riwayat'),
+            icon: Icon(Icons.details),
+            title: Text('Detail'),
             inactiveColor: inactiveColor,
             activeColor: Colors.orange),
         BottomNavyBarItem(
@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
   Widget buildPages(){
     switch(index){
       case 1:
-        return HistoryPage();
+        return DetailPage();
       case 2:
         return NotesPage();
       case 3:
