@@ -220,6 +220,7 @@ Widget riwayat(){
           )
         ),
         child: ListTile(
+          trailing: Icon(Icons.add_shopping_cart),
           title: Text('Minang Deng Laka Minang Suang', style: TextStyle(fontFamily: 'Nunito')),
         ),
       ),
@@ -232,6 +233,7 @@ Widget riwayat(){
             )
         ),
         child: ListTile(
+          trailing: Icon(Icons.add_shopping_cart),
           title: Text('Minang Deng Laka Minang Suang', style: TextStyle(fontFamily: 'Nunito')),
         ),
       ),
@@ -244,6 +246,7 @@ Widget riwayat(){
             )
         ),
         child: ListTile(
+          trailing: Icon(Icons.add_shopping_cart),
           title: Text('Minang Deng Laka Minang Suang', style: TextStyle(fontFamily: 'Nunito')),
         ),
       ),
@@ -256,6 +259,7 @@ Widget riwayat(){
             )
         ),
         child: ListTile(
+          trailing: Icon(Icons.add_shopping_cart),
           title: Text('Minang Deng Laka Minang Suang', style: TextStyle(fontFamily: 'Nunito')),
         ),
       ),
@@ -268,6 +272,7 @@ Widget riwayat(){
             )
         ),
         child: ListTile(
+          trailing: Icon(Icons.add_shopping_cart),
           title: Text('Minang Deng Laka Minang Suang', style: TextStyle(fontFamily: 'Nunito')),
         ),
       ),
