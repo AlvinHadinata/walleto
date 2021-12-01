@@ -10,16 +10,20 @@ class MainMenuPage extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        child: Column(
+        child: Stack(
           children: [
             background(),
-            SizedBox(height: 20),
-            saldo(),
-            SizedBox(height: 20),
-            item2(),
-            SizedBox(height: 20),
-            carousel()
-          ],
+            Column(
+              children: [
+                SizedBox(height: 90),
+                saldo(),
+                SizedBox(height: 20),
+                item2(),
+                SizedBox(height: 20),
+                carousel(),
+              ],
+            ),
+          ]
         ),
       ),
     );
@@ -27,10 +31,11 @@ class MainMenuPage extends StatelessWidget {
 }
 
 Widget carousel() {
+  return Builder(builder: (BuildContext context) {
   return Container(
       child: CarouselSlider(
           options: CarouselOptions(
-            aspectRatio: 2.0,
+            aspectRatio: 4,
             enlargeCenterPage: true,
             enableInfiniteScroll: false,
             initialPage: 2,
@@ -39,17 +44,15 @@ Widget carousel() {
           items: Category.categories
               .map((category) => Carousel(category: category))
               .toList()));
+});
 }
 
 Widget background() {
   return Builder(builder: (BuildContext context) {
     return Container(
-        height: MediaQuery.of(context).size.width / 4,
+        height: MediaQuery.of(context).size.width / 3,
         decoration: BoxDecoration(
-            color: Colors.cyanAccent,
-            borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(50),
-                bottomLeft: Radius.circular(50))),
+            color: Colors.cyanAccent),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(
@@ -58,9 +61,9 @@ Widget background() {
               Text('Walleto',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 26,
+                    fontSize: 22,
                     fontFamily: 'Nunito',
-                  ))
+                  )),
             ],
           ),
         ));
@@ -70,10 +73,10 @@ Widget background() {
 Widget saldo() {
   return Builder(builder: (BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width - 25,
+      width: MediaQuery.of(context).size.width - 45,
       decoration: BoxDecoration(
           color: Colors.greenAccent,
-          borderRadius: BorderRadius.all(Radius.circular(30))),
+          borderRadius: BorderRadius.all(Radius.circular(15))),
       child: Padding(
         padding: const EdgeInsets.all(14.0),
         child: Row(
@@ -82,7 +85,7 @@ Widget saldo() {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Saldo Tabungan',
+                Text('Saldo',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 14.0,
@@ -158,7 +161,7 @@ Widget item2() {
             Text('Pilih Kategori Tabungan',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 17.0,
+                  fontSize: 14.0,
                   fontFamily: 'Nunito',
                 )),
           ],
