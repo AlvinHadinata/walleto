@@ -23,7 +23,8 @@ class MainMenuPage extends StatelessWidget {
                 SizedBox(height: 20),
                 carousel(),
                 SizedBox(height: 20),
-                item3()
+                item3(),
+                riwayat()
               ],
             ),
           ]
@@ -201,5 +202,31 @@ Widget item3() {
         ),
       ],
     ),
+  );
+}
+
+Widget riwayat(){
+  return ListView(
+    physics: ClampingScrollPhysics(),
+    shrinkWrap: true,
+    scrollDirection: Axis.vertical,
+    children: <Widget>[
+      ListTile(
+        leading: Icon(Icons.money),
+        title: Text('Minang Deng Laka Minang Suang'),
+      ),
+      ListTile(
+        leading: Icon(Icons.money),
+        title: Text('Minang'),
+      ),
+      ListTile(
+        leading: Icon(Icons.money),
+        title: Text('Minang'),
+      ),
+      ListTile(
+        leading: Icon(Icons.money),
+        title: Text('Minang'),
+      ),
+    ],
   );
 }

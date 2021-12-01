@@ -11,8 +11,17 @@ class NotesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Catatanku', style: TextStyle(fontFamily: 'Nunito')),
+        centerTitle: true,
+        backgroundColor: kBlueColor,
+      ),
       body: SingleChildScrollView(
-        child: Column(children: [background(), listNotes()]),
+        child: Column(
+            children: [
+              listNotes()
+            ]
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
@@ -71,36 +80,5 @@ class NotesPage extends StatelessWidget {
         );
       },
     );
-  }
-
-  Widget background() {
-    return Builder(builder: (BuildContext context) {
-      return Container(
-          height: MediaQuery.of(context).size.width / 3,
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [
-                    kGradasi,
-                    kBlueColor,
-                  ],
-                  begin: Alignment.bottomRight
-              )
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text('Catatanku',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22,
-                        fontFamily: 'Nunito',
-                        color: kWhiteColor
-                    )),
-              ],
-            ),
-          ));
-    });
   }
 }

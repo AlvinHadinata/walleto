@@ -40,12 +40,12 @@ class _HomePageState extends State<HomePage> {
             inactiveColor: inactiveColor,
             activeColor: Colors.red),
         BottomNavyBarItem(
-            icon: Icon(Icons.details),
+            icon: Icon(Icons.attach_money),
             title: Text('Detail'),
             inactiveColor: inactiveColor,
             activeColor: Colors.orange),
         BottomNavyBarItem(
-            icon: Icon(Icons.note_add_sharp),
+            icon: Icon(Icons.list_alt),
             title: Text('Catatan'),
             inactiveColor: inactiveColor,
             activeColor: Colors.purpleAccent),
