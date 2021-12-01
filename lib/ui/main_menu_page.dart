@@ -136,6 +136,7 @@ Widget addButton(context) => FloatingActionButton(
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(primary: Colors.black),
                           child: Text('Simpan'),
                           onPressed: () {},
                         ),
