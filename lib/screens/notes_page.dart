@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:walleto/data/notes/note_add_update.dart';
 import 'package:walleto/provider/notes_provider.dart';
+import 'package:walleto/shared/theme.dart';
 
 class NotesPage extends StatelessWidget {
   static const routeName = '/notes_page';
@@ -75,21 +76,30 @@ class NotesPage extends StatelessWidget {
   Widget background() {
     return Builder(builder: (BuildContext context) {
       return Container(
-          height: MediaQuery.of(context).size.width / 4,
-          decoration: BoxDecoration(color: Colors.cyanAccent),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text('Catatanku',
+          height: MediaQuery.of(context).size.width / 3,
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [
+                    kGradasi,
+                    kBlueColor,
+                  ],
+                  begin: Alignment.bottomRight
+              )
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text('Catatanku',
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22,
-                      fontFamily: 'Nunito',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22,
+                        fontFamily: 'Nunito',
+                        color: kWhiteColor
                     )),
-              ),
-            ],
+              ],
+            ),
           ));
     });
   }

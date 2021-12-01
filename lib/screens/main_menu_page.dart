@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:walleto/data/model/category.dart';
 import 'package:walleto/screens/widgets/carousel.dart';
+import 'package:walleto/shared/theme.dart';
 
 class MainMenuPage extends StatelessWidget {
   @override
@@ -15,7 +16,7 @@ class MainMenuPage extends StatelessWidget {
             background(),
             Column(
               children: [
-                SizedBox(height: 90),
+                SizedBox(height: 130),
                 saldo(),
                 SizedBox(height: 20),
                 item2(),
@@ -52,9 +53,16 @@ Widget carousel() {
 Widget background() {
   return Builder(builder: (BuildContext context) {
     return Container(
-        height: MediaQuery.of(context).size.width / 3,
+        height: MediaQuery.of(context).size.width / 2,
         decoration: BoxDecoration(
-            color: Colors.cyanAccent),
+            gradient: LinearGradient(
+                colors: [
+                  kGradasi,
+                  kBlueColor,
+                ],
+              begin: Alignment.bottomRight
+            )
+        ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(
@@ -65,6 +73,7 @@ Widget background() {
                     fontWeight: FontWeight.bold,
                     fontSize: 22,
                     fontFamily: 'Nunito',
+                    color: kWhiteColor
                   )),
             ],
           ),
@@ -77,7 +86,7 @@ Widget saldo() {
     return Container(
       width: MediaQuery.of(context).size.width - 45,
       decoration: BoxDecoration(
-          color: Colors.greenAccent,
+          color: Colors.blue,
           borderRadius: BorderRadius.all(Radius.circular(15))),
       child: Padding(
         padding: const EdgeInsets.all(14.0),
@@ -92,6 +101,7 @@ Widget saldo() {
                       fontWeight: FontWeight.bold,
                       fontSize: 14.0,
                       fontFamily: 'Nunito',
+                      color: kWhiteColor
                     )),
                 SizedBox(height: 10),
                 Text('Rp 0',
@@ -99,6 +109,7 @@ Widget saldo() {
                       fontWeight: FontWeight.bold,
                       fontSize: 19.0,
                       fontFamily: 'Nunito',
+                      color: kWhiteColor
                     )),
               ],
             ),
