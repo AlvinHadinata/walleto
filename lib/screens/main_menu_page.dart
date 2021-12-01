@@ -122,8 +122,8 @@ Widget saldo() {
 }
 
 Widget addButton(context) => FloatingActionButton(
-      child: Icon(Icons.add),
-      backgroundColor: Colors.black,
+      child: Icon(Icons.add, color: Colors.black),
+      backgroundColor: Colors.cyanAccent,
       onPressed: () {
         showModalBottomSheet(
             context: context,
