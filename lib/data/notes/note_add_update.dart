@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:walleto/data/model/note.dart';
+import 'package:walleto/shared/theme.dart';
 
 import '../../provider/notes_provider.dart';
 
@@ -33,7 +34,11 @@ class _NoteAddUpdatePageState extends State<NoteAddUpdatePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('Tambah catatanmu', style: TextStyle(fontFamily: 'Nunito')),
+        centerTitle: true,
+        backgroundColor: kBlueColor,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8),
         child: Column(
@@ -66,7 +71,8 @@ class _NoteAddUpdatePageState extends State<NoteAddUpdatePage> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                child: Text('Simpan'),
+                style: ElevatedButton.styleFrom(primary: kBlueColor),
+                child: Text('Simpan', style: TextStyle(fontFamily: 'Nunito')),
                 onPressed: () async {
                   if (!_isUpdate) {
                     final note = Note(

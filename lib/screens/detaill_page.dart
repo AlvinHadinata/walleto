@@ -12,7 +12,78 @@ class DetailPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
+        child: riwayat(),
       ),
     );
   }
+}
+
+Widget riwayat(){
+  return ListView(
+    physics: ClampingScrollPhysics(),
+    shrinkWrap: true,
+    scrollDirection: Axis.vertical,
+    children: <Widget>[
+      Card(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(
+                color: Colors.grey,
+                width: 1
+            )
+        ),
+        child: ListTile(
+          title: Text('Minang Deng Laka Minang Suang', style: TextStyle(fontFamily: 'Nunito')),
+        ),
+      ),
+      Card(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(
+                color: Colors.grey,
+                width: 1
+            )
+        ),
+        child: ListTile(
+          title: Text('Minang Deng Laka Minang Suang', style: TextStyle(fontFamily: 'Nunito')),
+        ),
+      ),
+      Card(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(
+                color: Colors.grey,
+                width: 1
+            )
+        ),
+        child: ListTile(
+          title: Text('Minang Deng Laka Minang Suang', style: TextStyle(fontFamily: 'Nunito')),
+        ),
+      ),
+      Card(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(
+                color: Colors.grey,
+                width: 1
+            )
+        ),
+        child: ListTile(
+          title: Text('Minang Deng Laka Minang Suang', style: TextStyle(fontFamily: 'Nunito')),
+        ),
+      ),
+      Card(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(
+                color: Colors.grey,
+                width: 1
+            )
+        ),
+        child: ListTile(
+          title: Text('Minang Deng Laka Minang Suang', style: TextStyle(fontFamily: 'Nunito')),
+        ),
+      ),
+    ],
+  );
 }
