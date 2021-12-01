@@ -1,8 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:walleto/model/category.dart';
-import 'package:walleto/widgets/carousel.dart';
+import 'package:walleto/data/model/category.dart';
+import 'package:walleto/screens/widgets/carousel.dart';
 
 class MainMenuPage extends StatelessWidget {
   @override
@@ -136,7 +136,8 @@ Widget addButton(context) => FloatingActionButton(
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(primary: Colors.black),
+                          style:
+                              ElevatedButton.styleFrom(primary: Colors.black),
                           child: Text('Simpan'),
                           onPressed: () {},
                         ),

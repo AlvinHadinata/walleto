@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:walleto/model/category.dart';
+import 'package:walleto/data/model/category.dart';
 
 class Carousel extends StatelessWidget {
   final Category category;
@@ -31,7 +31,7 @@ class Carousel extends StatelessWidget {
                     ),
                   ),
                   padding:
-                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                   child: Text(
                     category.name,
                     style: TextStyle(

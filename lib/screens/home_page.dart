@@ -1,10 +1,11 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:walleto/ui/detaill_page.dart';
-import 'package:walleto/ui/main_menu_page.dart';
-import 'package:walleto/ui/notes_page.dart';
-import 'package:walleto/ui/settings_page.dart';
+import 'package:walleto/screens/settings_page.dart';
+
+import 'detaill_page.dart';
+import 'main_menu_page.dart';
+import 'notes_page.dart';
 
 class HomePage extends StatefulWidget{
   static const routeName = '/home_page';

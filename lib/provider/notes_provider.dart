@@ -1,10 +1,7 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:walleto/model/note.dart';
-import 'package:walleto/notes/notes_helper.dart';
-
-import '../result_state.dart';
+import 'package:walleto/data/local/database_helper.dart';
+import 'package:walleto/data/model/note.dart';
+import 'package:walleto/shared/const.dart';
 
 class DbProvider extends ChangeNotifier {
   List<Note> _notes = [];
@@ -52,5 +49,4 @@ class DbProvider extends ChangeNotifier {
     await _dbHelper.deleteNote(id);
     _getAllNotes();
   }
-
 }

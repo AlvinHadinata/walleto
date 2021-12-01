@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:walleto/model/note.dart';
-import 'notes_provider.dart';
+import 'package:walleto/data/model/note.dart';
+
+import '../../provider/notes_provider.dart';
 
 class NoteAddUpdatePage extends StatefulWidget {
   final Note? note;

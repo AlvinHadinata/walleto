@@ -1,7 +1,6 @@
-
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:walleto/model/note.dart';
+import 'package:walleto/data/model/note.dart';
 
 class DatabaseHelper {
   static DatabaseHelper? _databaseHelper;
