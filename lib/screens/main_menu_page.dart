@@ -21,6 +21,8 @@ class MainMenuPage extends StatelessWidget {
                 item2(),
                 SizedBox(height: 20),
                 carousel(),
+                SizedBox(height: 20),
+                item3()
               ],
             ),
           ]
@@ -159,6 +161,26 @@ Widget item2() {
         Column(
           children: [
             Text('Pilih Kategori Tabungan',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14.0,
+                  fontFamily: 'Nunito',
+                )),
+          ],
+        ),
+      ],
+    ),
+  );
+}
+
+Widget item3() {
+  return Padding(
+    padding: const EdgeInsets.only(left: 25.0),
+    child: Row(
+      children: [
+        Column(
+          children: [
+            Text('Riwayat menabung',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 14.0,
