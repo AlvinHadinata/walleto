@@ -130,7 +130,7 @@ Widget addButton(context) => FloatingActionButton(
             context: context,
             builder: (context) {
               return Container(
-                  height: 200,
+                  height: MediaQuery.of(context).size.height / 3,
                   color: Colors.transparent,
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Column(

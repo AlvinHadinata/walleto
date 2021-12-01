@@ -17,11 +17,7 @@ class NotesPage extends StatelessWidget {
         backgroundColor: kBlueColor,
       ),
       body: SingleChildScrollView(
-        child: Column(
-            children: [
-              listNotes()
-            ]
-        ),
+        child: Column(children: [listNotes()]),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
