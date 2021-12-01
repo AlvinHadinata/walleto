@@ -25,6 +25,7 @@ class NotesPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
+        backgroundColor: kBlueColor,
         onPressed: () {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => NoteAddUpdatePage()));

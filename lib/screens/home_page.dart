@@ -36,22 +36,22 @@ class _HomePageState extends State<HomePage> {
       items: <BottomNavyBarItem>[
         BottomNavyBarItem(
             icon: Icon(Icons.home),
-            title: Text('Beranda'),
+            title: Text('Beranda', style: TextStyle(fontFamily: 'Nunito')),
             inactiveColor: inactiveColor,
             activeColor: Colors.red),
         BottomNavyBarItem(
             icon: Icon(Icons.attach_money),
-            title: Text('Detail'),
+            title: Text('Tabungan', style: TextStyle(fontFamily: 'Nunito')),
             inactiveColor: inactiveColor,
             activeColor: Colors.orange),
         BottomNavyBarItem(
             icon: Icon(Icons.list_alt),
-            title: Text('Catatan'),
+            title: Text('Catatan', style: TextStyle(fontFamily: 'Nunito')),
             inactiveColor: inactiveColor,
             activeColor: Colors.purpleAccent),
         BottomNavyBarItem(
             icon: Icon(Icons.settings),
-            title: Text('Pengaturan'),
+            title: Text('Pengaturan', style: TextStyle(fontFamily: 'Nunito')),
             inactiveColor: inactiveColor,
             activeColor: Colors.green),
 

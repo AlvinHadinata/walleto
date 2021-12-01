@@ -6,7 +6,7 @@ class DetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tabunganku', style: TextStyle(fontFamily: 'Nunito')),
+        title: Text('Tabungan', style: TextStyle(fontFamily: 'Nunito')),
         centerTitle: true,
         backgroundColor: kBlueColor,
       ),

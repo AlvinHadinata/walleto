@@ -213,19 +213,19 @@ Widget riwayat(){
     children: <Widget>[
       ListTile(
         leading: Icon(Icons.money),
-        title: Text('Minang Deng Laka Minang Suang'),
+        title: Text('Minang Deng Laka Minang Suang', style: TextStyle(fontFamily: 'Nunito')),
       ),
       ListTile(
         leading: Icon(Icons.money),
-        title: Text('Minang'),
+        title: Text('Minang', style: TextStyle(fontFamily: 'Nunito')),
       ),
       ListTile(
         leading: Icon(Icons.money),
-        title: Text('Minang'),
+        title: Text('Minang', style: TextStyle(fontFamily: 'Nunito')),
       ),
       ListTile(
         leading: Icon(Icons.money),
-        title: Text('Minang'),
+        title: Text('Minang', style: TextStyle(fontFamily: 'Nunito')),
       ),
     ],
   );
