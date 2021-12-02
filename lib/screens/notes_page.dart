@@ -47,6 +47,9 @@ class NotesPage extends StatelessWidget {
                 provider.deleteNote(note.id!);
               },
               child: Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      side: BorderSide(color: kBlueColor, width: 1)),
                 child: ListTile(
                   title: Text(note.title,
                       style: TextStyle(
