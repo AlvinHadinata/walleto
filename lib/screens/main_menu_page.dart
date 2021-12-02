@@ -11,24 +11,22 @@ class MainMenuPage extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        child: Stack(
-          children: [
-            background(),
-            Column(
-              children: [
-                SizedBox(height: 130),
-                saldo(),
-                SizedBox(height: 20),
-                item2(),
-                SizedBox(height: 20),
-                carousel(),
-                SizedBox(height: 20),
-                item3(),
-                riwayat()
-              ],
-            ),
-          ]
-        ),
+        child: Stack(children: [
+          background(),
+          Column(
+            children: [
+              SizedBox(height: 130),
+              saldo(),
+              SizedBox(height: 20),
+              item2(),
+              SizedBox(height: 20),
+              carousel(),
+              SizedBox(height: 20),
+              item3(),
+              riwayat()
+            ],
+          ),
+        ]),
       ),
     );
   }
@@ -36,19 +34,19 @@ class MainMenuPage extends StatelessWidget {
 
 Widget carousel() {
   return Builder(builder: (BuildContext context) {
-  return Container(
-      child: CarouselSlider(
-          options: CarouselOptions(
-            aspectRatio: 4,
-            enlargeCenterPage: true,
-            enableInfiniteScroll: false,
-            initialPage: 2,
-            autoPlay: true,
-          ),
-          items: Category.categories
-              .map((category) => Carousel(category: category))
-              .toList()));
-});
+    return Container(
+        child: CarouselSlider(
+            options: CarouselOptions(
+              aspectRatio: 4,
+              enlargeCenterPage: true,
+              enableInfiniteScroll: false,
+              initialPage: 2,
+              autoPlay: true,
+            ),
+            items: Category.categories
+                .map((category) => Carousel(category: category))
+                .toList()));
+  });
 }
 
 Widget background() {
@@ -56,14 +54,10 @@ Widget background() {
     return Container(
         height: MediaQuery.of(context).size.width / 2,
         decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [
-                  kGradasi,
-                  kBlueColor,
-                ],
-              begin: Alignment.bottomRight
-            )
-        ),
+            gradient: LinearGradient(colors: [
+          kGradasi,
+          kBlueColor,
+        ], begin: Alignment.bottomRight)),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(
@@ -71,11 +65,10 @@ Widget background() {
             children: [
               Text('Walleto',
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 22,
-                    fontFamily: 'Nunito',
-                    color: kWhiteColor
-                  )),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                      fontFamily: 'Nunito',
+                      color: kWhiteColor)),
             ],
           ),
         ));
@@ -99,19 +92,17 @@ Widget saldo() {
               children: [
                 Text('Saldo',
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14.0,
-                      fontFamily: 'Nunito',
-                      color: kWhiteColor
-                    )),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14.0,
+                        fontFamily: 'Nunito',
+                        color: kWhiteColor)),
                 SizedBox(height: 10),
                 Text('Rp 0',
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 19.0,
-                      fontFamily: 'Nunito',
-                      color: kWhiteColor
-                    )),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 19.0,
+                        fontFamily: 'Nunito',
+                        color: kWhiteColor)),
               ],
             ),
             addButton(context)
@@ -205,7 +196,7 @@ Widget item3() {
   );
 }
 
-Widget riwayat(){
+Widget riwayat() {
   return ListView(
     physics: ClampingScrollPhysics(),
     shrinkWrap: true,
@@ -213,67 +204,58 @@ Widget riwayat(){
     children: <Widget>[
       Card(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-          side: BorderSide(
-            color: Colors.grey,
-            width: 1
-          )
-        ),
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(color: Colors.grey, width: 1)),
         child: ListTile(
-          trailing: Icon(Icons.add_shopping_cart),
-          title: Text('Minang Deng Laka Minang Suang', style: TextStyle(fontFamily: 'Nunito')),
-        ),
+            trailing: Icon(Icons.add_shopping_cart),
+            title: Text('Cash In',
+                style: TextStyle(fontFamily: 'Nunito', fontSize: 14)),
+            subtitle: Text('Rp 500.000',
+                style: TextStyle(fontFamily: 'Nunito', fontSize: 14))),
       ),
       Card(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
-            side: BorderSide(
-                color: Colors.grey,
-                width: 1
-            )
-        ),
+            side: BorderSide(color: Colors.grey, width: 1)),
         child: ListTile(
-          trailing: Icon(Icons.add_shopping_cart),
-          title: Text('Minang Deng Laka Minang Suang', style: TextStyle(fontFamily: 'Nunito')),
-        ),
+            trailing: Icon(Icons.add_shopping_cart),
+            title: Text('Minang Deng Laka Minang Suang',
+                style: TextStyle(fontFamily: 'Nunito', fontSize: 14)),
+            subtitle: Text('Rp 500.000',
+                style: TextStyle(fontFamily: 'Nunito', fontSize: 14))),
       ),
       Card(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
-            side: BorderSide(
-                color: Colors.grey,
-                width: 1
-            )
-        ),
+            side: BorderSide(color: Colors.grey, width: 1)),
         child: ListTile(
-          trailing: Icon(Icons.add_shopping_cart),
-          title: Text('Minang Deng Laka Minang Suang', style: TextStyle(fontFamily: 'Nunito')),
-        ),
+            trailing: Icon(Icons.add_shopping_cart),
+            title: Text('Minang Deng Laka Minang Suang',
+                style: TextStyle(fontFamily: 'Nunito', fontSize: 14)),
+            subtitle: Text('Rp 500.000',
+                style: TextStyle(fontFamily: 'Nunito', fontSize: 14))),
       ),
       Card(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
-            side: BorderSide(
-                color: Colors.grey,
-                width: 1
-            )
-        ),
+            side: BorderSide(color: Colors.grey, width: 1)),
         child: ListTile(
-          trailing: Icon(Icons.add_shopping_cart),
-          title: Text('Minang Deng Laka Minang Suang', style: TextStyle(fontFamily: 'Nunito')),
-        ),
+            trailing: Icon(Icons.add_shopping_cart),
+            title: Text('Minang Deng Laka Minang Suang',
+                style: TextStyle(fontFamily: 'Nunito', fontSize: 14)),
+            subtitle: Text('Rp 500.000',
+                style: TextStyle(fontFamily: 'Nunito', fontSize: 14))),
       ),
       Card(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
-            side: BorderSide(
-                color: Colors.grey,
-                width: 1
-            )
-        ),
+            side: BorderSide(color: Colors.grey, width: 1)),
         child: ListTile(
           trailing: Icon(Icons.add_shopping_cart),
-          title: Text('Minang Deng Laka Minang Suang', style: TextStyle(fontFamily: 'Nunito')),
+          title: Text('Minang Deng Laka Minang Suang',
+              style: TextStyle(fontFamily: 'Nunito', fontSize: 14)),
+          subtitle: Text('Rp 500.000',
+              style: TextStyle(fontFamily: 'Nunito', fontSize: 14)),
         ),
       ),
     ],
