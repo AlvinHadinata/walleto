@@ -19,7 +19,7 @@ class Category{
     ),
     Category(
         name: 'Kendaraan',
-        img: 'images/food.jpeg'
+        img: 'images/cars.jpg'
     ),
     Category(
         name: 'Lainnya',
