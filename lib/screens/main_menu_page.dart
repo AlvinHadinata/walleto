@@ -5,6 +5,8 @@ import 'package:walleto/data/model/category.dart';
 import 'package:walleto/screens/widgets/carousel.dart';
 import 'package:walleto/shared/theme.dart';
 
+import 'category/add_page.dart';
+
 class MainMenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -35,17 +37,24 @@ class MainMenuPage extends StatelessWidget {
 Widget carousel() {
   return Builder(builder: (BuildContext context) {
     return Container(
-        child: CarouselSlider(
-            options: CarouselOptions(
-              aspectRatio: 4,
-              enlargeCenterPage: true,
-              enableInfiniteScroll: false,
-              initialPage: 2,
-              autoPlay: true,
-            ),
-            items: Category.categories
-                .map((category) => Carousel(category: category))
-                .toList()));
+      width: MediaQuery.of(context).size.width,
+        child: GestureDetector(
+          onTap: (){
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => AddPage()));
+          },
+          child: CarouselSlider(
+              options: CarouselOptions(
+                aspectRatio: 4,
+                enlargeCenterPage: true,
+                enableInfiniteScroll: false,
+                initialPage: 2,
+                autoPlay: true,
+              ),
+              items: Category.categories
+                  .map((category) => Carousel(category: category))
+                  .toList()),
+        ));
   });
 }
 

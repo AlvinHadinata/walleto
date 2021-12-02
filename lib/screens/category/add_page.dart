@@ -22,6 +22,8 @@ class AddPage extends StatelessWidget {
               key: _formKey,
               child: Column(
                 children: [
+                  Text('LOOOOOO'),
+                  SizedBox(height: 20),
                   TextFormField(
                     controller: _nameController,
                     textAlignVertical: TextAlignVertical.center,
@@ -32,10 +34,10 @@ class AddPage extends StatelessWidget {
                       isCollapsed: true,
                       contentPadding: const EdgeInsets.all(16.0),
                       filled: true,
-                      fillColor: Theme.of(context)
-                          .colorScheme
-                          .primaryVariant
-                          .withOpacity(0.8),
+                      // fillColor: Theme.of(context)
+                      //     .colorScheme
+                      //     .primaryVariant
+                      //     .withOpacity(0.8),
                       focusedBorder: OutlineInputBorder(
                         borderSide: const BorderSide(color: kBlueColor),
                         borderRadius: BorderRadius.circular(10.0),
@@ -51,6 +53,7 @@ class AddPage extends StatelessWidget {
                       }
                     },
                   ),
+                  SizedBox(height: 10),
                   TextFormField(
                     controller: _descController,
                     textAlignVertical: TextAlignVertical.center,
@@ -60,14 +63,14 @@ class AddPage extends StatelessWidget {
                     showCursor: true,
                     cursorColor: Theme.of(context).iconTheme.color,
                     decoration: InputDecoration(
-                      hintText: "Untuk investasi emas jangka panjang..",
+                      hintText: "Ini Deskripsi",
                       isCollapsed: true,
                       contentPadding: const EdgeInsets.all(16.0),
                       filled: true,
-                      fillColor: Theme.of(context)
-                          .colorScheme
-                          .primaryVariant
-                          .withOpacity(0.8),
+                      // fillColor: Theme.of(context)
+                      //     .colorScheme
+                      //     .primaryVariant
+                      //     .withOpacity(0.8),
                       focusedBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: kBlueColor,
@@ -85,6 +88,7 @@ class AddPage extends StatelessWidget {
                       }
                     },
                   ),
+                  SizedBox(height: 10),
                   TextFormField(
                     controller: _nominalController,
                     textAlignVertical: TextAlignVertical.center,
@@ -96,10 +100,10 @@ class AddPage extends StatelessWidget {
                       isCollapsed: true,
                       contentPadding: const EdgeInsets.all(16.0),
                       filled: true,
-                      fillColor: Theme.of(context)
-                          .colorScheme
-                          .primaryVariant
-                          .withOpacity(0.8),
+                      // fillColor: Theme.of(context)
+                      //     .colorScheme
+                      //     .primaryVariant
+                      //     .withOpacity(0.8),
                       focusedBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: kBlueColor,
@@ -117,6 +121,7 @@ class AddPage extends StatelessWidget {
                       }
                     },
                   ),
+                  SizedBox(height: 10),
                   TextFormField(
                     controller: _durasiController,
                     textAlignVertical: TextAlignVertical.center,
@@ -128,10 +133,10 @@ class AddPage extends StatelessWidget {
                       isCollapsed: true,
                       contentPadding: const EdgeInsets.all(16.0),
                       filled: true,
-                      fillColor: Theme.of(context)
-                          .colorScheme
-                          .primaryVariant
-                          .withOpacity(0.8),
+                      // fillColor: Theme.of(context)
+                      //     .colorScheme
+                      //     .primaryVariant
+                      //     .withOpacity(0.8),
                       focusedBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: kBlueColor,
@@ -187,28 +192,28 @@ class AddPage extends StatelessWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(80),
-        child: AppBar(
-          elevation: 0.0,
-          titleSpacing: 24.0,
-          centerTitle: true,
-          toolbarHeight: 80,
-          leading: CircleAvatar(
-              radius: 24.0,
-              backgroundColor: Theme.of(context)
-                  .colorScheme
-                  .primaryVariant
-                  .withOpacity(0.6)),
-          title: Text(
-            "Saving",
-            style: whiteTextStyle.copyWith(
-              fontSize: 24,
-              fontWeight: bold,
-            ),
-          ),
-        ),
-      ),
+      appBar: AppBar(
+        title: Text('Nabung', style: TextStyle(fontFamily: 'Nunito')),
+    centerTitle: true,
+    backgroundColor: kBlueColor,
+    ),
+      // PreferredSize(
+      //   preferredSize: const Size.fromHeight(80),
+      //   child: AppBar(
+      //     backgroundColor: kBlueColor,
+      //     elevation: 0.0,
+      //     titleSpacing: 24.0,
+      //     centerTitle: true,
+      //     toolbarHeight: 80,
+      //     title: Text(
+      //       "Saving",
+      //       style: whiteTextStyle.copyWith(
+      //         fontSize: 24,
+      //         fontWeight: bold,
+      //       ),
+      //     ),
+      //   ),
+      // ),
       body: SafeArea(child: _buildContent()),
     );
   }
