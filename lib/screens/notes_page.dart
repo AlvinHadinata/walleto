@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:walleto/data/notes/note_add_update.dart';
+import 'package:walleto/screens/wishlist/note_add_update.dart';
 import 'package:walleto/provider/notes_provider.dart';
 import 'package:walleto/shared/theme.dart';
 
