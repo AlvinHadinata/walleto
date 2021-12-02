@@ -4,7 +4,10 @@ import 'package:walleto/shared/theme.dart';
 
 class AddPage extends StatelessWidget {
   static const routeName = "/category/add_page";
-  const AddPage({Key? key}) : super(key: key);
+
+  // final Category category;
+  //
+  // const AddPage({required this.category});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,7 @@ class AddPage extends StatelessWidget {
               key: _formKey,
               child: Column(
                 children: [
-                  Text('LOOOOOO'),
+                  Text('Makanan', style: TextStyle(fontFamily: 'Nunito', fontSize: 20),), //nama kategori yang dipilih
                   SizedBox(height: 20),
                   TextFormField(
                     controller: _nameController,
@@ -30,7 +33,7 @@ class AddPage extends StatelessWidget {
                     showCursor: true,
                     cursorColor: Theme.of(context).iconTheme.color,
                     decoration: InputDecoration(
-                      hintText: 'Investasi Emas',
+                      hintText: 'Judul tabungan',
                       isCollapsed: true,
                       contentPadding: const EdgeInsets.all(16.0),
                       filled: true,
@@ -63,7 +66,7 @@ class AddPage extends StatelessWidget {
                     showCursor: true,
                     cursorColor: Theme.of(context).iconTheme.color,
                     decoration: InputDecoration(
-                      hintText: "Ini Deskripsi",
+                      hintText: "Deskripsi tabungan",
                       isCollapsed: true,
                       contentPadding: const EdgeInsets.all(16.0),
                       filled: true,
@@ -96,7 +99,7 @@ class AddPage extends StatelessWidget {
                     showCursor: true,
                     cursorColor: Theme.of(context).iconTheme.color,
                     decoration: InputDecoration(
-                      hintText: "1000.000",
+                      hintText: "Nominal",
                       isCollapsed: true,
                       contentPadding: const EdgeInsets.all(16.0),
                       filled: true,
@@ -129,7 +132,7 @@ class AddPage extends StatelessWidget {
                     showCursor: true,
                     cursorColor: Theme.of(context).iconTheme.color,
                     decoration: InputDecoration(
-                      hintText: "12",
+                      hintText: "Jangka waktu",
                       isCollapsed: true,
                       contentPadding: const EdgeInsets.all(16.0),
                       filled: true,
