@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:walleto/data/model/category.dart';
+import 'package:walleto/screens/category/add_page.dart';
 
 class Carousel extends StatelessWidget {
   final Category category;
@@ -43,6 +44,12 @@ class Carousel extends StatelessWidget {
                   ),
                 ),
               ),
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => AddPage(category: category)));
+                },
+              )
             ],
           )),
     );

@@ -5,9 +5,12 @@ import 'package:walleto/data/model/category.dart';
 import 'package:walleto/screens/widgets/carousel.dart';
 import 'package:walleto/shared/theme.dart';
 
-import 'category/add_page.dart';
+class MainMenuPage extends StatefulWidget {
+  @override
+  State<MainMenuPage> createState() => _MainMenuPageState();
+}
 
-class MainMenuPage extends StatelessWidget {
+class _MainMenuPageState extends State<MainMenuPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,25 +42,44 @@ Widget carousel() {
       builder: (BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-        child: GestureDetector(
-          onTap: (){
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => AddPage()));
-          },
-          child: CarouselSlider(
-              options: CarouselOptions(
-                aspectRatio: 4,
-                enlargeCenterPage: true,
-                enableInfiniteScroll: false,
-                initialPage: 2,
-                autoPlay: true,
-              ),
-              items: Category.categories
-                  .map((category) => Carousel(category: category))
-                  .toList()),
-        ));
+        child: CarouselSlider(
+            options: CarouselOptions(
+              aspectRatio: 4,
+              enlargeCenterPage: true,
+              enableInfiniteScroll: false,
+              initialPage: 2,
+              autoPlay: true,
+            ),
+            items: Category.categories
+                .map((category) => Carousel(category: category))
+                .toList()));
   });
 }
+
+// Widget carousel2() {
+//   return Builder(
+//       builder: (BuildContext context) {
+//         return Container(
+//             width: MediaQuery.of(context).size.width,
+//             child: GestureDetector(
+//               onTap: (){
+//                 Navigator.push(context,
+//                     MaterialPageRoute(builder: (context) => AddPage(categoryDetail: CategoryDetail.categoryDetails)));
+//               },
+//               child: CarouselSlider(
+//                   options: CarouselOptions(
+//                     aspectRatio: 4,
+//                     enlargeCenterPage: true,
+//                     enableInfiniteScroll: false,
+//                     initialPage: 2,
+//                     autoPlay: true,
+//                   ),
+//                   items: Category.categories
+//                       .map((category) => Carousel(category: category))
+//                       .toList()),
+//             ));
+//       });
+// }
 
 Widget background() {
   return Builder(builder: (BuildContext context) {

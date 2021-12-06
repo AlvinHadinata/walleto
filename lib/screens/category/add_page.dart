@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:walleto/data/model/category.dart';
 import 'package:walleto/shared/theme.dart';
 
 class AddPage extends StatelessWidget {
   static const routeName = "/category/add_page";
 
-  // final CategoryDetail category;
-  //
-  // const AddPage({required this.category});
+  final Category category;
+
+  const AddPage({required this.category});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class AddPage extends StatelessWidget {
               key: _formKey,
               child: Column(
                 children: [
-                  Text('Makanan', style: TextStyle(fontFamily: 'Nunito', fontSize: 20),), //nama kategori yang dipilih
+                  Text(category.name, style: TextStyle(fontFamily: 'Nunito', fontSize: 20),), //nama kategori yang dipilih
                   SizedBox(height: 20),
                   TextFormField(
                     controller: _nameController,
