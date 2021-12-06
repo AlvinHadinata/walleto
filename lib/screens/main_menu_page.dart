@@ -56,31 +56,6 @@ Widget carousel() {
   });
 }
 
-// Widget carousel2() {
-//   return Builder(
-//       builder: (BuildContext context) {
-//         return Container(
-//             width: MediaQuery.of(context).size.width,
-//             child: GestureDetector(
-//               onTap: (){
-//                 Navigator.push(context,
-//                     MaterialPageRoute(builder: (context) => AddPage(categoryDetail: CategoryDetail.categoryDetails)));
-//               },
-//               child: CarouselSlider(
-//                   options: CarouselOptions(
-//                     aspectRatio: 4,
-//                     enlargeCenterPage: true,
-//                     enableInfiniteScroll: false,
-//                     initialPage: 2,
-//                     autoPlay: true,
-//                   ),
-//                   items: Category.categories
-//                       .map((category) => Carousel(category: category))
-//                       .toList()),
-//             ));
-//       });
-// }
-
 Widget background() {
   return Builder(builder: (BuildContext context) {
     return Container(
