@@ -35,7 +35,8 @@ class MainMenuPage extends StatelessWidget {
 }
 
 Widget carousel() {
-  return Builder(builder: (BuildContext context) {
+  return Builder(
+      builder: (BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
         child: GestureDetector(

@@ -5,7 +5,7 @@ import 'package:walleto/shared/theme.dart';
 class AddPage extends StatelessWidget {
   static const routeName = "/category/add_page";
 
-  // final Category category;
+  // final CategoryDetail category;
   //
   // const AddPage({required this.category});
 
