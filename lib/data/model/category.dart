@@ -23,7 +23,7 @@ class Category{
     ),
     Category(
         name: 'Lainnya',
-        img: 'images/food.jpeg'
+        img: 'images/other.png'
     ),
   ];
 }

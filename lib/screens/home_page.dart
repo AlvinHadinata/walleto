@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:walleto/screens/settings_page.dart';
 
-import 'detaill_page.dart';
+import 'tabungan_page.dart';
 import 'main_menu_page.dart';
 import 'notes_page.dart';
 
@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
   Widget buildPages(){
     switch(index){
       case 1:
-        return DetailPage();
+        return TabunganPage();
       case 2:
         return NotesPage();
       case 3:
