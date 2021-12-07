@@ -54,7 +54,6 @@ class _HomePageState extends State<HomePage> {
             title: Text('Pengaturan', style: TextStyle(fontFamily: 'Nunito')),
             inactiveColor: inactiveColor,
             activeColor: Colors.green),
-
       ]
     );
   }

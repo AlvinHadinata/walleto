@@ -112,7 +112,7 @@ Widget saldo() {
                         color: kWhiteColor)),
               ],
             ),
-            addButton(context)
+            // addButton(context)
           ],
         ),
       ),
@@ -120,48 +120,48 @@ Widget saldo() {
   });
 }
 
-Widget addButton(context) => FloatingActionButton(
-      child: Icon(Icons.add, color: Colors.black),
-      backgroundColor: Colors.cyanAccent,
-      onPressed: () {
-        showModalBottomSheet(
-            context: context,
-            builder: (context) {
-              return Container(
-                  height: MediaQuery.of(context).size.height / 3,
-                  color: Colors.transparent,
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Text(
-                          'Masukkan jumlah saldo',
-                          style: TextStyle(fontFamily: 'Nunito'),
-                        ),
-                      ),
-                      TextField(
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)))),
-                      ),
-                      SizedBox(height: 20),
-                      SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          style:
-                              ElevatedButton.styleFrom(primary: Colors.black),
-                          child: Text('Simpan'),
-                          onPressed: () {},
-                        ),
-                      )
-                    ],
-                  ));
-            });
-      },
-    );
+// Widget addButton(context) => FloatingActionButton(
+//       child: Icon(Icons.add, color: Colors.black),
+//       backgroundColor: Colors.cyanAccent,
+//       onPressed: () {
+//         showModalBottomSheet(
+//             context: context,
+//             builder: (context) {
+//               return Container(
+//                   height: MediaQuery.of(context).size.height / 3,
+//                   color: Colors.transparent,
+//                   padding: EdgeInsets.symmetric(horizontal: 20),
+//                   child: Column(
+//                     crossAxisAlignment: CrossAxisAlignment.center,
+//                     children: [
+//                       Padding(
+//                         padding: const EdgeInsets.all(20.0),
+//                         child: Text(
+//                           'Masukkan jumlah saldo',
+//                           style: TextStyle(fontFamily: 'Nunito'),
+//                         ),
+//                       ),
+//                       TextField(
+//                         decoration: InputDecoration(
+//                             border: OutlineInputBorder(
+//                                 borderRadius:
+//                                     BorderRadius.all(Radius.circular(10)))),
+//                       ),
+//                       SizedBox(height: 20),
+//                       SizedBox(
+//                         width: double.infinity,
+//                         child: ElevatedButton(
+//                           style:
+//                               ElevatedButton.styleFrom(primary: Colors.black),
+//                           child: Text('Simpan'),
+//                           onPressed: () {},
+//                         ),
+//                       )
+//                     ],
+//                   ));
+//             });
+//       },
+//     );
 
 Widget item2() {
   return Padding(
@@ -215,7 +215,7 @@ Widget riwayat() {
             side: BorderSide(color: Colors.grey, width: 1)),
         child: ListTile(
             trailing: Icon(Icons.add_shopping_cart),
-            title: Text('Cash In',
+            title: Text('Makanan',
                 style: TextStyle(fontFamily: 'Nunito', fontSize: 14)),
             subtitle: Text('Rp 500.000',
                 style: TextStyle(fontFamily: 'Nunito', fontSize: 14))),
