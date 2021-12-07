@@ -26,7 +26,7 @@ class AddPage extends StatelessWidget {
               key: _formKey,
               child: Column(
                 children: [
-                  Text(category.name, style: TextStyle(fontFamily: 'Nunito', fontSize: 20),), //nama kategori yang dipilih
+                  // Text(category.name, style: TextStyle(fontFamily: 'Nunito', fontSize: 20),), //nama kategori yang dipilih
                   SizedBox(height: 20),
                   TextFormField(
                     controller: _nameController,
@@ -38,10 +38,6 @@ class AddPage extends StatelessWidget {
                       isCollapsed: true,
                       contentPadding: const EdgeInsets.all(16.0),
                       filled: true,
-                      // fillColor: Theme.of(context)
-                      //     .colorScheme
-                      //     .primaryVariant
-                      //     .withOpacity(0.8),
                       focusedBorder: OutlineInputBorder(
                         borderSide: const BorderSide(color: kBlueColor),
                         borderRadius: BorderRadius.circular(10.0),
@@ -71,10 +67,6 @@ class AddPage extends StatelessWidget {
                       isCollapsed: true,
                       contentPadding: const EdgeInsets.all(16.0),
                       filled: true,
-                      // fillColor: Theme.of(context)
-                      //     .colorScheme
-                      //     .primaryVariant
-                      //     .withOpacity(0.8),
                       focusedBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: kBlueColor,
@@ -104,10 +96,6 @@ class AddPage extends StatelessWidget {
                       isCollapsed: true,
                       contentPadding: const EdgeInsets.all(16.0),
                       filled: true,
-                      // fillColor: Theme.of(context)
-                      //     .colorScheme
-                      //     .primaryVariant
-                      //     .withOpacity(0.8),
                       focusedBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: kBlueColor,
@@ -137,10 +125,6 @@ class AddPage extends StatelessWidget {
                       isCollapsed: true,
                       contentPadding: const EdgeInsets.all(16.0),
                       filled: true,
-                      // fillColor: Theme.of(context)
-                      //     .colorScheme
-                      //     .primaryVariant
-                      //     .withOpacity(0.8),
                       focusedBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
                           color: kBlueColor,
@@ -158,32 +142,33 @@ class AddPage extends StatelessWidget {
                       }
                     },
                   ),
-                  Container(
+                  Align(
                     alignment: Alignment.bottomCenter,
-                    width: MediaQuery.of(context).size.width,
-                    margin: const EdgeInsets.symmetric(
-                      horizontal: 16.0,
-                      vertical: 24.0,
-                    ),
-                    child: ElevatedButton(
-                      child: Text(
-                        'Simpan',
-                        style: whiteTextStyle.copyWith(
-                          fontSize: 18,
-                          fontWeight: medium,
-                        ),
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(
+                        vertical: 24.0,
                       ),
-                      style: ElevatedButton.styleFrom(
-                        primary: kBlueColor,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16.0,
-                          vertical: 14.0,
+                      child: ElevatedButton(
+                        child: Text(
+                          'Simpan',
+                          style: whiteTextStyle.copyWith(
+                            fontSize: 18,
+                            fontWeight: medium,
+                          ),
                         ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                        style: ElevatedButton.styleFrom(
+                          primary: kBlueColor,
+                          minimumSize: Size.fromHeight(40),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16.0,
+                            vertical: 14.0,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
                         ),
+                        onPressed: () {},
                       ),
-                      onPressed: () {},
                     ),
                   )
                 ],
@@ -196,28 +181,23 @@ class AddPage extends StatelessWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        title: Text('Nabung', style: TextStyle(fontFamily: 'Nunito')),
-    centerTitle: true,
-    backgroundColor: kBlueColor,
-    ),
-      // PreferredSize(
-      //   preferredSize: const Size.fromHeight(80),
-      //   child: AppBar(
-      //     backgroundColor: kBlueColor,
-      //     elevation: 0.0,
-      //     titleSpacing: 24.0,
-      //     centerTitle: true,
-      //     toolbarHeight: 80,
-      //     title: Text(
-      //       "Saving",
-      //       style: whiteTextStyle.copyWith(
-      //         fontSize: 24,
-      //         fontWeight: bold,
-      //       ),
-      //     ),
-      //   ),
-      // ),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(65),
+        child: AppBar(
+          backgroundColor: kBlueColor,
+          elevation: 0.0,
+          titleSpacing: 24.0,
+          centerTitle: true,
+          toolbarHeight: 80,
+          title: Text(
+            "Saving",
+            style: whiteTextStyle.copyWith(
+              fontSize: 24,
+              fontWeight: bold,
+            ),
+          ),
+        ),
+      ),
       body: SafeArea(child: _buildContent()),
     );
   }

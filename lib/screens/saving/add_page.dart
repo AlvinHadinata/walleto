@@ -117,12 +117,7 @@ class AddPage extends StatelessWidget {
                     },
                   ),
                   Container(
-                    alignment: Alignment.bottomCenter,
-                    width: MediaQuery.of(context).size.width,
-                    margin: const EdgeInsets.symmetric(
-                      horizontal: 16.0,
-                      vertical: 24.0,
-                    ),
+                    width: double.infinity,
                     child: ElevatedButton(
                       child: Text(
                         'Simpan',

@@ -1,29 +1,16 @@
-class Category{
-  final String name;
-  final String img;
+import 'package:flutter/material.dart';
 
-  Category({required this.name, required this.img});
+class Category {
+  String name;
+  String description;
+  int nominal;
+  Color color;
+  IconData icon;
 
-  static List<Category> categories = [
-    Category(
-        name: 'Makanan',
-        img: 'images/food.jpeg'
-    ),
-    Category(
-        name: 'Elektronik',
-        img: 'images/electronic.jpg'
-    ),
-    Category(
-        name: 'Kesehatan',
-        img: 'images/medic.png'
-    ),
-    Category(
-        name: 'Kendaraan',
-        img: 'images/cars.jpg'
-    ),
-    Category(
-        name: 'Lainnya',
-        img: 'images/other.png'
-    ),
-  ];
+  Category(
+      {required this.name,
+      required this.description,
+      required this.nominal,
+      required this.color,
+      required this.icon});
 }

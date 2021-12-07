@@ -6,7 +6,7 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pengaturan', style: TextStyle(fontFamily: 'Nunito')),
+        title: Text('Pengaturan', style: whiteTextStyle.copyWith(fontSize: 16)),
         centerTitle: true,
         backgroundColor: kBlueColor,
       ),

@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
 import 'package:walleto/provider/notes_provider.dart';
 import 'package:walleto/screens/home_page.dart';
-import 'package:walleto/screens/notes_page.dart';
+import 'package:walleto/screens/notes/notes_page.dart';
 
 void main() {
   runApp(const MyApp());

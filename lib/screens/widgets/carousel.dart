@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:walleto/data/model/category.dart';
 import 'package:walleto/screens/category/add_page.dart';
+import 'package:walleto/shared/theme.dart';
 
 class Carousel extends StatelessWidget {
   final Category category;
@@ -9,49 +10,76 @@ class Carousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(5.0),
-      child: ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(5.0)),
-          child: Stack(
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+        // margin: EdgeInsets.only(right: 20),
+        decoration: BoxDecoration(
+          color: category.color,
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Image.asset(category.img, fit: BoxFit.cover, width: 1000.0),
-              Positioned(
-                bottom: 0.0,
-                left: 0.0,
-                right: 0.0,
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Color.fromARGB(200, 0, 0, 0),
-                        Color.fromARGB(0, 0, 0, 0)
-                      ],
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    width: 50.0,
+                    height: 40.0,
+                    padding: const EdgeInsets.all(8.0),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.blue.withOpacity(.8),
+                        shape: BoxShape.rectangle),
+                    child: Icon(
+                      category.icon,
+                      size: 20.0,
+                      color: Colors.amber,
                     ),
                   ),
-                  padding:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                  child: Text(
-                    category.name,
-                    style: TextStyle(
-                      fontFamily: 'Nunito',
-                      color: Colors.white,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        "RP. " + category.nominal.toString(),
+                        style: whiteTextStyle.copyWith(
+                            fontSize: 15, fontWeight: regular),
+                      )
+                    ],
+                  )
+                ],
               ),
-              GestureDetector(
-                onTap: (){
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AddPage(category: category)));
-                },
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    child: Text(
+                      category.name,
+                      style: whiteTextStyle.copyWith(
+                        fontSize: 18,
+                        fontWeight: bold,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    child: Text(
+                      category.description,
+                      style: whiteTextStyle.copyWith(
+                        fontSize: 16,
+                        fontWeight: regular,
+                      ),
+                    ),
+                  ),
+                ],
               )
             ],
-          )),
+          ),
+        ),
+      ),
     );
   }
 }
