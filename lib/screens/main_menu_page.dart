@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:walleto/data/model/category.dart';
 import 'package:walleto/screens/widgets/carousel.dart';
-import 'package:walleto/screens/widgets/item_list.dart';
 import 'package:walleto/shared/theme.dart';
 
 class MainMenuPage extends StatefulWidget {
@@ -39,21 +38,20 @@ class _MainMenuPageState extends State<MainMenuPage> {
 }
 
 Widget carousel() {
-  return Builder(builder: (BuildContext context) {
+  return Builder(
+      builder: (BuildContext context) {
     return Container(
-        width: MediaQuery.of(context).size.width,
+      width: MediaQuery.of(context).size.width,
         child: CarouselSlider(
             options: CarouselOptions(
-              aspectRatio: 2,
+              aspectRatio: 4,
               enlargeCenterPage: true,
-              enableInfiniteScroll: true,
+              enableInfiniteScroll: false,
               initialPage: 2,
               autoPlay: true,
             ),
-            items: category
-                .map((items) => Carousel(
-                      category: items,
-                    ))
+            items: Category.categories
+                .map((category) => Carousel(category: category))
                 .toList()));
   });
 }
@@ -122,90 +120,48 @@ Widget saldo() {
   });
 }
 
-Widget addButton(context) => FloatingActionButton(
-      child: Icon(Icons.add, color: Colors.black),
-      backgroundColor: Colors.cyanAccent,
-      onPressed: () {
-        showModalBottomSheet(
-            context: context,
-            builder: (context) {
-              return Container(
-                  height: MediaQuery.of(context).size.height / 3,
-                  color: Colors.transparent,
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        child: Text(
-                          'Category',
-                          style: whiteTextStyle.copyWith(
-                            fontSize: 18,
-                            fontWeight: medium,
-                          ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          primary: kBlueColor,
-                          minimumSize: Size.fromHeight(40),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16.0,
-                            vertical: 14.0,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                        ),
-                        onPressed: () {},
-                      ),
-                      SizedBox(height: 10),
-                      ElevatedButton(
-                        child: Text(
-                          'Saving Target',
-                          style: whiteTextStyle.copyWith(
-                            fontSize: 18,
-                            fontWeight: medium,
-                          ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          primary: kBlueColor,
-                          minimumSize: Size.fromHeight(40),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16.0,
-                            vertical: 14.0,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                        ),
-                        onPressed: () {},
-                      ),
-                      SizedBox(height: 10),
-                      ElevatedButton(
-                        child: Text(
-                          'Saving ',
-                          style: whiteTextStyle.copyWith(
-                            fontSize: 18,
-                            fontWeight: medium,
-                          ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          primary: kBlueColor,
-                          minimumSize: Size.fromHeight(40),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16.0,
-                            vertical: 14.0,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                        ),
-                        onPressed: () {},
-                      ),
-                    ],
-                  ));
-            });
-      },
-    );
+// Widget addButton(context) => FloatingActionButton(
+//       child: Icon(Icons.add, color: Colors.black),
+//       backgroundColor: Colors.cyanAccent,
+//       onPressed: () {
+//         showModalBottomSheet(
+//             context: context,
+//             builder: (context) {
+//               return Container(
+//                   height: MediaQuery.of(context).size.height / 3,
+//                   color: Colors.transparent,
+//                   padding: EdgeInsets.symmetric(horizontal: 20),
+//                   child: Column(
+//                     crossAxisAlignment: CrossAxisAlignment.center,
+//                     children: [
+//                       Padding(
+//                         padding: const EdgeInsets.all(20.0),
+//                         child: Text(
+//                           'Masukkan jumlah saldo',
+//                           style: TextStyle(fontFamily: 'Nunito'),
+//                         ),
+//                       ),
+//                       TextField(
+//                         decoration: InputDecoration(
+//                             border: OutlineInputBorder(
+//                                 borderRadius:
+//                                     BorderRadius.all(Radius.circular(10)))),
+//                       ),
+//                       SizedBox(height: 20),
+//                       SizedBox(
+//                         width: double.infinity,
+//                         child: ElevatedButton(
+//                           style:
+//                               ElevatedButton.styleFrom(primary: Colors.black),
+//                           child: Text('Simpan'),
+//                           onPressed: () {},
+//                         ),
+//                       )
+//                     ],
+//                   ));
+//             });
+//       },
+//     );
 
 Widget item2() {
   return Padding(
@@ -215,7 +171,11 @@ Widget item2() {
         Column(
           children: [
             Text('Pilih Kategori Tabungan',
-                style: blackTextStyle.copyWith(fontWeight: bold, fontSize: 15)),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14.0,
+                  fontFamily: 'Nunito',
+                )),
           ],
         ),
       ],
@@ -231,7 +191,11 @@ Widget item3() {
         Column(
           children: [
             Text('Riwayat menabung',
-                style: blackTextStyle.copyWith(fontWeight: bold, fontSize: 15)),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14.0,
+                  fontFamily: 'Nunito',
+                )),
           ],
         ),
       ],
@@ -244,33 +208,63 @@ Widget riwayat() {
     physics: ClampingScrollPhysics(),
     shrinkWrap: true,
     scrollDirection: Axis.vertical,
-    children: [
-      ItemList(),
-      ItemList(),
-      ItemList(),
-      ItemList(),
-      ItemList(),
+    children: <Widget>[
+      Card(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(color: Colors.grey, width: 1)),
+        child: ListTile(
+            trailing: Icon(Icons.add_shopping_cart),
+            title: Text('Makanan',
+                style: TextStyle(fontFamily: 'Nunito', fontSize: 14)),
+            subtitle: Text('Rp 500.000',
+                style: TextStyle(fontFamily: 'Nunito', fontSize: 14))),
+      ),
+      Card(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(color: Colors.grey, width: 1)),
+        child: ListTile(
+            trailing: Icon(Icons.add_shopping_cart),
+            title: Text('Minang Deng Laka Minang Suang',
+                style: TextStyle(fontFamily: 'Nunito', fontSize: 14)),
+            subtitle: Text('Rp 500.000',
+                style: TextStyle(fontFamily: 'Nunito', fontSize: 14))),
+      ),
+      Card(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(color: Colors.grey, width: 1)),
+        child: ListTile(
+            trailing: Icon(Icons.add_shopping_cart),
+            title: Text('Minang Deng Laka Minang Suang',
+                style: TextStyle(fontFamily: 'Nunito', fontSize: 14)),
+            subtitle: Text('Rp 500.000',
+                style: TextStyle(fontFamily: 'Nunito', fontSize: 14))),
+      ),
+      Card(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(color: Colors.grey, width: 1)),
+        child: ListTile(
+            trailing: Icon(Icons.add_shopping_cart),
+            title: Text('Minang Deng Laka Minang Suang',
+                style: TextStyle(fontFamily: 'Nunito', fontSize: 14)),
+            subtitle: Text('Rp 500.000',
+                style: TextStyle(fontFamily: 'Nunito', fontSize: 14))),
+      ),
+      Card(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(color: Colors.grey, width: 1)),
+        child: ListTile(
+          trailing: Icon(Icons.add_shopping_cart),
+          title: Text('Minang Deng Laka Minang Suang',
+              style: TextStyle(fontFamily: 'Nunito', fontSize: 14)),
+          subtitle: Text('Rp 500.000',
+              style: TextStyle(fontFamily: 'Nunito', fontSize: 14)),
+        ),
+      ),
     ],
   );
 }
-
-List<Category> category = [
-  Category(
-      name: "Investasi",
-      description: "For Better Future",
-      nominal: 1000,
-      color: Colors.blue,
-      icon: Icons.school_rounded),
-  Category(
-      name: "School",
-      description: "For Better School",
-      nominal: 1000,
-      color: Colors.green,
-      icon: Icons.school_rounded),
-  Category(
-      name: "Quarter Life Crissis",
-      description: "For Better Future",
-      nominal: 20000000,
-      color: Colors.amber,
-      icon: Icons.school_rounded),
-];

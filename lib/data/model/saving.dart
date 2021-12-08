@@ -5,6 +5,4 @@ class Saving {
   late String nominal;
   late int durasi;
   late String prioritas;
-
-  
 }
