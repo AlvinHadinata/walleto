@@ -44,10 +44,10 @@ Widget carousel() {
       width: MediaQuery.of(context).size.width,
         child: CarouselSlider(
             options: CarouselOptions(
-              aspectRatio: 4,
+              aspectRatio: 3,
               enlargeCenterPage: true,
               enableInfiniteScroll: false,
-              initialPage: 2,
+              initialPage: 4,
               autoPlay: true,
             ),
             items: Category.categories
@@ -87,7 +87,7 @@ Widget saldo() {
     return Container(
       width: MediaQuery.of(context).size.width - 45,
       decoration: BoxDecoration(
-          color: Colors.blue,
+          color: kBlueColor,
           borderRadius: BorderRadius.all(Radius.circular(15))),
       child: Padding(
         padding: const EdgeInsets.all(14.0),

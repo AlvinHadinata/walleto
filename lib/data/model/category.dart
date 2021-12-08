@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:walleto/shared/theme.dart';
 
 class Category {
   String name;
@@ -19,35 +20,35 @@ class Category {
       name: 'Makanan',
       description: 'Test',
       nominal: 10,
-      color: Colors.red,
+      color: kBlueColor,
       icon: Icons.fastfood
     ),
     Category(
         name: 'Elektronik',
         description: 'Test',
         nominal: 10,
-        color: Colors.red,
+        color: kBlueColor,
         icon: Icons.phone_android
     ),
     Category(
         name: 'Kesehatan',
         description: 'Test',
         nominal: 10,
-        color: Colors.red,
+        color: kBlueColor,
         icon: Icons.medical_services
     ),
     Category(
         name: 'Kendaraan',
         description: 'Test',
         nominal: 10,
-        color: Colors.red,
+        color: kBlueColor,
         icon: Icons.car_rental
     ),
     Category(
         name: 'Lainnnya',
         description: 'Test',
         nominal: 10,
-        color: Colors.red,
+        color: kBlueColor,
         icon: Icons.category
     )
   ];
