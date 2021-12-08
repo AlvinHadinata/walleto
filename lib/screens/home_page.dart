@@ -2,8 +2,6 @@ import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:walleto/screens/settings_page.dart';
-
-import 'saving/tabungan_page.dart';
 import 'main_menu_page.dart';
 import 'notes/notes_page.dart';
 
@@ -39,11 +37,6 @@ class _HomePageState extends State<HomePage> {
               inactiveColor: inactiveColor,
               activeColor: Colors.red),
           BottomNavyBarItem(
-              icon: Icon(Icons.attach_money),
-              title: Text('Tabungan', style: TextStyle(fontFamily: 'Nunito')),
-              inactiveColor: inactiveColor,
-              activeColor: Colors.orange),
-          BottomNavyBarItem(
               icon: Icon(Icons.list_alt),
               title: Text('Catatan', style: TextStyle(fontFamily: 'Nunito')),
               inactiveColor: inactiveColor,
@@ -59,10 +52,8 @@ class _HomePageState extends State<HomePage> {
   Widget buildPages() {
     switch (index) {
       case 1:
-        return TabunganPage();
-      case 2:
         return NotesPage();
-      case 3:
+      case 2:
         return SettingsPage();
       case 0:
       default:

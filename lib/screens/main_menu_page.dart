@@ -3,7 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:walleto/data/model/category.dart';
 import 'package:walleto/screens/widgets/carousel.dart';
+import 'package:walleto/screens/widgets/item_list.dart';
 import 'package:walleto/shared/theme.dart';
+
+//SAVING YANG BERJANGKA
+//CATEGORY YANG TIDAK BERJANGKA
 
 class MainMenuPage extends StatefulWidget {
   @override
@@ -170,7 +174,7 @@ Widget item2() {
       children: [
         Column(
           children: [
-            Text('Pilih Kategori Tabungan',
+            Text('Daftar Tabungan Berjangka',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 14.0,
@@ -204,67 +208,16 @@ Widget item3() {
 }
 
 Widget riwayat() {
-  return ListView(
-    physics: ClampingScrollPhysics(),
-    shrinkWrap: true,
-    scrollDirection: Axis.vertical,
-    children: <Widget>[
-      Card(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-            side: BorderSide(color: Colors.grey, width: 1)),
-        child: ListTile(
-            trailing: Icon(Icons.add_shopping_cart),
-            title: Text('Makanan',
-                style: TextStyle(fontFamily: 'Nunito', fontSize: 14)),
-            subtitle: Text('Rp 500.000',
-                style: TextStyle(fontFamily: 'Nunito', fontSize: 14))),
-      ),
-      Card(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-            side: BorderSide(color: Colors.grey, width: 1)),
-        child: ListTile(
-            trailing: Icon(Icons.add_shopping_cart),
-            title: Text('Minang Deng Laka Minang Suang',
-                style: TextStyle(fontFamily: 'Nunito', fontSize: 14)),
-            subtitle: Text('Rp 500.000',
-                style: TextStyle(fontFamily: 'Nunito', fontSize: 14))),
-      ),
-      Card(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-            side: BorderSide(color: Colors.grey, width: 1)),
-        child: ListTile(
-            trailing: Icon(Icons.add_shopping_cart),
-            title: Text('Minang Deng Laka Minang Suang',
-                style: TextStyle(fontFamily: 'Nunito', fontSize: 14)),
-            subtitle: Text('Rp 500.000',
-                style: TextStyle(fontFamily: 'Nunito', fontSize: 14))),
-      ),
-      Card(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-            side: BorderSide(color: Colors.grey, width: 1)),
-        child: ListTile(
-            trailing: Icon(Icons.add_shopping_cart),
-            title: Text('Minang Deng Laka Minang Suang',
-                style: TextStyle(fontFamily: 'Nunito', fontSize: 14)),
-            subtitle: Text('Rp 500.000',
-                style: TextStyle(fontFamily: 'Nunito', fontSize: 14))),
-      ),
-      Card(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-            side: BorderSide(color: Colors.grey, width: 1)),
-        child: ListTile(
-          trailing: Icon(Icons.add_shopping_cart),
-          title: Text('Minang Deng Laka Minang Suang',
-              style: TextStyle(fontFamily: 'Nunito', fontSize: 14)),
-          subtitle: Text('Rp 500.000',
-              style: TextStyle(fontFamily: 'Nunito', fontSize: 14)),
-        ),
-      ),
-    ],
-  );
+  return Builder(builder: (BuildContext context) {
+    return ListView(
+      physics: ClampingScrollPhysics(),
+      shrinkWrap: true,
+      scrollDirection: Axis.vertical,
+      children: <Widget>[
+        ItemList(),
+        ItemList(),
+        ItemList(),
+      ],
+    );
+  });
 }

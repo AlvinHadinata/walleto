@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:walleto/data/model/category.dart';
-import 'package:walleto/screens/category/add_page.dart';
+import 'package:walleto/screens/saving/detail_page.dart';
 import 'package:walleto/shared/theme.dart';
 
 class Carousel extends StatelessWidget {
@@ -13,7 +13,7 @@ class Carousel extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return AddPage(category: category);
+          return SavingDetailPage(category: category);
         }));
       },
       child: Container(
@@ -51,13 +51,6 @@ class Carousel extends StatelessWidget {
                   fontWeight: bold,
                 ),
               ),
-              // Text(
-              //   category.description,
-              //   style: whiteTextStyle.copyWith(
-              //     fontSize: 16,
-              //     fontWeight: regular,
-              //   ),
-              // )
             ],
           ),
         ),
