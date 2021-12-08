@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:walleto/data/model/category.dart';
+import 'package:walleto/screens/widgets/item_list.dart';
 import 'package:walleto/shared/theme.dart';
 
 class SavingDetailPage extends StatelessWidget{
@@ -26,7 +27,7 @@ class SavingDetailPage extends StatelessWidget{
             SizedBox(height: 20),
             detailSaldo(),
             SizedBox(height: 20),
-            history()
+            riwayat()
           ],
         ),
       ),
@@ -36,38 +37,39 @@ class SavingDetailPage extends StatelessWidget{
   Widget detailSaldo() {
     return Builder(builder: (BuildContext context) {
       return Container(
-        width: MediaQuery.of(context).size.width - 45,
+        margin: EdgeInsets.all(10),
+        height: 100,
         decoration: BoxDecoration(
-            color: Colors.blue,
-            borderRadius: BorderRadius.all(Radius.circular(15))),
+          color: category.color,
+          borderRadius: BorderRadius.circular(20.0),
+        ),
         child: Padding(
-          padding: const EdgeInsets.all(14.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(category.name,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14.0,
-                          fontFamily: 'Nunito',
-                          color: kWhiteColor)),
-                  SizedBox(height: 10),
-                  Text(category.description,
-                      style: TextStyle(
-                          fontSize: 10.0,
-                          fontFamily: 'Nunito',
-                          color: kWhiteColor)),
-                  SizedBox(height: 10),
-                  Text('Rp ' + category.nominal.toString(),
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 19.0,
-                          fontFamily: 'Nunito',
-                          color: kWhiteColor)),
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Icon(
+                    category.icon,
+                    size: 20.0,
+                    color: Colors.amber,
+                  ),
+                  Text(
+                    "RP. " + category.nominal.toString(),
+                    style: whiteTextStyle.copyWith(
+                        fontSize: 15, fontWeight: regular),
+                  )
                 ],
+              ),
+              SizedBox(height: 10),
+              Text(
+                category.name,
+                style: whiteTextStyle.copyWith(
+                  fontSize: 18,
+                  fontWeight: bold,
+                ),
               ),
             ],
           ),
@@ -77,76 +79,17 @@ class SavingDetailPage extends StatelessWidget{
   }
 }
 
-Widget history(){
-  return Builder(
-      builder: (BuildContext context){
-        return ListView(
-          physics: ClampingScrollPhysics(),
-          shrinkWrap: true,
-          scrollDirection: Axis.vertical,
-          children: <Widget>[
-            Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  side: BorderSide(
-                      color: Colors.grey,
-                      width: 1
-                  )
-              ),
-              child: ListTile(
-                title: Text('Minang Deng Laka Minang Suang', style: TextStyle(fontFamily: 'Nunito')),
-              ),
-            ),
-            Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  side: BorderSide(
-                      color: Colors.grey,
-                      width: 1
-                  )
-              ),
-              child: ListTile(
-                title: Text('Minang Deng Laka Minang Suang', style: TextStyle(fontFamily: 'Nunito')),
-              ),
-            ),
-            Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  side: BorderSide(
-                      color: Colors.grey,
-                      width: 1
-                  )
-              ),
-              child: ListTile(
-                title: Text('Minang Deng Laka Minang Suang', style: TextStyle(fontFamily: 'Nunito')),
-              ),
-            ),
-            Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  side: BorderSide(
-                      color: Colors.grey,
-                      width: 1
-                  )
-              ),
-              child: ListTile(
-                title: Text('Minang Deng Laka Minang Suang', style: TextStyle(fontFamily: 'Nunito')),
-              ),
-            ),
-            Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  side: BorderSide(
-                      color: Colors.grey,
-                      width: 1
-                  )
-              ),
-              child: ListTile(
-                title: Text('Minang Deng Laka Minang Suang', style: TextStyle(fontFamily: 'Nunito')),
-              ),
-            ),
-          ],
-        );
-      }
-  );
+Widget riwayat() {
+  return Builder(builder: (BuildContext context) {
+    return ListView(
+      physics: ClampingScrollPhysics(),
+      shrinkWrap: true,
+      scrollDirection: Axis.vertical,
+      children: <Widget>[
+        ItemList(),
+        ItemList(),
+        ItemList(),
+      ],
+    );
+  });
 }
