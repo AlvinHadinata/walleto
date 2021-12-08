@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:walleto/data/model/category.dart';
+import 'package:walleto/screens/category/add_page.dart';
 import 'package:walleto/shared/theme.dart';
 
 class Carousel extends StatelessWidget {
@@ -10,7 +11,11 @@ class Carousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return AddPage(category: category);
+        }));
+      },
       child: Container(
         // margin: EdgeInsets.only(right: 20),
         height: MediaQuery.of(context).size.height,
