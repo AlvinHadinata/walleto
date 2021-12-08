@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class Category {
   String name;
   String description;
-  String imgUrl;
   int nominal;
   Color color;
   IconData icon;
@@ -11,7 +10,6 @@ class Category {
   Category(
       {required this.name,
       required this.description,
-      required this.imgUrl,
       required this.nominal,
       required this.color,
       required this.icon});
@@ -20,39 +18,34 @@ class Category {
     Category(
       name: 'Makanan',
       description: 'Test',
-      imgUrl: 'https://awsimages.detik.net.id/community/media/visual/2021/04/22/5-makanan-enak-dari-indonesia-dan-malaysia-yang-terkenal-enak-5.jpeg?w=700&q=90',
       nominal: 10,
       color: Colors.red,
-      icon: Icons.category
+      icon: Icons.fastfood
     ),
     Category(
-        name: 'Makanan',
+        name: 'Elektronik',
         description: 'Test',
-        imgUrl: 'https://awsimages.detik.net.id/community/media/visual/2021/04/22/5-makanan-enak-dari-indonesia-dan-malaysia-yang-terkenal-enak-5.jpeg?w=700&q=90',
         nominal: 10,
         color: Colors.red,
-        icon: Icons.category
+        icon: Icons.phone_android
     ),
     Category(
-        name: 'Makanan',
+        name: 'Kesehatan',
         description: 'Test',
-        imgUrl: 'https://awsimages.detik.net.id/community/media/visual/2021/04/22/5-makanan-enak-dari-indonesia-dan-malaysia-yang-terkenal-enak-5.jpeg?w=700&q=90',
         nominal: 10,
         color: Colors.red,
-        icon: Icons.category
+        icon: Icons.medical_services
     ),
     Category(
-        name: 'Makanan',
+        name: 'Kendaraan',
         description: 'Test',
-        imgUrl: 'https://awsimages.detik.net.id/community/media/visual/2021/04/22/5-makanan-enak-dari-indonesia-dan-malaysia-yang-terkenal-enak-5.jpeg?w=700&q=90',
         nominal: 10,
         color: Colors.red,
-        icon: Icons.category
+        icon: Icons.car_rental
     ),
     Category(
-        name: 'Makanan',
+        name: 'Lainnnya',
         description: 'Test',
-        imgUrl: 'https://awsimages.detik.net.id/community/media/visual/2021/04/22/5-makanan-enak-dari-indonesia-dan-malaysia-yang-terkenal-enak-5.jpeg?w=700&q=90',
         nominal: 10,
         color: Colors.red,
         icon: Icons.category
