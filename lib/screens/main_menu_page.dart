@@ -2,6 +2,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:walleto/data/model/category.dart';
+import 'package:walleto/data/model/wallet.dart';
+import 'package:walleto/screens/target/target_add_page.dart';
+import 'package:walleto/screens/target/saving_add_page.dart';
+import 'package:walleto/screens/wallet/wallet_add_page.dart';
 import 'package:walleto/screens/widgets/carousel.dart';
 import 'package:walleto/screens/widgets/item_list.dart';
 import 'package:walleto/shared/theme.dart';
@@ -42,10 +46,9 @@ class _MainMenuPageState extends State<MainMenuPage> {
 }
 
 Widget carousel() {
-  return Builder(
-      builder: (BuildContext context) {
+  return Builder(builder: (BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
+        width: MediaQuery.of(context).size.width,
         child: CarouselSlider(
             options: CarouselOptions(
               aspectRatio: 3,
@@ -54,8 +57,8 @@ Widget carousel() {
               initialPage: 4,
               autoPlay: true,
             ),
-            items: Category.categories
-                .map((category) => Carousel(category: category))
+            items: Wallet.wallet
+                .map((wallets) => Carousel(wallet: wallets))
                 .toList()));
   });
 }
@@ -116,7 +119,7 @@ Widget saldo() {
                         color: kWhiteColor)),
               ],
             ),
-            // addButton(context)
+            addButton(context)
           ],
         ),
       ),
@@ -124,48 +127,106 @@ Widget saldo() {
   });
 }
 
-// Widget addButton(context) => FloatingActionButton(
-//       child: Icon(Icons.add, color: Colors.black),
-//       backgroundColor: Colors.cyanAccent,
-//       onPressed: () {
-//         showModalBottomSheet(
-//             context: context,
-//             builder: (context) {
-//               return Container(
-//                   height: MediaQuery.of(context).size.height / 3,
-//                   color: Colors.transparent,
-//                   padding: EdgeInsets.symmetric(horizontal: 20),
-//                   child: Column(
-//                     crossAxisAlignment: CrossAxisAlignment.center,
-//                     children: [
-//                       Padding(
-//                         padding: const EdgeInsets.all(20.0),
-//                         child: Text(
-//                           'Masukkan jumlah saldo',
-//                           style: TextStyle(fontFamily: 'Nunito'),
-//                         ),
-//                       ),
-//                       TextField(
-//                         decoration: InputDecoration(
-//                             border: OutlineInputBorder(
-//                                 borderRadius:
-//                                     BorderRadius.all(Radius.circular(10)))),
-//                       ),
-//                       SizedBox(height: 20),
-//                       SizedBox(
-//                         width: double.infinity,
-//                         child: ElevatedButton(
-//                           style:
-//                               ElevatedButton.styleFrom(primary: Colors.black),
-//                           child: Text('Simpan'),
-//                           onPressed: () {},
-//                         ),
-//                       )
-//                     ],
-//                   ));
-//             });
-//       },
-//     );
+Widget addButton(context) => FloatingActionButton(
+      child: Icon(Icons.add, color: Colors.black),
+      backgroundColor: Colors.cyanAccent,
+      onPressed: () {
+        showModalBottomSheet(
+          context: context,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(24),
+              topLeft: Radius.circular(24),
+            ),
+          ),
+          builder: (BuildContext context) {
+            return Container(
+              width: double.infinity,
+              height: 150,
+              padding: const EdgeInsets.only(
+                top: 10,
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    width: 135,
+                    height: 4.5,
+                    decoration: BoxDecoration(
+                      color: kBlueColor,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 24,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        children: [
+                          SizedBox(
+                            width: 60,
+                            height: 60,
+                            child: FloatingActionButton(
+                              backgroundColor: kBlueColor,
+                              child: Icon(
+                                Icons.add_a_photo,
+                                size: 30.0,
+                              ),
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                  context,
+                                  WalletAddPage.routeName,
+                                );
+                                ;
+                              },
+                            ),
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            "Buat Target Baru",
+                            style: blackTextStyle.copyWith(
+                              fontSize: 13,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          SizedBox(
+                            width: 60,
+                            height: 60,
+                            child: FloatingActionButton(
+                              backgroundColor: kBlueColor,
+                              child: Icon(Icons.add_rounded),
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                    context, TargetAddPage.routeName);
+                              },
+                            ),
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            "Tambah Tabungan",
+                            style: blackTextStyle.copyWith(
+                              fontSize: 13,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    );
 
 Widget item2() {
   return Padding(

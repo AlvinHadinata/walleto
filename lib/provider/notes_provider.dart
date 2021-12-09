@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:walleto/data/local/database_helper.dart';
+import 'package:walleto/data/hive/database_helper.dart';
 import 'package:walleto/data/model/note.dart';
 import 'package:walleto/shared/const.dart';
 

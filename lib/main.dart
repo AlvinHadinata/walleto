@@ -4,6 +4,10 @@ import 'package:flutter/services.dart';
 import 'package:walleto/provider/notes_provider.dart';
 import 'package:walleto/screens/home_page.dart';
 import 'package:walleto/screens/notes/notes_page.dart';
+import 'package:walleto/screens/target/target_detail_page.dart';
+import 'package:walleto/screens/target/target_add_page.dart';
+import 'package:walleto/screens/wallet/wallet_detail_page.dart';
+import 'package:walleto/screens/wallet/wallet_add_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,6 +32,10 @@ class MyApp extends StatelessWidget {
         routes: {
           HomePage.routeName: (context) => HomePage(),
           NotesPage.routeName: (context) => NotesPage(),
+          WalletAddPage.routeName: (context) => WalletAddPage(),
+          WalletDetailPage.routeName: (context) => WalletDetailPage(),
+          TargetAddPage.routeName: (context) => TargetAddPage(),
+          TargetDetailPage.routeName: (context) => TargetDetailPage(),
         },
       ),
     );
