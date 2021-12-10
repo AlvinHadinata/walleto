@@ -7,7 +7,7 @@ import 'package:walleto/screens/target/saving_add_page.dart';
 import 'package:walleto/screens/wallet/wallet_add_page.dart';
 import 'package:walleto/shared/theme.dart';
 import 'main_menu_page.dart';
-import 'notes/notes_page.dart';
+import 'notes/note_page.dart';
 import 'dart:math' as math;
 
 class HomePage extends StatefulWidget {

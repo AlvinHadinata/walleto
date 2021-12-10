@@ -1,21 +1,19 @@
+import 'package:hive/hive.dart';
+
+part 'note.g.dart';
+
+@HiveType(typeId: 5)
 class Note {
+  @HiveField(0)
   late int? id;
+  @HiveField(1)
   late String title;
+  @HiveField(2)
   late String description;
 
-  Note({this.id, required this.title, required this.description});
-
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'title': title,
-      'description': description,
-    };
-  }
-
-  Note.fromMap(Map<String, dynamic> map) {
-    id = map['id'];
-    title = map['title'];
-    description = map['description'];
-  }
+  Note({
+    this.id,
+    required this.title,
+    required this.description,
+  });
 }

@@ -10,9 +10,6 @@ import 'package:walleto/screens/widgets/carousel.dart';
 import 'package:walleto/screens/widgets/item_list.dart';
 import 'package:walleto/shared/theme.dart';
 
-//SAVING YANG BERJANGKA
-//CATEGORY YANG TIDAK BERJANGKA
-
 class MainMenuPage extends StatefulWidget {
   @override
   State<MainMenuPage> createState() => _MainMenuPageState();
@@ -48,18 +45,19 @@ class _MainMenuPageState extends State<MainMenuPage> {
 Widget carousel() {
   return Builder(builder: (BuildContext context) {
     return Container(
-        width: MediaQuery.of(context).size.width,
-        child: CarouselSlider(
-            options: CarouselOptions(
-              aspectRatio: 3,
-              enlargeCenterPage: true,
-              enableInfiniteScroll: false,
-              initialPage: 4,
-              autoPlay: true,
-            ),
-            items: Wallet.wallet
-                .map((wallets) => Carousel(wallet: wallets))
-                .toList()));
+      width: MediaQuery.of(context).size.width,
+      child: CarouselSlider(
+          options: CarouselOptions(
+            aspectRatio: 3,
+            enlargeCenterPage: true,
+            enableInfiniteScroll: false,
+            initialPage: 4,
+            autoPlay: true,
+          ),
+          items: []
+          // Wallet.wallet.map((wallets) => Carousel(wallet: wallets)).toList(),
+          ),
+    );
   });
 }
 

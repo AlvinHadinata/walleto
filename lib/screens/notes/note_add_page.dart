@@ -2,9 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:walleto/data/model/note.dart';
+import 'package:walleto/screens/widgets/custom_text_field.dart';
 import 'package:walleto/shared/theme.dart';
-
-import '../../provider/notes_provider.dart';
 
 class NoteAddUpdatePage extends StatefulWidget {
   final Note? note;
@@ -43,55 +42,35 @@ class _NoteAddUpdatePageState extends State<NoteAddUpdatePage> {
         padding: const EdgeInsets.all(8),
         child: Column(
           children: [
-            TextField(
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20.0,
-                fontFamily: 'Nunito',
-              ),
-              controller: _titleController,
-              decoration: InputDecoration(
-                labelText: 'Judul',
-              ),
-            ),
+            CustomTextField(
+                labelText: "Title",
+                hintText: "Masukan Title",
+                controller: _titleController,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Title tidak boleh kosong';
+                  }
+                  return "";
+                }),
             Expanded(
-              child: TextField(
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14.0,
-                  fontFamily: 'Nunito',
-                ),
-                maxLines: null,
-                controller: _descriptionController,
-                decoration: InputDecoration(
-                  labelText: 'Deskripsi',
-                ),
-              ),
-            ),
+                child: CustomTextField(
+              labelText: "Deskripsi",
+              hintText: "Masukan Deskripsi",
+              keyboardType: TextInputType.multiline,
+              controller: _descriptionController,
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Deskripsi tidak boleh kosong';
+                }
+                return "";
+              },
+            )),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(primary: kBlueColor),
                 child: Text('Simpan', style: TextStyle(fontFamily: 'Nunito')),
-                onPressed: () async {
-                  if (!_isUpdate) {
-                    final note = Note(
-                      title: _titleController.text,
-                      description: _descriptionController.text,
-                    );
-                    Provider.of<DbProvider>(context, listen: false)
-                        .addNote(note);
-                  } else {
-                    final note = Note(
-                      id: widget.note!.id,
-                      title: _titleController.text,
-                      description: _descriptionController.text,
-                    );
-                    Provider.of<DbProvider>(context, listen: false)
-                        .updateNote(note);
-                  }
-                  Navigator.pop(context);
-                },
+                onPressed: () {},
               ),
             )
           ],
