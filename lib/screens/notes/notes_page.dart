@@ -12,20 +12,24 @@ class NotesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Catatanku', style: TextStyle(fontFamily: 'Nunito')),
+        title: Text('Catatanku', style: whiteTextStyle.copyWith(
+            fontSize: 18, fontWeight: FontWeight.bold)),
         centerTitle: true,
         backgroundColor: kBlueColor,
       ),
       body: SingleChildScrollView(
         child: Column(children: [listNotes()]),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        backgroundColor: kBlueColor,
-        onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => NoteAddUpdatePage()));
-        },
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 60.0),
+        child: FloatingActionButton(
+          child: Icon(Icons.add),
+          backgroundColor: kBlueColor,
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => NoteAddUpdatePage()));
+          },
+        ),
       ),
     );
   }

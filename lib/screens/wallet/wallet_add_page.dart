@@ -24,7 +24,7 @@ class WalletAddPage extends StatelessWidget {
                   children: [
                     CustomTextField(
                       labelText: "Nama Wallet",
-                      hintText: "Masukan Nama Target",
+                      hintText: "Masukan Nama Wallet",
                       keyboardType: TextInputType.text,
                       controller: _nameController,
                       maxLines: 1,
@@ -114,7 +114,7 @@ class WalletAddPage extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(65),
+        preferredSize: const Size.fromHeight(60),
         child: AppBar(
           backgroundColor: kBlueColor,
           elevation: 0.0,

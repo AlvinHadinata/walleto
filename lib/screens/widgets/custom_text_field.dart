@@ -32,14 +32,6 @@ class CustomTextField extends StatelessWidget {
               labelText,
               style: blackTextStyle.copyWith(fontSize: 14),
             ),
-            // if (errorValidation != null)
-            //   Text(
-            //     errorValidation!,
-            //     style: blackTextStyle.copyWith(
-            //       color: Color(0xFFD30000),
-            //       fontSize: 12,
-            //     ),
-            //   ),
           ],
         ),
         SizedBox(

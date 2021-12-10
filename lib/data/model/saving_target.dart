@@ -34,4 +34,43 @@ class SavingTarget {
     required this.decription,
     required this.createdAt,
   });
+
+  // static List<SavingTarget> saving = [
+  //   SavingTarget(
+  //       nameTarget: "Investasi",
+  //       nominal: 100000,
+  //       currentMoney: 1000,
+  //       decription: "Better Future",
+  //       id: null,
+  //       period: null,
+  //       category: null,
+  //       priority: '',
+  //       durationType: '',
+  //       createdAt: null
+  //   ),
+  //   SavingTarget(
+  //       nameTarget: "Investasi",
+  //       nominal: 100000,
+  //       currentMoney: 1000,
+  //       decription: "Better Future",
+  //       id: null,
+  //       period: null,
+  //       category: null,
+  //       priority: '',
+  //       durationType: '',
+  //       createdAt: null
+  //   ),
+  //   SavingTarget(
+  //       nameTarget: "Investasi",
+  //       nominal: 100000,
+  //       currentMoney: 1000,
+  //       decription: "Better Future",
+  //       id: null,
+  //       period: null,
+  //       category: null,
+  //       priority: '',
+  //       durationType: '',
+  //       createdAt: null
+  //   ),
+  // ];
 }

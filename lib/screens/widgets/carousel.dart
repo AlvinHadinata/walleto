@@ -17,7 +17,6 @@ class Carousel extends StatelessWidget {
         }));
       },
       child: Container(
-        // margin: EdgeInsets.only(right: 20),
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           color: kBlueColor,
@@ -51,6 +50,11 @@ class Carousel extends StatelessWidget {
                   fontWeight: bold,
                 ),
               ),
+              Text('Klik untuk detail',
+                style: whiteTextStyle.copyWith(
+                  fontSize: 12,
+                  fontWeight: bold,
+                ),)
             ],
           ),
         ),

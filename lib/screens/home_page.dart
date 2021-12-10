@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _listWidget = [
     MainMenuPage(),
-    WalletAddPage(),
+    NotesPage(),
     SettingsPage(),
   ];
 
@@ -84,41 +84,3 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 }
-
-// Widget bottomNav() {
-//   return BottomNavyBar(
-//       curve: Curves.ease,
-//       backgroundColor: Colors.white,
-//       selectedIndex: index,
-//       onItemSelected: (index) => setState(() => this.index = index),
-//       items: <BottomNavyBarItem>[
-//         BottomNavyBarItem(
-//             icon: Icon(Icons.home),
-//             title: Text('Beranda', style: TextStyle(fontFamily: 'Nunito')),
-//             inactiveColor: inactiveColor,
-//             activeColor: Colors.red),
-//         BottomNavyBarItem(
-//             icon: Icon(Icons.list_alt),
-//             title: Text('Catatan', style: TextStyle(fontFamily: 'Nunito')),
-//             inactiveColor: inactiveColor,
-//             activeColor: Colors.purpleAccent),
-//         BottomNavyBarItem(
-//             icon: Icon(Icons.settings),
-//             title: Text('Pengaturan', style: TextStyle(fontFamily: 'Nunito')),
-//             inactiveColor: inactiveColor,
-//             activeColor: Colors.green),
-//       ]);
-// }
-
-//   Widget buildPages() {
-//     switch (index) {
-//       case 1:
-//         return NotesPage();
-//       case 2:
-//         return SettingsPage();
-//       case 0:
-//       default:
-//         return MainMenuPage();
-//     }
-//   }
-// }

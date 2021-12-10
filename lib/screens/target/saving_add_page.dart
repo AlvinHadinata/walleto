@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:walleto/shared/theme.dart';
 
 class SavingAddPage extends StatefulWidget {
@@ -119,25 +118,22 @@ class _SavingAddPageState extends State<SavingAddPage> {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(80),
-        child: AppBar(
-          elevation: 0.0,
-          titleSpacing: 24.0,
-          centerTitle: true,
-          toolbarHeight: 80,
-          leading: CircleAvatar(
-              radius: 24.0,
-              backgroundColor: Theme.of(context)
-                  .colorScheme
-                  .primaryVariant
-                  .withOpacity(0.6)),
-          title: Text(
-            "Saving",
-            style: whiteTextStyle.copyWith(
-              fontSize: 24,
-              fontWeight: bold,
-            ),
+      appBar: AppBar(
+        elevation: 0.0,
+        titleSpacing: 24.0,
+        centerTitle: true,
+        toolbarHeight: 80,
+        leading: CircleAvatar(
+            radius: 24.0,
+            backgroundColor: Theme.of(context)
+                .colorScheme
+                .primaryVariant
+                .withOpacity(0.6)),
+        title: Text(
+          "Saving",
+          style: whiteTextStyle.copyWith(
+            fontSize: 24,
+            fontWeight: bold,
           ),
         ),
       ),

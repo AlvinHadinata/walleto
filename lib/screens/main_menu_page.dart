@@ -5,13 +5,13 @@ import 'package:walleto/data/model/category.dart';
 import 'package:walleto/data/model/wallet.dart';
 import 'package:walleto/screens/target/target_add_page.dart';
 import 'package:walleto/screens/target/saving_add_page.dart';
+import 'package:walleto/screens/target/target_detail_page.dart';
+import 'package:walleto/screens/target/target_list_page.dart';
 import 'package:walleto/screens/wallet/wallet_add_page.dart';
+import 'package:walleto/screens/wallet/wallet_list_page.dart';
 import 'package:walleto/screens/widgets/carousel.dart';
 import 'package:walleto/screens/widgets/item_list.dart';
 import 'package:walleto/shared/theme.dart';
-
-//SAVING YANG BERJANGKA
-//CATEGORY YANG TIDAK BERJANGKA
 
 class MainMenuPage extends StatefulWidget {
   @override
@@ -31,36 +31,21 @@ class _MainMenuPageState extends State<MainMenuPage> {
               SizedBox(height: 130),
               saldo(),
               SizedBox(height: 20),
-              item2(),
-              SizedBox(height: 20),
+              item2(context),
+              SizedBox(height: 5),
               carousel(),
-              SizedBox(height: 20),
-              item3(),
-              riwayat()
+              SizedBox(height: 5),
+              item3(context),
+              SizedBox(height: 5),
+              savingList(context),
+              savingList(context),
+              savingList(context)
             ],
           ),
         ]),
       ),
     );
   }
-}
-
-Widget carousel() {
-  return Builder(builder: (BuildContext context) {
-    return Container(
-        width: MediaQuery.of(context).size.width,
-        child: CarouselSlider(
-            options: CarouselOptions(
-              aspectRatio: 3,
-              enlargeCenterPage: true,
-              enableInfiniteScroll: false,
-              initialPage: 4,
-              autoPlay: true,
-            ),
-            items: Wallet.wallet
-                .map((wallets) => Carousel(wallet: wallets))
-                .toList()));
-  });
 }
 
 Widget background() {
@@ -78,11 +63,8 @@ Widget background() {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text('Walleto',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22,
-                      fontFamily: 'Nunito',
-                      color: kWhiteColor)),
+                  style: whiteTextStyle.copyWith(
+                      fontSize: 22, fontWeight: FontWeight.bold)),
             ],
           ),
         ));
@@ -105,18 +87,12 @@ Widget saldo() {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Saldo',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14.0,
-                        fontFamily: 'Nunito',
-                        color: kWhiteColor)),
+                    style: whiteTextStyle.copyWith(
+                        fontSize: 18, fontWeight: FontWeight.bold)),
                 SizedBox(height: 10),
                 Text('Rp 0',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 19.0,
-                        fontFamily: 'Nunito',
-                        color: kWhiteColor)),
+                    style: whiteTextStyle.copyWith(
+                        fontSize: 18, fontWeight: FontWeight.bold)),
               ],
             ),
             addButton(context)
@@ -176,7 +152,7 @@ Widget addButton(context) => FloatingActionButton(
                               onPressed: () {
                                 Navigator.pushNamed(
                                   context,
-                                  WalletAddPage.routeName,
+                                  TargetAddPage.routeName,
                                 );
                                 ;
                               },
@@ -203,7 +179,7 @@ Widget addButton(context) => FloatingActionButton(
                               child: Icon(Icons.add_rounded),
                               onPressed: () {
                                 Navigator.pushNamed(
-                                    context, TargetAddPage.routeName);
+                                    context, WalletAddPage.routeName);
                               },
                             ),
                           ),
@@ -211,7 +187,7 @@ Widget addButton(context) => FloatingActionButton(
                             height: 8,
                           ),
                           Text(
-                            "Tambah Tabungan",
+                            "Tambah Wallet",
                             style: blackTextStyle.copyWith(
                               fontSize: 13,
                             ),
@@ -228,57 +204,142 @@ Widget addButton(context) => FloatingActionButton(
       },
     );
 
-Widget item2() {
+Widget item2(BuildContext context) {
   return Padding(
-    padding: const EdgeInsets.only(left: 25.0),
+    padding: const EdgeInsets.symmetric(horizontal: 17),
     child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Column(
-          children: [
-            Text('Daftar Tabungan Berjangka',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14.0,
-                  fontFamily: 'Nunito',
-                )),
-          ],
-        ),
+        Text('Daftar Wallet',
+            style: blackTextStyle.copyWith(
+                fontSize: 15, fontWeight: FontWeight.bold)),
+        TextButton(onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return WalletListPage();
+          }));
+        }, child: Text('Lihat Semua', style: blackTextStyle.copyWith(
+            fontSize: 15, fontWeight: FontWeight.bold, color: Colors.blue)))
       ],
     ),
   );
 }
 
-Widget item3() {
-  return Padding(
-    padding: const EdgeInsets.only(left: 25.0),
-    child: Row(
-      children: [
-        Column(
-          children: [
-            Text('Riwayat menabung',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14.0,
-                  fontFamily: 'Nunito',
-                )),
-          ],
-        ),
-      ],
-    ),
-  );
-}
-
-Widget riwayat() {
+Widget carousel() {
   return Builder(builder: (BuildContext context) {
-    return ListView(
-      physics: ClampingScrollPhysics(),
-      shrinkWrap: true,
-      scrollDirection: Axis.vertical,
-      children: <Widget>[
-        ItemList(),
-        ItemList(),
-        ItemList(),
-      ],
-    );
+    return Container(
+        width: MediaQuery.of(context).size.width,
+        child: CarouselSlider(
+            options: CarouselOptions(
+              aspectRatio: 2.5,
+              enlargeCenterPage: true,
+              enableInfiniteScroll: false,
+              initialPage: 4,
+              autoPlay: true,
+            ),
+            items: Wallet.wallet
+                .map((wallets) => Carousel(wallet: wallets))
+                .toList()));
   });
+}
+
+Widget item3(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 17),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text('Daftar Saving',
+            style: blackTextStyle.copyWith(
+                fontSize: 15, fontWeight: FontWeight.bold)),
+        TextButton(onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return TargetListPage();
+          }));
+        }, child: Text('Lihat Semua', style: blackTextStyle.copyWith(
+            fontSize: 15, fontWeight: FontWeight.bold, color: Colors.blue)))
+      ],
+    ),
+  );
+}
+
+Widget savingList(BuildContext context){
+  return InkWell(
+    onTap: () {
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return TargetDetailPage();
+      }));
+    },
+    child: Container(
+      margin: const EdgeInsets.only(bottom: 8.0),
+      child: Material(
+        color: kWhiteColor,
+        shadowColor: Colors.grey[100],
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        child: Container(
+          padding: const EdgeInsets.symmetric(
+            vertical: 14.0,
+            horizontal: 16.0,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(left: 8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          "Untuk beli Iphone",
+                          style: blackTextStyle.copyWith(
+                              fontSize: 18.0,
+                              fontWeight: bold,
+                              decoration: TextDecoration.none),
+                        ),
+                        Text(
+                          "On Progress - 6 bulan",
+                          style: blackTextStyle.copyWith(
+                              fontSize: 16.0,
+                              fontWeight: regular,
+                              decoration: TextDecoration.none),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                margin: const EdgeInsets.only(left: 8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      "Rp 10.000.000",
+                      style: blueTextSyle.copyWith(
+                          fontSize: 18.0,
+                          fontWeight: bold,
+                          decoration: TextDecoration.none),
+                    ),
+                    Text(
+                      "Prioritas Tinggi",
+                      style: blackTextStyle.copyWith(
+                          fontSize: 16.0,
+                          fontWeight: regular,
+                          decoration: TextDecoration.none),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
 }
