@@ -1,14 +1,10 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:walleto/screens/settings_page.dart';
-import 'package:walleto/screens/target/saving_add_page.dart';
-import 'package:walleto/screens/wallet/wallet_add_page.dart';
 import 'package:walleto/shared/theme.dart';
 import 'main_menu_page.dart';
-import 'notes/notes_page.dart';
-import 'dart:math' as math;
+import 'notes/note_page.dart';
 
 class HomePage extends StatefulWidget {
   static const routeName = '/home_page';

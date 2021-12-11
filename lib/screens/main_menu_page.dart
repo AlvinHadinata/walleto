@@ -33,7 +33,7 @@ class _MainMenuPageState extends State<MainMenuPage> {
               SizedBox(height: 20),
               item2(context),
               SizedBox(height: 5),
-              carousel(),
+              // carousel(),
               SizedBox(height: 5),
               item3(context),
               SizedBox(height: 5),
@@ -46,6 +46,25 @@ class _MainMenuPageState extends State<MainMenuPage> {
       ),
     );
   }
+}
+
+Widget carousel() {
+  return Builder(builder: (BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      child: CarouselSlider(
+          options: CarouselOptions(
+            aspectRatio: 3,
+            enlargeCenterPage: true,
+            enableInfiniteScroll: false,
+            initialPage: 4,
+            autoPlay: true,
+          ),
+          items: []
+          // Wallet.wallet.map((wallets) => Carousel(wallet: wallets)).toList(),
+          ),
+    );
+  });
 }
 
 Widget background() {
@@ -213,34 +232,39 @@ Widget item2(BuildContext context) {
         Text('Daftar Wallet',
             style: blackTextStyle.copyWith(
                 fontSize: 15, fontWeight: FontWeight.bold)),
-        TextButton(onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return WalletListPage();
-          }));
-        }, child: Text('Lihat Semua', style: blackTextStyle.copyWith(
-            fontSize: 15, fontWeight: FontWeight.bold, color: Colors.blue)))
+        TextButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return WalletListPage();
+              }));
+            },
+            child: Text('Lihat Semua',
+                style: blackTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue)))
       ],
     ),
   );
 }
 
-Widget carousel() {
-  return Builder(builder: (BuildContext context) {
-    return Container(
-        width: MediaQuery.of(context).size.width,
-        child: CarouselSlider(
-            options: CarouselOptions(
-              aspectRatio: 2.5,
-              enlargeCenterPage: true,
-              enableInfiniteScroll: false,
-              initialPage: 4,
-              autoPlay: true,
-            ),
-            items: Wallet.wallet
-                .map((wallets) => Carousel(wallet: wallets))
-                .toList()));
-  });
-}
+// Widget carousel() {
+//   return Builder(builder: (BuildContext context) {
+//     return Container(
+//         width: MediaQuery.of(context).size.width,
+//         child: CarouselSlider(
+//             options: CarouselOptions(
+//               aspectRatio: 2.5,
+//               enlargeCenterPage: true,
+//               enableInfiniteScroll: false,
+//               initialPage: 4,
+//               autoPlay: true,
+//             ),
+//             items: Wallet.wallet
+//                 .map((wallets) => Carousel(wallet: wallets))
+//                 .toList()));
+//   });
+// }
 
 Widget item3(BuildContext context) {
   return Padding(
@@ -251,18 +275,23 @@ Widget item3(BuildContext context) {
         Text('Daftar Saving',
             style: blackTextStyle.copyWith(
                 fontSize: 15, fontWeight: FontWeight.bold)),
-        TextButton(onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return TargetListPage();
-          }));
-        }, child: Text('Lihat Semua', style: blackTextStyle.copyWith(
-            fontSize: 15, fontWeight: FontWeight.bold, color: Colors.blue)))
+        TextButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return TargetListPage();
+              }));
+            },
+            child: Text('Lihat Semua',
+                style: blackTextStyle.copyWith(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue)))
       ],
     ),
   );
 }
 
-Widget savingList(BuildContext context){
+Widget savingList(BuildContext context) {
   return InkWell(
     onTap: () {
       Navigator.push(context, MaterialPageRoute(builder: (context) {
