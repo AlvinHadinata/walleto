@@ -62,3 +62,43 @@ class Carousel extends StatelessWidget {
     );
   }
 }
+
+class Carousel2 extends StatelessWidget {
+  final AllWallet allwallet;
+
+  const Carousel2({required this.allwallet});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 10,
+      height: 100,
+      decoration: BoxDecoration(
+        color: kWhiteColor,
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              allwallet.allname,
+              style: blackTextStyle.copyWith(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 5),
+            Text(
+              allwallet.allsaldo,
+              style: blackTextStyle.copyWith(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

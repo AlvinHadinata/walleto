@@ -1,16 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:walleto/data/model/category.dart';
 import 'package:walleto/data/model/wallet.dart';
 import 'package:walleto/screens/target/target_add_page.dart';
-import 'package:walleto/screens/target/saving_add_page.dart';
 import 'package:walleto/screens/target/target_detail_page.dart';
 import 'package:walleto/screens/target/target_list_page.dart';
 import 'package:walleto/screens/wallet/wallet_add_page.dart';
 import 'package:walleto/screens/wallet/wallet_list_page.dart';
 import 'package:walleto/screens/widgets/carousel.dart';
-import 'package:walleto/screens/widgets/item_list.dart';
 import 'package:walleto/shared/theme.dart';
 
 class MainMenuPage extends StatefulWidget {
@@ -76,24 +73,30 @@ Widget saldo() {
     return Container(
       width: MediaQuery.of(context).size.width - 45,
       decoration: BoxDecoration(
-          color: kBlueColor,
-          borderRadius: BorderRadius.all(Radius.circular(15))),
-      child: Padding(
-        padding: const EdgeInsets.all(14.0),
+        borderRadius: BorderRadius.circular(15),
+        color: kBlueColor
+      ),
+      child:
+      Padding(
+        padding: const EdgeInsets.all(12.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Saldo',
-                    style: whiteTextStyle.copyWith(
-                        fontSize: 18, fontWeight: FontWeight.bold)),
-                SizedBox(height: 10),
-                Text('Rp 0',
-                    style: whiteTextStyle.copyWith(
-                        fontSize: 18, fontWeight: FontWeight.bold)),
-              ],
+            Container(
+              height: 100,
+              width: 200,
+              child: CarouselSlider(
+                  options: CarouselOptions(
+                    scrollDirection: Axis.vertical,
+                    // aspectRatio: 4,
+                    enlargeCenterPage: true,
+                    enableInfiniteScroll: false,
+                    initialPage: 0,
+                    autoPlay: true,
+                  ),
+                  items: AllWallet.allwallet
+                      .map((wallets) => Carousel2(allwallet: wallets))
+                      .toList()),
             ),
             addButton(context)
           ],
@@ -162,7 +165,7 @@ Widget addButton(context) => FloatingActionButton(
                             height: 8,
                           ),
                           Text(
-                            "Buat Target Baru",
+                            "Tambah Saving",
                             style: blackTextStyle.copyWith(
                               fontSize: 13,
                             ),
