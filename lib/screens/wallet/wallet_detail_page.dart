@@ -243,18 +243,19 @@ class WalletDetailPage extends StatelessWidget {
                         Text('Investasi yang cerah untuk masa depan',
                             style: blackTextStyle.copyWith(
                               fontSize: 14,
-                              fontWeight: bold,
+                              fontWeight: regular,
                             ))
                       ],
                     ),
                   ],
                 ),
-                Divider(height: 20, color: Colors.black),
+                Divider(height: 30, color: Colors.black),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text('Riwayat Transaksi',
                         style: blackTextStyle.copyWith(
-                          fontSize: 14,
+                          fontSize: 18,
                           fontWeight: bold,
                         ))
                   ],

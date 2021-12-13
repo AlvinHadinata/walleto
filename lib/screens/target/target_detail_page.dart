@@ -110,7 +110,7 @@ class TargetDetailPage extends StatelessWidget {
                       children: [
                         Text('Mau beli iphone untuk bikin konten Tiktok heheheheheh', style: blackTextStyle.copyWith(
                           fontSize: 14,
-                          fontWeight: bold,
+                          fontWeight: regular,
                         ),),
                       ],
                     ),
@@ -124,7 +124,7 @@ class TargetDetailPage extends StatelessWidget {
                         )),
                         Text('6 Bulan', style: blackTextStyle.copyWith(
                           fontSize: 14,
-                          fontWeight: bold,
+                          fontWeight: regular,
                         ),),
                       ],
                     ),
@@ -137,7 +137,7 @@ class TargetDetailPage extends StatelessWidget {
                         )),
                         Text('Tinggi', style: blackTextStyle.copyWith(
                           fontSize: 14,
-                          fontWeight: bold,
+                          fontWeight: regular,
                         ),),
                       ],
                     ),
@@ -150,17 +150,18 @@ class TargetDetailPage extends StatelessWidget {
                         )),
                         Text('On Progress', style: blackTextStyle.copyWith(
                           fontSize: 14,
-                          fontWeight: bold,
+                          fontWeight: regular,
                         ),),
                       ],
                     ),
                   ],
                 ),
-                Divider(height: 10, color: Colors.black),
+                Divider(height: 30, color: Colors.black),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text('Riwayat Transaksi', style: blackTextStyle.copyWith(
-                      fontSize: 14,
+                      fontSize: 18,
                       fontWeight: bold,
                     ))
                   ],
@@ -179,7 +180,6 @@ Widget riwayat() {
     return ListView(
       physics: ClampingScrollPhysics(),
       shrinkWrap: true,
-      scrollDirection: Axis.vertical,
       children: <Widget>[
         listRiwayat(),
         listRiwayat(),
