@@ -6,7 +6,7 @@ part 'saving_target.g.dart';
 @HiveType(typeId: 1)
 class SavingTarget {
   @HiveField(0)
-  final int id;
+  final int? id;
 
   @HiveField(1)
   final String nameTarget;
@@ -36,7 +36,7 @@ class SavingTarget {
   final int createdAt;
 
   SavingTarget({
-    required this.id,
+    this.id,
     required this.nameTarget,
     required this.nominal,
     required this.period,

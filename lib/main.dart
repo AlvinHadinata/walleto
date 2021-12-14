@@ -14,8 +14,10 @@ import 'package:walleto/screens/notes/note_page.dart';
 import 'package:walleto/screens/target/saving_add_page.dart';
 import 'package:walleto/screens/target/target_detail_page.dart';
 import 'package:walleto/screens/target/target_add_page.dart';
+import 'package:walleto/screens/target/target_edit_page.dart';
 import 'package:walleto/screens/target/target_list_page.dart';
 import 'package:walleto/screens/wallet/waller_edit_page.dart';
+import 'package:walleto/screens/wallet/wallet_cash_page.dart';
 import 'package:walleto/screens/wallet/wallet_detail_page.dart';
 import 'package:walleto/screens/wallet/wallet_add_page.dart';
 import 'package:walleto/screens/wallet/wallet_list_page.dart';
@@ -68,7 +70,9 @@ class MyApp extends StatelessWidget {
         WalletEditPage.routeName: (context) => WalletEditPage(),
         WalletDetailPage.routeName: (context) => WalletDetailPage(),
         WalletListPage.routeName: (context) => WalletListPage(),
+        WalletCashPage.routeName: (context) => WalletCashPage(),
         TargetAddPage.routeName: (context) => TargetAddPage(),
+        TargetEditPage.routeName: (context) => TargetEditPage(),
         TargetDetailPage.routeName: (context) => TargetDetailPage(),
         TargetListPage.routeName: (context) => TargetListPage(),
         SavingAddPage.routeName: (context) => SavingAddPage(),

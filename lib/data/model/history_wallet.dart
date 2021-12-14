@@ -5,7 +5,7 @@ part 'history_wallet.g.dart';
 @HiveType(typeId: 4)
 class HistoryWallet {
   @HiveField(0)
-  final int id;
+  final int? id;
   @HiveField(1)
   final String nameWallet;
   @HiveField(2)
@@ -13,16 +13,16 @@ class HistoryWallet {
   @HiveField(3)
   final String description;
   @HiveField(4)
-  final bool cashIn;
+  final bool? cashIn;
   @HiveField(5)
   final int createdAt;
 
   HistoryWallet({
-    required this.id,
+    this.id,
     required this.nameWallet,
     required this.nominal,
     required this.description,
-    this.cashIn = true,
+    this.cashIn,
     required this.createdAt,
   });
 }

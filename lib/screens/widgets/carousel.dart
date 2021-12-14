@@ -22,6 +22,7 @@ class Carousel extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Row(
@@ -39,20 +40,24 @@ class Carousel extends StatelessWidget {
                   )
                 ],
               ),
-              const SizedBox(height: 10),
-              Text(
-                wallet.name,
-                style: whiteTextStyle.copyWith(
-                  fontSize: 18,
-                  fontWeight: bold,
-                ),
-              ),
-              Text(
-                'Klik untuk detail',
-                style: whiteTextStyle.copyWith(
-                  fontSize: 12,
-                  fontWeight: bold,
-                ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    wallet.name,
+                    style: whiteTextStyle.copyWith(
+                      fontSize: 18,
+                      fontWeight: bold,
+                    ),
+                  ),
+                  Text(
+                    'Klik untuk detail',
+                    style: lightGreyTextStyle.copyWith(
+                      fontSize: 12,
+                      fontWeight: medium,
+                    ),
+                  )
+                ],
               )
             ],
           ),

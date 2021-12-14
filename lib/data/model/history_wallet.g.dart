@@ -17,11 +17,11 @@ class HistoryWalletAdapter extends TypeAdapter<HistoryWallet> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return HistoryWallet(
-      id: fields[0] as int,
+      id: fields[0] as int?,
       nameWallet: fields[1] as String,
       nominal: fields[2] as int,
       description: fields[3] as String,
-      cashIn: fields[4] as bool,
+      cashIn: fields[4] as bool?,
       createdAt: fields[5] as int,
     );
   }

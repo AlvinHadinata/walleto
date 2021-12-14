@@ -1,8 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:walleto/data/hive/saving_target_boxes.dart';
 import 'package:walleto/data/hive/wallet_boxes.dart';
 import 'package:walleto/data/model/saving_target.dart';
@@ -18,6 +20,7 @@ import 'package:walleto/screens/widgets/animation_placeholder.dart';
 import 'package:walleto/screens/widgets/carousel.dart';
 import 'package:walleto/screens/widgets/saving_item_widget.dart';
 import 'package:walleto/shared/theme.dart';
+import 'package:walleto/utils/helpers_utils.dart';
 
 class MainMenuPage extends StatelessWidget {
   static const routeName = "/main_menu_page";
@@ -93,39 +96,44 @@ class MainMenuPage extends StatelessWidget {
     );
   }
 
-  Widget _savingList(BuildContext context) {
+  Widget _savingListItem(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
       child: ValueListenableBuilder<Box<SavingTarget>>(
         valueListenable: SavingTargetBoxes.getSavingTarget().listenable(),
         builder: (context, Box<SavingTarget> box, _) {
           if (box.values.isEmpty) {
             return AnimationPlaceholder(
-              animation: "assets/no_data.json",
+              animation: "assets/no_data.svg",
               text: "Anda Tidak mempunyai target tabungan",
             );
           } else {
             return ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: box.values.take(5).length,
               itemBuilder: (_, index) {
                 final SavingTarget saving = box.getAt(index)!;
-                return Padding(
-                  padding: EdgeInsets.only(top: 10),
-                  child: SavingItemWidget(
-                    targetName: saving.nameTarget,
-                    nominal: saving.nominal,
-                    durationType: saving.durationType,
-                    period: saving.period,
-                    category: saving.category,
-                    currentMoney: saving.currentMoney,
-                    onTap: () {
-                      Navigator.pushNamed(
-                        context,
-                        TargetDetailPage.routeName,
-                      );
-                    },
-                  ),
+                return SavingItemWidget(
+                  saving: saving,
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      TargetDetailPage.routeName,
+                      arguments: SavingTarget(
+                          id: index,
+                          nameTarget: saving.nameTarget,
+                          nominal: saving.nominal,
+                          period: saving.period,
+                          durationType: saving.durationType,
+                          currentMoney: saving.currentMoney,
+                          category: saving.category,
+                          priority: saving.priority,
+                          decription: saving.decription,
+                          createdAt: saving.createdAt),
+                    );
+                  },
                 );
               },
             );
@@ -149,13 +157,17 @@ class MainMenuPage extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Saldo',
-                    style: whiteTextStyle.copyWith(
-                        fontSize: 18, fontWeight: FontWeight.bold)),
+                Text(
+                  'Saldo',
+                  style: whiteTextStyle.copyWith(
+                      fontSize: 18, fontWeight: FontWeight.bold),
+                ),
                 const SizedBox(height: 10),
-                Text('Rp 0',
-                    style: whiteTextStyle.copyWith(
-                        fontSize: 18, fontWeight: FontWeight.bold)),
+                Text(
+                  'Rp 0',
+                  style: whiteTextStyle.copyWith(
+                      fontSize: 18, fontWeight: FontWeight.bold),
+                ),
               ],
             ),
             _addButton(context)
@@ -362,9 +374,10 @@ class MainMenuPage extends StatelessWidget {
                       child: Text(
                         'Lihat Semua',
                         style: blackTextStyle.copyWith(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue),
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue,
+                        ),
                       ),
                     )
                   ],
@@ -397,8 +410,19 @@ class MainMenuPage extends StatelessWidget {
                     )
                   ],
                 ),
-                const SizedBox(height: 15.0),
-                // _savingList(context),
+                _savingListItem(context),
+                // savingList(context),
+                // SizedBox(
+                //   height: 5,
+                // ),
+                // savingList(context),
+                // SizedBox(
+                //   height: 5,
+                // ),
+                // savingList(context),
+                // SizedBox(
+                //   height: 5,
+                // ),
               ],
             ),
           ),
@@ -416,83 +440,5 @@ class MainMenuPage extends StatelessWidget {
 }
 
 // Widget savingList(BuildContext context) {
-//   return InkWell(
-//     onTap: () {
-//       Navigator.push(context, MaterialPageRoute(builder: (context) {
-//         return TargetDetailPage();
-//       }));
-//     },
-//     child: Container(
-//       margin: const EdgeInsets.only(bottom: 8.0),
-//       child: Material(
-//         color: kWhiteColor,
-//         shadowColor: Colors.grey[100],
-//         shape: RoundedRectangleBorder(
-//           borderRadius: BorderRadius.circular(15.0),
-//         ),
-//         child: Container(
-//           padding: const EdgeInsets.symmetric(
-//             vertical: 14.0,
-//             horizontal: 16.0,
-//           ),
-//           child: Row(
-//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//             // crossAxisAlignment: CrossAxisAlignment.end,
-//             children: [
-//               Row(
-//                 children: [
-//                   Container(
-//                     margin: const EdgeInsets.only(left: 8.0),
-//                     child: Column(
-//                       crossAxisAlignment: CrossAxisAlignment.start,
-//                       mainAxisSize: MainAxisSize.min,
-//                       children: [
-//                         Text(
-//                           "Untuk beli Iphone",
-//                           style: blackTextStyle.copyWith(
-//                               fontSize: 18.0,
-//                               fontWeight: bold,
-//                               decoration: TextDecoration.none),
-//                         ),
-//                         Text(
-//                           "On Progress - 6 bulan",
-//                           style: blackTextStyle.copyWith(
-//                               fontSize: 16.0,
-//                               fontWeight: regular,
-//                               decoration: TextDecoration.none),
-//                         ),
-//                       ],
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//               Container(
-//                 margin: const EdgeInsets.only(left: 8.0),
-//                 child: Column(
-//                   crossAxisAlignment: CrossAxisAlignment.start,
-//                   mainAxisSize: MainAxisSize.min,
-//                   children: [
-//                     Text(
-//                       "Rp 10.000.000",
-//                       style: blueTextSyle.copyWith(
-//                           fontSize: 18.0,
-//                           fontWeight: bold,
-//                           decoration: TextDecoration.none),
-//                     ),
-//                     Text(
-//                       "Prioritas Tinggi",
-//                       style: blackTextStyle.copyWith(
-//                           fontSize: 16.0,
-//                           fontWeight: regular,
-//                           decoration: TextDecoration.none),
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     ),
-//   );
+  
 // }

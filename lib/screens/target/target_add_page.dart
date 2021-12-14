@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -20,20 +18,18 @@ class TargetAddPage extends StatefulWidget {
 }
 
 class _TargetAddPageState extends State<TargetAddPage> {
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController _targetNameController = TextEditingController();
+  TextEditingController _nominalController = TextEditingController();
+  TextEditingController _periodController = TextEditingController();
+  TextEditingController _descriptionController = TextEditingController();
+
+  String? _selectedPriorityLevel;
+  String? _selectedDurationType;
   @override
   Widget build(BuildContext context) {
     final Category argument =
         ModalRoute.of(context)!.settings.arguments as Category;
-
-    final _formKey = GlobalKey<FormState>();
-    TextEditingController _targetNameController = TextEditingController();
-    TextEditingController _nominalController = TextEditingController();
-    TextEditingController _periodController = TextEditingController();
-    TextEditingController _descriptionController = TextEditingController();
-
-    String? _selectedPriorityLevel;
-    String? _selectedDurationType;
-
     Widget _buildContent() {
       return SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
@@ -91,8 +87,18 @@ class _TargetAddPageState extends State<TargetAddPage> {
                                 return 'Period tidak boleh kosong';
                               } else if (int.parse(value) == 0) {
                                 return 'Period tidak boleh 0';
+                              } else if (_selectedDurationType == "Hari" &&
+                                  int.parse(value) >= 31) {
+                                return 'Pilih Ke Pekan';
+                              } else if (_selectedDurationType == "Pekan" &&
+                                  int.parse(value) >= 4) {
+                                return 'Pilih Bulan';
+                              } else if (_selectedDurationType == "Bulan" &&
+                                  int.parse(value) >= 12) {
+                                return 'Pilih Ke Tahun';
+                              } else {
+                                return null;
                               }
-                              return null;
                             },
                           ),
                         ),
@@ -185,7 +191,6 @@ class _TargetAddPageState extends State<TargetAddPage> {
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
                               SavingTarget target = SavingTarget(
-                                id: Random().nextInt(100),
                                 nameTarget: _targetNameController.text,
                                 nominal: int.parse(_nominalController.text),
                                 period: int.parse(_periodController.text),
