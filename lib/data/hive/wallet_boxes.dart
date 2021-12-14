@@ -1,23 +1,22 @@
 import 'package:hive/hive.dart';
-import 'package:walleto/data/model/saving_target.dart';
 import 'package:walleto/data/model/wallet.dart';
 
 class WalletBoxes {
-  static Box<Wallet> getSavingTarget() => Hive.box<Wallet>("savings_targets");
+  static Box<Wallet> getWallets() => Hive.box<Wallet>("wallets");
 
-  static void storeSavingTarget(Wallet wallets) {
-    Box<Wallet> savingTargetBox = Hive.box<Wallet>("savings_targets");
-    savingTargetBox.add(wallets);
+  static void storeWallet(Wallet wallets) {
+    Box<Wallet> walletBox = Hive.box<Wallet>("wallets");
+    walletBox.add(wallets);
   }
 
-  static void updateSavingTarget(int index, Wallet wallets) {
-    Box<Wallet> savingTargetBox = Hive.box<Wallet>("savings_targets");
-    savingTargetBox.putAt(
+  static void updateWallet(int index, Wallet wallets) {
+    Box<Wallet> walletBox = Hive.box<Wallet>("wallets");
+    walletBox.putAt(
       index,
       Wallet(
+        id: wallets.id,
         name: wallets.name,
         nominal: wallets.nominal,
-        currentMoney: wallets.currentMoney,
         category: wallets.category,
         decription: wallets.decription,
         createdAt: wallets.createdAt,
@@ -25,19 +24,34 @@ class WalletBoxes {
     );
   }
 
-  static void deleteSavingTarget(int index) {
-    Box<Wallet> savingTargetBox = Hive.box<Wallet>("savings_targets");
-    savingTargetBox.deleteAt(index);
+  static void deleteWallet(int index) {
+    Box<Wallet> walletBox = Hive.box<Wallet>("wallets");
+    walletBox.deleteAt(index);
   }
 
-  static void updateCurrentMoneySaving(int index, Wallet wallets, int nominal) {
-    Box<Wallet> savingTargetBox = Hive.box<Wallet>("savings_targets");
-    savingTargetBox.putAt(
+  static void updateCashIn(int index, Wallet wallets, int cashIn) {
+    Box<Wallet> walletBox = Hive.box<Wallet>("wallets");
+    walletBox.putAt(
       index,
       Wallet(
+        id: wallets.id,
         name: wallets.name,
-        nominal: wallets.nominal,
-        currentMoney: wallets.currentMoney + nominal,
+        nominal: wallets.nominal + cashIn,
+        category: wallets.category,
+        decription: wallets.decription,
+        createdAt: wallets.createdAt,
+      ),
+    );
+  }
+
+  static void updateCashOut(int index, Wallet wallets, int cashOut) {
+    Box<Wallet> walletBox = Hive.box<Wallet>("wallets");
+    walletBox.putAt(
+      index,
+      Wallet(
+        id: wallets.id,
+        name: wallets.name,
+        nominal: wallets.nominal - cashOut,
         category: wallets.category,
         decription: wallets.decription,
         createdAt: wallets.createdAt,

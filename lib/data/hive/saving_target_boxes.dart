@@ -17,6 +17,7 @@ class SavingTargetBoxes {
     savingTargetBox.putAt(
       index,
       SavingTarget(
+        id: savingTarget.id,
         nameTarget: savingTarget.nameTarget,
         nominal: savingTarget.nominal,
         period: savingTarget.period,
@@ -43,6 +44,7 @@ class SavingTargetBoxes {
     savingTargetBox.putAt(
       index,
       SavingTarget(
+        id: savingTarget.id,
         nameTarget: savingTarget.nameTarget,
         nominal: savingTarget.nominal,
         period: savingTarget.period,

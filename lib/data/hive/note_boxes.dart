@@ -14,6 +14,7 @@ class NoteBoxes {
     noteBox.putAt(
       index,
       Note(
+        id: note.id,
         title: note.title,
         description: note.description,
       ),

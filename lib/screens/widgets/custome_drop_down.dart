@@ -5,14 +5,12 @@ import 'package:walleto/shared/theme.dart';
 class CustomDropdownField extends StatelessWidget {
   final String labelName;
   final String hintText;
-  // final String? errorValidation;
   final String? value;
   final List<String> options;
   final Function(String?)? onChanged;
   final bool isEdit;
 
   CustomDropdownField({
-    // this.errorValidation,
     required this.onChanged,
     required this.labelName,
     required this.hintText,
@@ -31,18 +29,11 @@ class CustomDropdownField extends StatelessWidget {
           children: [
             Text(
               labelName,
-              style: blackTextStyle.copyWith(fontSize: 14),
+              style: blackTextStyle.copyWith(fontSize: 16, fontWeight: bold),
             ),
-            // if (errorValidation != null)
-            //   Text(
-            //     errorValidation!,
-            //     style: blackTextStyle.copyWith(
-            //       fontSize: 12,
-            //     ),
-            //   ),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
         DropdownButtonFormField(
@@ -63,7 +54,7 @@ class CustomDropdownField extends StatelessWidget {
               borderRadius: BorderRadius.circular(10.0),
             ),
           ),
-          // value: value,
+          value: value,
           items: options.map((String option) {
             return DropdownMenuItem(
               child: Text(
@@ -75,7 +66,7 @@ class CustomDropdownField extends StatelessWidget {
               value: option,
             );
           }).toList(),
-          // onChanged: onChanged,
+          onChanged: onChanged,
         ),
       ],
     );

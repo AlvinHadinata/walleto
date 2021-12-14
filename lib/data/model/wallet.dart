@@ -16,42 +16,20 @@ class Wallet {
   final int nominal;
 
   @HiveField(3)
-  final int currentMoney;
-
-  @HiveField(4)
   final Category category;
 
-  @HiveField(5)
+  @HiveField(4)
   final String decription;
 
-  @HiveField(6)
+  @HiveField(5)
   final int createdAt;
 
   Wallet({
     this.id,
     required this.name,
     required this.nominal,
-    required this.currentMoney,
     required this.category,
     required this.decription,
     required this.createdAt,
   });
-
-  // static List<Wallet> wallet = [
-  //   Wallet(
-  //       name: "Investasi",
-  //       nominal: 100000,
-  //       currentMoney: 1000,
-  //       decription: "Better Future"),
-  //   Wallet(
-  //       name: "Investasi",
-  //       nominal: 100000,
-  //       currentMoney: 1000,
-  //       decription: "Better Future"),
-  //   Wallet(
-  //       name: "Investasi",
-  //       nominal: 100000,
-  //       currentMoney: 1000,
-  //       decription: "Better Future"),
-  // ];
 }

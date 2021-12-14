@@ -5,7 +5,7 @@ part 'history_target.g.dart';
 @HiveType(typeId: 3)
 class HistoryTarget {
   @HiveField(0)
-  final int? id;
+  final int id;
   @HiveField(1)
   final String nameTarget;
   @HiveField(2)
@@ -16,7 +16,7 @@ class HistoryTarget {
   final int createdAt;
 
   HistoryTarget({
-    this.id,
+    required this.id,
     required this.nameTarget,
     required this.nominal,
     required this.description,

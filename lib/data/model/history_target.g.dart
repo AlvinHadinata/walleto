@@ -17,7 +17,7 @@ class HistoryTargetAdapter extends TypeAdapter<HistoryTarget> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return HistoryTarget(
-      id: fields[0] as int?,
+      id: fields[0] as int,
       nameTarget: fields[1] as String,
       nominal: fields[2] as int,
       description: fields[3] as String,

@@ -17,7 +17,7 @@ class SavingTargetAdapter extends TypeAdapter<SavingTarget> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return SavingTarget(
-      id: fields[0] as int?,
+      id: fields[0] as int,
       nameTarget: fields[1] as String,
       nominal: fields[2] as int,
       period: fields[3] as int,

@@ -1,13 +1,12 @@
 import 'package:hive/hive.dart';
 import 'package:walleto/data/model/category.dart';
-import 'package:walleto/data/model/wallet.dart';
 
 part 'saving_target.g.dart';
 
 @HiveType(typeId: 1)
 class SavingTarget {
   @HiveField(0)
-  final int? id;
+  final int id;
 
   @HiveField(1)
   final String nameTarget;
@@ -37,7 +36,7 @@ class SavingTarget {
   final int createdAt;
 
   SavingTarget({
-    this.id,
+    required this.id,
     required this.nameTarget,
     required this.nominal,
     required this.period,
@@ -48,43 +47,4 @@ class SavingTarget {
     required this.decription,
     required this.createdAt,
   });
-
-  // static List<SavingTarget> saving = [
-  //   SavingTarget(
-  //       nameTarget: "Investasi",
-  //       nominal: 100000,
-  //       currentMoney: 1000,
-  //       decription: "Better Future",
-  //       id: null,
-  //       period: null,
-  //       category: null,
-  //       priority: '',
-  //       durationType: '',
-  //       createdAt: null
-  //   ),
-  //   SavingTarget(
-  //       nameTarget: "Investasi",
-  //       nominal: 100000,
-  //       currentMoney: 1000,
-  //       decription: "Better Future",
-  //       id: null,
-  //       period: null,
-  //       category: null,
-  //       priority: '',
-  //       durationType: '',
-  //       createdAt: null
-  //   ),
-  //   SavingTarget(
-  //       nameTarget: "Investasi",
-  //       nominal: 100000,
-  //       currentMoney: 1000,
-  //       decription: "Better Future",
-  //       id: null,
-  //       period: null,
-  //       category: null,
-  //       priority: '',
-  //       durationType: '',
-  //       createdAt: null
-  //   ),
-  // ];
 }

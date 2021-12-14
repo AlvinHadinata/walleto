@@ -1,88 +1,115 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:walleto/data/hive/note_boxes.dart';
 import 'package:walleto/data/model/note.dart';
+import 'package:walleto/screens/notes/note_page.dart';
 import 'package:walleto/screens/widgets/custom_text_field.dart';
 import 'package:walleto/shared/theme.dart';
 
-class NoteAddUpdatePage extends StatefulWidget {
-  final Note? note;
-
-  NoteAddUpdatePage([this.note]);
-
-  @override
-  _NoteAddUpdatePageState createState() => _NoteAddUpdatePageState();
-}
-
-class _NoteAddUpdatePageState extends State<NoteAddUpdatePage> {
-  TextEditingController _titleController = TextEditingController();
-  TextEditingController _descriptionController = TextEditingController();
-
-  bool _isUpdate = false;
-
-  @override
-  void initState() {
-    super.initState();
-    if (widget.note != null) {
-      _titleController.text = widget.note!.title;
-      _descriptionController.text = widget.note!.description;
-      _isUpdate = true;
-    }
-  }
+class NoteAddPage extends StatelessWidget {
+  static const routeName = "/note_add_page";
 
   @override
   Widget build(BuildContext context) {
+    final _formKey = GlobalKey<FormState>();
+    TextEditingController _titleController = TextEditingController();
+    TextEditingController _descriptionController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: Text('Tambah catatanmu', style: TextStyle(fontFamily: 'Nunito')),
         centerTitle: true,
         backgroundColor: kBlueColor,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8),
+      body: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
         child: Column(
           children: [
-            CustomTextField(
-                labelText: "Title",
-                hintText: "Masukan Title",
-                controller: _titleController,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Title tidak boleh kosong';
-                  }
-                  return "";
-                }),
-            Expanded(
-                child: CustomTextField(
-              labelText: "Deskripsi",
-              hintText: "Masukan Deskripsi",
-              keyboardType: TextInputType.multiline,
-              controller: _descriptionController,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Deskripsi tidak boleh kosong';
-                }
-                return "";
-              },
-            )),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(primary: kBlueColor),
-                child: Text('Simpan', style: TextStyle(fontFamily: 'Nunito')),
-                onPressed: () {},
+            Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  CustomTextField(
+                    labelText: "Title",
+                    hintText: "Title A B C",
+                    keyboardType: TextInputType.text,
+                    controller: _titleController,
+                    maxLines: 1,
+                    validator: (name) => name != null && name.isEmpty
+                        ? 'Title tidak boleh kosong'
+                        : null,
+                  ),
+                  const SizedBox(height: 20),
+                  CustomTextField(
+                    labelText: "Deskripsi",
+                    hintText: "Masukan Deskripsi",
+                    keyboardType: TextInputType.multiline,
+                    controller: _descriptionController,
+                    maxLines: 4,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Deskripsi tidak boleh kosong';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 10),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(
+                        vertical: 24.0,
+                      ),
+                      child: ElevatedButton(
+                        child: Text(
+                          'Simpan',
+                          style: whiteTextStyle.copyWith(
+                            fontSize: 18,
+                            fontWeight: medium,
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          primary: kBlueColor,
+                          minimumSize: Size.fromHeight(40),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16.0,
+                            vertical: 14.0,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                        ),
+                        onPressed: () async {
+                          final isValid = _formKey.currentState!.validate();
+
+                          if (isValid) {
+                            Note note = Note(
+                              title: _titleController.text,
+                              description: _descriptionController.text,
+                            );
+                            NoteBoxes.storeNote(note);
+                            Navigator.pushNamedAndRemoveUntil(
+                              context,
+                              NotePage.routeName,
+                              (Route<dynamic> route) => false,
+                              arguments: true,
+                            );
+                          } else {
+                            const Center(
+                              child: SpinKitFadingCircle(
+                                  color: kBlueColor, size: 30.0),
+                            );
+                          }
+                        },
+                      ),
+                    ),
+                  )
+                ],
               ),
-            )
+            ),
           ],
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _titleController.dispose();
-    _descriptionController.dispose();
-    super.dispose();
   }
 }

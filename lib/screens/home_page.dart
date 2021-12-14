@@ -14,14 +14,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // int index = 0;
-  // final inactiveColor = Colors.black;
-
   int _bottomNavIndex = 0;
 
   final List<Widget> _listWidget = [
     MainMenuPage(),
-    NotesPage(),
+    NotePage(),
     SettingsPage(),
   ];
 

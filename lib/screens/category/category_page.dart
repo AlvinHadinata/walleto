@@ -8,15 +8,15 @@ import 'package:walleto/shared/theme.dart';
 class CategoryPage extends StatelessWidget {
   static const routeName = "/category_page";
   final bool isWallet;
-  const CategoryPage({required this.isWallet});
+  CategoryPage({required this.isWallet});
 
   Widget _buildContent(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+        padding: EdgeInsets.all(40.0),
         child: Wrap(
-          spacing: 28,
-          runSpacing: 18,
+          spacing: 35,
+          runSpacing: 30,
           alignment: WrapAlignment.center,
           runAlignment: WrapAlignment.center,
           crossAxisAlignment: WrapCrossAlignment.center,

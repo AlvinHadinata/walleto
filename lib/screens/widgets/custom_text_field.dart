@@ -6,7 +6,7 @@ class CustomTextField extends StatelessWidget {
   final String labelText;
   final String hintText;
   final TextEditingController controller;
-  final String Function(String?) validator;
+  final String? Function(String? val)? validator;
   final TextInputType keyboardType;
   final int? maxLines;
 
@@ -30,7 +30,7 @@ class CustomTextField extends StatelessWidget {
           children: [
             Text(
               labelText,
-              style: blackTextStyle.copyWith(fontSize: 14),
+              style: blackTextStyle.copyWith(fontSize: 16, fontWeight: bold),
             ),
           ],
         ),
@@ -58,9 +58,8 @@ class CustomTextField extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10.0),
               ),
               hintText: hintText,
-              hintStyle: greyTextStyle.copyWith(
-                fontSize: 14,
-              ),
+              hintStyle:
+                  greyTextStyle.copyWith(fontSize: 15, fontWeight: medium),
             ),
             validator: validator),
       ],

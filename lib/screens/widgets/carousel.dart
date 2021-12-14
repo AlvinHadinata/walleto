@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:walleto/data/model/wallet.dart';
 import 'package:walleto/screens/wallet/wallet_detail_page.dart';
 import 'package:walleto/shared/theme.dart';
 
 class Carousel extends StatelessWidget {
   final Wallet wallet;
-
-  const Carousel({required this.wallet});
+  final Function()? onTap;
+  const Carousel({required this.wallet, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return WalletDetailPage();
-        }));
-      },
+    return InkWell(
+      onTap: onTap,
       child: Container(
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
@@ -30,10 +27,10 @@ class Carousel extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Icon(
-                    Icons.attach_money_rounded,
-                    size: 20.0,
-                    color: Colors.amber,
+                  SvgPicture.asset(
+                    wallet.category.icon,
+                    width: 30.0,
+                    height: 30.0,
                   ),
                   Text(
                     "RP. " + wallet.nominal.toString(),
@@ -42,7 +39,7 @@ class Carousel extends StatelessWidget {
                   )
                 ],
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text(
                 wallet.name,
                 style: whiteTextStyle.copyWith(
@@ -50,11 +47,13 @@ class Carousel extends StatelessWidget {
                   fontWeight: bold,
                 ),
               ),
-              Text('Klik untuk detail',
+              Text(
+                'Klik untuk detail',
                 style: whiteTextStyle.copyWith(
                   fontSize: 12,
                   fontWeight: bold,
-                ),)
+                ),
+              )
             ],
           ),
         ),

@@ -14,7 +14,6 @@ class _SavingAddPageState extends State<SavingAddPage> {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
-    DateTime _selectedDate;
     final TextEditingController _nameController = TextEditingController();
     final TextEditingController _nominalController = TextEditingController();
 
@@ -125,10 +124,8 @@ class _SavingAddPageState extends State<SavingAddPage> {
         toolbarHeight: 80,
         leading: CircleAvatar(
             radius: 24.0,
-            backgroundColor: Theme.of(context)
-                .colorScheme
-                .primaryVariant
-                .withOpacity(0.6)),
+            backgroundColor:
+                Theme.of(context).colorScheme.primaryVariant.withOpacity(0.6)),
         title: Text(
           "Saving",
           style: whiteTextStyle.copyWith(

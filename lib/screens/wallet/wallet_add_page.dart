@@ -1,13 +1,28 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:walleto/data/hive/saving_target_boxes.dart';
+import 'package:walleto/data/hive/wallet_boxes.dart';
+import 'package:walleto/data/model/category.dart';
+import 'package:walleto/data/model/wallet.dart';
+import 'package:walleto/screens/main_menu_page.dart';
 import 'package:walleto/screens/widgets/custom_text_field.dart';
 import 'package:walleto/shared/theme.dart';
 
-class WalletAddPage extends StatelessWidget {
+class WalletAddPage extends StatefulWidget {
   static const routeName = "/wallet_add_page";
 
   @override
+  State<WalletAddPage> createState() => _WalletAddPageState();
+}
+
+class _WalletAddPageState extends State<WalletAddPage> {
+  @override
   Widget build(BuildContext context) {
+    final Category argument =
+        ModalRoute.of(context)!.settings.arguments as Category;
     final _formKey = GlobalKey<FormState>();
     final TextEditingController _nameController = TextEditingController();
     final TextEditingController _descController = TextEditingController();
@@ -28,14 +43,10 @@ class WalletAddPage extends StatelessWidget {
                       keyboardType: TextInputType.text,
                       controller: _nameController,
                       maxLines: 1,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Nama tidak boleh kosong';
-                        }
-                        return "";
-                      },
+                      validator: (name) =>
+                          name != null && name.isEmpty ? 'Enter a name' : null,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     CustomTextField(
                       labelText: "Nominal",
                       hintText: "Masukan Nominal Awal",
@@ -48,10 +59,10 @@ class WalletAddPage extends StatelessWidget {
                         } else if (int.parse(value) < 1000) {
                           return 'Nominal Minimal Rp. 1000';
                         }
-                        return "";
+                        return null;
                       },
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     CustomTextField(
                       labelText: "Deskripsi",
                       hintText: "Masukan Deskripsi",
@@ -62,10 +73,10 @@ class WalletAddPage extends StatelessWidget {
                         if (value!.isEmpty) {
                           return 'Deskripsi tidak boleh kosong';
                         }
-                        return "";
+                        return null;
                       },
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: Container(
@@ -91,12 +102,27 @@ class WalletAddPage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                           ),
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    content: Text('Processing Data')),
+                          onPressed: () async {
+                            final isValid = _formKey.currentState!.validate();
+
+                            if (isValid) {
+                              Wallet wallet = Wallet(
+                                  name: _nameController.text,
+                                  nominal: int.parse(_nominalController.text),
+                                  category: argument,
+                                  decription: _descController.text,
+                                  createdAt:
+                                      DateTime.now().millisecondsSinceEpoch);
+                              WalletBoxes.storeWallet(wallet);
+                              Navigator.pushNamedAndRemoveUntil(
+                                context,
+                                MainMenuPage.routeName,
+                                (Route<dynamic> route) => false,
+                                arguments: true,
                               );
+                            } else {
+                              const SpinKitFadingCircle(
+                                  color: kBlueColor, size: 30.0);
                             }
                           },
                         ),
