@@ -71,6 +71,7 @@ Widget background() {
 Widget saldo() {
   return Builder(builder: (BuildContext context) {
     return Container(
+      height: 120,
       width: MediaQuery.of(context).size.width - 45,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
@@ -86,17 +87,28 @@ Widget saldo() {
               height: 100,
               width: 200,
               child: CarouselSlider(
-                  options: CarouselOptions(
-                    scrollDirection: Axis.vertical,
-                    // aspectRatio: 4,
-                    enlargeCenterPage: true,
-                    enableInfiniteScroll: false,
-                    initialPage: 0,
-                    autoPlay: true,
+                options: CarouselOptions(
+                  scrollDirection: Axis.vertical,
+                  enlargeCenterPage: true,
+                  enableInfiniteScroll: false,
+                  initialPage: 0,
+                  autoPlay: true,
+                  autoPlayCurve: Curves.fastOutSlowIn
+                ),
+                items: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
                   ),
-                  items: AllWallet.allwallet
-                      .map((wallets) => Carousel2(allwallet: wallets))
-                      .toList()),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
+                ]),
             ),
             addButton(context)
           ],

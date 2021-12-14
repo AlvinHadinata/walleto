@@ -46,23 +46,3 @@ class Wallet {
         decription: "Better Future"),
   ];
 }
-
-class AllWallet {
-  final String allname;
-  final String allsaldo;
-
-  AllWallet({
-    required this.allname,
-    required this.allsaldo,
-  });
-
-  static List<AllWallet> allwallet = [
-    AllWallet(
-        allname: 'Saldo Wallet',
-        allsaldo: 'Rp'
-    ),
-    AllWallet(
-        allname: 'Saldo Saving',
-        allsaldo: 'Rp')
-  ];
-}
