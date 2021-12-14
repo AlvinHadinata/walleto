@@ -13,7 +13,7 @@ class CategoryPage extends StatelessWidget {
   Widget _buildContent(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.all(40.0),
+        padding: EdgeInsets.all(25.0),
         child: Wrap(
           spacing: 35,
           runSpacing: 30,

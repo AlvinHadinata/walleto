@@ -38,8 +38,7 @@ class _NoteEditPageState extends State<NoteEditPage> {
     final Note argument = ModalRoute.of(context)!.settings.arguments as Note;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tambah catatanmu',
-            style: TextStyle(fontFamily: 'Nunito')),
+        title: const Text('Tambah catatanmu'),
         centerTitle: true,
         backgroundColor: kBlueColor,
       ),
@@ -52,8 +51,8 @@ class _NoteEditPageState extends State<NoteEditPage> {
               child: Column(
                 children: [
                   CustomTextField(
-                    labelText: "Title",
-                    hintText: "Title A B C",
+                    labelText: "Judul",
+                    hintText: "Judul catatan",
                     keyboardType: TextInputType.text,
                     controller: _titleController,
                     maxLines: 1,
@@ -64,7 +63,7 @@ class _NoteEditPageState extends State<NoteEditPage> {
                   const SizedBox(height: 20),
                   CustomTextField(
                     labelText: "Deskripsi",
-                    hintText: "Masukan Deskripsi",
+                    hintText: "Masukkan deskripsi",
                     keyboardType: TextInputType.multiline,
                     controller: _descriptionController,
                     maxLines: 4,

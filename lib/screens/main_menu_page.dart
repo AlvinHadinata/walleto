@@ -34,7 +34,7 @@ class MainMenuPage extends StatelessWidget {
           if (box.values.isEmpty) {
             return AnimationPlaceholder(
               animation: 'assets/no_data.svg',
-              text: 'Tidak ada Wallet',
+              text: 'Belum ada Wallet',
             );
           } else {
             return CarouselSlider.builder(
@@ -106,7 +106,7 @@ class MainMenuPage extends StatelessWidget {
           if (box.values.isEmpty) {
             return AnimationPlaceholder(
               animation: "assets/no_data.svg",
-              text: "Anda Tidak mempunyai target tabungan",
+              text: "Anda belum mempunyai target tabungan",
             );
           } else {
             return ListView.builder(
@@ -175,24 +175,28 @@ class MainMenuPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(12),
-                          child: Column(
+                          padding: const EdgeInsets.all(14),
+                          child: Row(
                             children: [
-                              Text(
-                                'Saldo Wallet',
-                                style: blackTextStyle.copyWith(
-                                  fontSize: 13,
-                                  fontWeight: bold,
-                                ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Saldo Wallet',
+                                    style: blackTextStyle.copyWith(
+                                      fontSize: 13,
+                                      fontWeight: bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Rp 15.000.000',
+                                    style: blackTextStyle.copyWith(
+                                      fontSize: 12,
+                                      fontWeight: regular,
+                                    ),
+                                  )
+                                ],
                               ),
-                              SizedBox(height: 10),
-                              Text(
-                                'Rp 15.000.000',
-                                style: blackTextStyle.copyWith(
-                                  fontSize: 15,
-                                  fontWeight: bold,
-                                ),
-                              )
                             ],
                           ),
                         )),
@@ -202,24 +206,28 @@ class MainMenuPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(12),
-                        child: Column(
+                        padding: const EdgeInsets.all(14),
+                        child: Row(
                           children: [
-                            Text(
-                              'Saldo Saving',
-                              style: blackTextStyle.copyWith(
-                                fontSize: 13,
-                                fontWeight: bold,
-                              ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Saldo Saving',
+                                  style: blackTextStyle.copyWith(
+                                    fontSize: 13,
+                                    fontWeight: bold,
+                                  ),
+                                ),
+                                Text(
+                                  'Rp. 120.000',
+                                  style: blackTextStyle.copyWith(
+                                    fontSize: 12,
+                                    fontWeight: regular,
+                                  ),
+                                ),
+                              ],
                             ),
-                            SizedBox(height: 10),
-                            Text(
-                              'Rp 12.000.000',
-                              style: blackTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: bold,
-                              ),
-                            )
                           ],
                         ),
                       ),
@@ -494,7 +502,3 @@ class MainMenuPage extends StatelessWidget {
     );
   }
 }
-
-// Widget savingList(BuildContext context) {
-  
-// }

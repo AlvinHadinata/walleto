@@ -30,8 +30,8 @@ class NoteAddPage extends StatelessWidget {
               child: Column(
                 children: [
                   CustomTextField(
-                    labelText: "Title",
-                    hintText: "Title A B C",
+                    labelText: "Judul",
+                    hintText: "Masukkan judul",
                     keyboardType: TextInputType.text,
                     controller: _titleController,
                     maxLines: 1,
@@ -42,7 +42,7 @@ class NoteAddPage extends StatelessWidget {
                   const SizedBox(height: 20),
                   CustomTextField(
                     labelText: "Deskripsi",
-                    hintText: "Masukan Deskripsi",
+                    hintText: "Masukan deskripsi",
                     keyboardType: TextInputType.multiline,
                     controller: _descriptionController,
                     maxLines: 4,

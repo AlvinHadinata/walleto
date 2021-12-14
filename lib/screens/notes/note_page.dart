@@ -23,21 +23,29 @@ class _NotePageState extends State<NotePage> {
     return Scaffold(
       extendBody: false,
       appBar: AppBar(
-        title: Text('Catatanku', style: TextStyle(fontFamily: 'Nunito')),
+        title: Text('Catatanku', style: whiteTextStyle.copyWith(
+          fontSize: 18.0, fontWeight: bold
+        )),
         centerTitle: true,
         backgroundColor: kBlueColor,
       ),
       body: SingleChildScrollView(
-        child: Column(children: [
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: 80),
           listNotes(context),
         ]),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        backgroundColor: kBlueColor,
-        onPressed: () {
-          Navigator.pushNamed(context, NoteAddPage.routeName);
-        },
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 60.0),
+        child: FloatingActionButton(
+          child: Icon(Icons.add),
+          backgroundColor: kBlueColor,
+          onPressed: () {
+            Navigator.pushNamed(context, NoteAddPage.routeName);
+          },
+        ),
       ),
     );
   }
@@ -49,7 +57,7 @@ class _NotePageState extends State<NotePage> {
         if (box.values.isEmpty) {
           return AnimationPlaceholder(
             animation: "assets/no_data.svg",
-            text: "Lets Make Some note",
+            text: "Belum ada catatan",
           );
         } else {
           return ListView.builder(

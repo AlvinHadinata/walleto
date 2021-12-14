@@ -46,6 +46,12 @@ dev_dependencies:
   build_runner: ^2.1.5
   hive_generator: ^1.1.1
 
+flutter_native_splash:
+  background_image: "assets/walleto_splash.png"
+  android: true
+  android_gravity: center
+  fullscreen: true
+
 flutter:
   uses-material-design: true
 
