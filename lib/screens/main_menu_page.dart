@@ -101,11 +101,36 @@ Widget saldo() {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(15),
                     ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Column(
+                        children: [
+                          Text('Saldo Wallet', style: blackTextStyle.copyWith(
+                              fontSize: 13, fontWeight: bold)),
+                          SizedBox(height: 10),
+                          Text('Rp 15.000.000', style: blackTextStyle.copyWith(
+                              fontSize: 15, fontWeight: FontWeight.bold))
+                        ],
+                      ),
+                    )
                   ),
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Column(
+                        children: [
+
+                          Text('Saldo Saving', style: blackTextStyle.copyWith(
+                              fontSize: 13, fontWeight: bold)),
+                          SizedBox(height: 10),
+                          Text('Rp 12.000.000', style: blackTextStyle.copyWith(
+                              fontSize: 15, fontWeight: FontWeight.bold))
+                        ],
+                      ),
                     ),
                   ),
                 ]),
