@@ -147,28 +147,84 @@ class MainMenuPage extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width - 45,
       decoration: const BoxDecoration(
-          color: kBlueColor,
-          borderRadius: BorderRadius.all(Radius.circular(15))),
+        color: kBlueColor,
+        borderRadius: BorderRadius.all(
+          Radius.circular(15),
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(14.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Saldo',
-                  style: whiteTextStyle.copyWith(
-                      fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  'Rp 0',
-                  style: whiteTextStyle.copyWith(
-                      fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-              ],
+            Container(
+              height: 100,
+              width: 200,
+              child: CarouselSlider(
+                  options: CarouselOptions(
+                      scrollDirection: Axis.vertical,
+                      enlargeCenterPage: true,
+                      enableInfiniteScroll: false,
+                      initialPage: 0,
+                      autoPlay: true,
+                      autoPlayCurve: Curves.fastOutSlowIn),
+                  items: [
+                    Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(12),
+                          child: Column(
+                            children: [
+                              Text(
+                                'Saldo Wallet',
+                                style: blackTextStyle.copyWith(
+                                  fontSize: 13,
+                                  fontWeight: bold,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Rp 15.000.000',
+                                style: blackTextStyle.copyWith(
+                                  fontSize: 15,
+                                  fontWeight: bold,
+                                ),
+                              )
+                            ],
+                          ),
+                        )),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12),
+                        child: Column(
+                          children: [
+                            Text(
+                              'Saldo Saving',
+                              style: blackTextStyle.copyWith(
+                                fontSize: 13,
+                                fontWeight: bold,
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                            Text(
+                              'Rp 12.000.000',
+                              style: blackTextStyle.copyWith(
+                                fontSize: 15,
+                                fontWeight: bold,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ]),
             ),
             _addButton(context)
           ],
