@@ -50,7 +50,7 @@ class MainMenuPage extends StatelessWidget {
                       arguments: Wallet(
                           id: index,
                           name: wallet.name,
-                          nominal: wallet.nominal,
+                          nominal: wallet.nominal ,
                           category: wallet.category,
                           decription: wallet.decription,
                           createdAt: wallet.createdAt),

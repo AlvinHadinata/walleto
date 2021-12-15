@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:walleto/data/model/category.dart';
 import 'package:walleto/data/model/history_target.dart';
 import 'package:walleto/data/model/history_wallet.dart';
@@ -11,6 +12,7 @@ import 'package:walleto/screens/main_menu_page.dart';
 import 'package:walleto/screens/notes/note_add_page.dart';
 import 'package:walleto/screens/notes/note_edit_page.dart';
 import 'package:walleto/screens/notes/note_page.dart';
+import 'package:walleto/screens/onboarding/onboarding_page.dart';
 import 'package:walleto/screens/target/saving_add_page.dart';
 import 'package:walleto/screens/target/target_detail_page.dart';
 import 'package:walleto/screens/target/target_add_page.dart';
@@ -23,11 +25,16 @@ import 'package:walleto/screens/wallet/wallet_add_page.dart';
 import 'package:walleto/screens/wallet/wallet_list_page.dart';
 import 'package:path_provider/path_provider.dart' as pathProvider;
 import 'package:hive/hive.dart';
-
 import 'data/model/note.dart';
+import './screens/onboarding/pages.dart';
+
+bool? seenOnboard;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top]);
+  SharedPreferences pref = await SharedPreferences.getInstance();
+  seenOnboard = pref.getBool('seenOnboard') ?? false;
 
   var appDocumentDirectory =
       await pathProvider.getApplicationDocumentsDirectory();
@@ -82,6 +89,7 @@ class MyApp extends StatelessWidget {
         CategoryPage.routeName: (context) => CategoryPage(
             isWallet: ModalRoute.of(context)!.settings.arguments as bool)
       },
+      home: seenOnboard == true ? MainMenuPage() : OnBoardingPage(),
     );
   }
 }

@@ -34,265 +34,268 @@ class TargetDetailPage extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 20),
-            Column(children: [
-              Container(
-                height: MediaQuery.of(context).size.height / 4,
-                decoration: BoxDecoration(
-                  color: kGradasi,
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                            width: 50.0,
-                            height: 40.0,
-                            padding: const EdgeInsets.all(8.0),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.blue.withOpacity(.8),
-                                shape: BoxShape.rectangle),
-                            child: SvgPicture.asset(
-                              argument.category.icon,
-                            ),
+            Container(
+              height: MediaQuery.of(context).size.height / 3.6,
+              decoration: BoxDecoration(
+                color: kGradasi,
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Container(
+                          width: 50.0,
+                          height: 40.0,
+                          padding: const EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.blue.withOpacity(.8),
+                              shape: BoxShape.rectangle),
+                          child: SvgPicture.asset(
+                            argument.category.icon,
                           ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Text(
-                                NumberFormat.currency(
-                                  locale: 'id_ID',
-                                  decimalDigits: 0,
-                                  symbol: "Rp ",
-                                ).format(argument.nominal),
-                                style: blackTextStyle.copyWith(
-                                  fontSize: 16,
-                                  fontWeight: bold,
-                                ),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Saving Name",
-                                    style: greyTextStyle.copyWith(
-                                        fontSize: 16.0, fontWeight: regular),
-                                  ),
-                                  Text(
-                                    argument.nameTarget,
-                                    style: blackTextStyle.copyWith(
-                                      fontSize: 20,
-                                      fontWeight: bold,
-                                    ),
-                                  ),
-                                ],
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              NumberFormat.currency(
+                                locale: 'id_ID',
+                                decimalDigits: 0,
+                                symbol: "Rp ",
+                              ).format(argument.nominal),
+                              style: blackTextStyle.copyWith(
+                                fontSize: 16,
+                                fontWeight: bold,
                               ),
-                              // FloatingActionButton(
-                              //     child: const Icon(
-                              //       Icons.attach_money_rounded,
-                              //       color: kWhiteColor,
-                              //     ),
-                              //     elevation: 0.0,
-                              //     backgroundColor: kBlueColor,
-                              //     onPressed: () {
-                              //       // Navigator.pushNamed(
-                              //       //     context, WalletCashPage.routeName,
-                              //       //     arguments: argument);
-                              //     }),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          LinearPercentIndicator(
-                            width: MediaQuery.of(context).size.width / 1.28,
-                            animation: true,
-                            lineHeight: 15.0,
-                            animationDuration: 2000,
-                            percent: 0.9,
-                            animateFromLastPercent: true,
-                            linearStrokeCap: LinearStrokeCap.roundAll,
-                            progressColor: kBlueColor,
-                            center: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  getPercent(
-                                      argument.currentMoney, argument.nominal),
-                                  style: blackTextStyle.copyWith(
-                                    fontSize: 12,
-                                  ),
+                                  "Saving Name",
+                                  style: greyTextStyle.copyWith(
+                                      fontSize: 16.0, fontWeight: regular),
                                 ),
                                 Text(
-                                  "%",
+                                  argument.nameTarget,
                                   style: blackTextStyle.copyWith(
-                                    fontSize: 12,
+                                    fontSize: 20,
+                                    fontWeight: bold,
                                   ),
                                 ),
                               ],
                             ),
+                            // FloatingActionButton(
+                            //     child: const Icon(
+                            //       Icons.attach_money_rounded,
+                            //       color: kWhiteColor,
+                            //     ),
+                            //     elevation: 0.0,
+                            //     backgroundColor: kBlueColor,
+                            //     onPressed: () {
+                            //       // Navigator.pushNamed(
+                            //       //     context, WalletCashPage.routeName,
+                            //       //     arguments: argument);
+                            //     }),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        LinearPercentIndicator(
+                          width: MediaQuery.of(context).size.width / 1.29,
+                          animation: true,
+                          lineHeight: 15.0,
+                          animationDuration: 2000,
+                          percent: 0.9,
+                          animateFromLastPercent: true,
+                          linearStrokeCap: LinearStrokeCap.roundAll,
+                          progressColor: kBlueColor,
+                          center: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                getPercent(
+                                    argument.currentMoney, argument.nominal),
+                                style: blackTextStyle.copyWith(
+                                  fontSize: 12,
+                                ),
+                              ),
+                              Text(
+                                "%",
+                                style: blackTextStyle.copyWith(
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      )
-                    ],
-                  ),
+                        ),
+                      ],
+                    )
+                  ],
                 ),
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              Divider(height: 10, color: Colors.black),
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        'Deskripsi',
-                        style: blueTextSyle.copyWith(
-                          fontSize: 18,
-                          fontWeight: bold,
-                        ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Divider(height: 40, color: Colors.black),
+            Column(
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      'Deskripsi',
+                      style: blueTextSyle.copyWith(
+                        fontSize: 18,
+                        fontWeight: bold,
                       ),
-                    ],
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Mau beli iphone untuk bikin konten Tiktok heheheheheh',
-                        style: greyTextStyle.copyWith(
-                          fontSize: 16,
-                          fontWeight: medium,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 30),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Jangka Waktu',
-                          style: blueTextSyle.copyWith(
-                            fontSize: 16,
-                            fontWeight: bold,
-                          )),
-                      Text(
-                        '${argument.period} ${argument.durationType}',
-                        style: greyTextStyle.copyWith(
-                          fontSize: 16,
-                          fontWeight: medium,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Prioritas',
-                          style: blueTextSyle.copyWith(
-                            fontSize: 16,
-                            fontWeight: bold,
-                          )),
-                      Text(
-                        argument.priority,
-                        style: greyTextStyle.copyWith(
-                          fontSize: 16,
-                          fontWeight: medium,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Proses',
-                          style: blueTextSyle.copyWith(
-                            fontSize: 16,
-                            fontWeight: bold,
-                          )),
-                      Text(
-                        (argument.currentMoney == argument.nominal)
-                            ? "Completed"
-                            : "On Progress",
-                        style: greyTextStyle.copyWith(
+                    ),
+                  ],
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          argument.decription,
+                          style: greyTextStyle.copyWith(
                             fontSize: 16,
                             fontWeight: medium,
-                            color: (argument.currentMoney == argument.nominal)
-                                ? kGreenColor
-                                : kYellowColor),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              Divider(height: 10, color: Colors.black),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ElevatedButton(
-                    child: Text(
-                      'Update',
-                      style: whiteTextStyle.copyWith(
-                        fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(height: 30),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Jangka Waktu',
+                        style: blueTextSyle.copyWith(
+                          fontSize: 16,
+                          fontWeight: bold,
+                        )),
+                    Text(
+                      '${argument.period} ${argument.durationType}',
+                      style: greyTextStyle.copyWith(
+                        fontSize: 16,
                         fontWeight: medium,
                       ),
                     ),
-                    style: ElevatedButton.styleFrom(
-                      primary: kBlueColor,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0,
-                        vertical: 14.0,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, TargetEditPage.routeName,
-                          arguments: argument);
-                    },
-                  ),
-                  ElevatedButton(
-                    child: Text(
-                      'Delete',
-                      style: whiteTextStyle.copyWith(
-                        fontSize: 18,
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Prioritas',
+                        style: blueTextSyle.copyWith(
+                          fontSize: 16,
+                          fontWeight: bold,
+                        )),
+                    Text(
+                      argument.priority,
+                      style: greyTextStyle.copyWith(
+                        fontSize: 16,
                         fontWeight: medium,
                       ),
                     ),
-                    style: ElevatedButton.styleFrom(
-                      primary: kBlueColor,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0,
-                        vertical: 14.0,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Proses',
+                        style: blueTextSyle.copyWith(
+                          fontSize: 16,
+                          fontWeight: bold,
+                        )),
+                    Text(
+                      (argument.currentMoney == argument.nominal)
+                          ? "Completed"
+                          : "On Progress",
+                      style: greyTextStyle.copyWith(
+                          fontSize: 16,
+                          fontWeight: medium,
+                          color: (argument.currentMoney == argument.nominal)
+                              ? kGreenColor
+                              : kYellowColor),
                     ),
-                    onPressed: () {
-                      deleteTargetModal(context, argument.id);
-                    },
-                  )
-                ],
-              ),
-            ])
+                  ],
+                ),
+              ],
+            ),
+            Divider(height: 30, color: Colors.black),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                  child: Text(
+                    'Update',
+                    style: whiteTextStyle.copyWith(
+                      fontSize: 18,
+                      fontWeight: medium,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: kBlueColor,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0,
+                      vertical: 14.0,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, TargetEditPage.routeName,
+                        arguments: argument);
+                  },
+                ),
+                ElevatedButton(
+                  child: Text(
+                    'Delete',
+                    style: whiteTextStyle.copyWith(
+                      fontSize: 18,
+                      fontWeight: medium,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: kBlueColor,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0,
+                      vertical: 14.0,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                  onPressed: () {
+                    deleteTargetModal(context, argument.id);
+                  },
+                )
+              ],
+            )
           ],
         ),
       ),
@@ -333,166 +336,6 @@ class TargetDetailPage extends StatelessWidget {
       ),
       body: _buildContent(context),
     );
-  }
-
-  Widget detailSaldo() {
-    return Builder(builder: (BuildContext context) {
-      return Column(
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height / 4,
-            margin: EdgeInsets.symmetric(horizontal: 16),
-            decoration: BoxDecoration(
-              color: kLightGreyColor,
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Container(
-                        width: 50.0,
-                        height: 40.0,
-                        padding: const EdgeInsets.all(8.0),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.blue.withOpacity(.8),
-                            shape: BoxShape.rectangle),
-                        child: Icon(
-                          Icons.attach_money_rounded,
-                          size: 20.0,
-                          color: Colors.amber,
-                        ),
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            "RP. 10.000.000",
-                            style: whiteTextStyle.copyWith(
-                                fontSize: 15, fontWeight: regular),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                  Text(
-                    "Untuk beli iphone",
-                    style: whiteTextStyle.copyWith(
-                      fontSize: 18,
-                      fontWeight: bold,
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                Divider(height: 10, color: Colors.black),
-                Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          'Deskripsi :',
-                          style: blackTextStyle.copyWith(
-                            fontSize: 14,
-                            fontWeight: bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Mau beli iphone untuk bikin konten Tiktok heheheheheh',
-                          style: blackTextStyle.copyWith(
-                            fontSize: 14,
-                            fontWeight: bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 30),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Jangka Waktu',
-                            style: blackTextStyle.copyWith(
-                              fontSize: 14,
-                              fontWeight: bold,
-                            )),
-                        Text(
-                          '6 Bulan',
-                          style: blackTextStyle.copyWith(
-                            fontSize: 14,
-                            fontWeight: bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Prioritas',
-                            style: blackTextStyle.copyWith(
-                              fontSize: 14,
-                              fontWeight: bold,
-                            )),
-                        Text(
-                          'Tinggi',
-                          style: blackTextStyle.copyWith(
-                            fontSize: 14,
-                            fontWeight: bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Proses',
-                            style: blackTextStyle.copyWith(
-                              fontSize: 14,
-                              fontWeight: bold,
-                            )),
-                        Text(
-                          'On Progress',
-                          style: blackTextStyle.copyWith(
-                            fontSize: 14,
-                            fontWeight: bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                Divider(height: 10, color: Colors.black),
-                Row(
-                  children: [
-                    Text('Riwayat Transaksi',
-                        style: blackTextStyle.copyWith(
-                          fontSize: 14,
-                          fontWeight: bold,
-                        ))
-                  ],
-                )
-              ],
-            ),
-          )
-        ],
-      );
-    });
   }
 }
 
