@@ -7,6 +7,7 @@ import 'package:walleto/data/hive/saving_target_boxes.dart';
 import 'package:walleto/data/hive/wallet_boxes.dart';
 import 'package:walleto/data/model/category.dart';
 import 'package:walleto/data/model/wallet.dart';
+import 'package:walleto/screens/home_page.dart';
 import 'package:walleto/screens/main_menu_page.dart';
 import 'package:walleto/screens/widgets/custom_text_field.dart';
 import 'package:walleto/shared/theme.dart';
@@ -116,7 +117,7 @@ class _WalletAddPageState extends State<WalletAddPage> {
                               WalletBoxes.storeWallet(wallet);
                               Navigator.pushNamedAndRemoveUntil(
                                 context,
-                                MainMenuPage.routeName,
+                                HomePage.routeName,
                                 (Route<dynamic> route) => false,
                                 arguments: true,
                               );
