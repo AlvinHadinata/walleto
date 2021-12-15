@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:walleto/data/hive/history_wallet_boxes.dart';
-import 'package:walleto/data/hive/wallet_boxes.dart';
-import 'package:walleto/data/model/history_wallet.dart';
-import 'package:walleto/data/model/wallet.dart';
-import 'package:walleto/screens/home_page.dart';
+import 'package:walleto/data/hive/history_target_boxes.dart';
+import 'package:walleto/data/hive/saving_target_boxes.dart';
+import 'package:walleto/data/model/history_target.dart';
+import 'package:walleto/data/model/saving_target.dart';
 import 'package:walleto/screens/main_menu_page.dart';
 import 'package:walleto/screens/widgets/custom_text_field.dart';
 import 'package:walleto/shared/theme.dart';
 
-class WalletCashPage extends StatefulWidget {
-  static const routeName = "wallet_cash_page";
+import '../home_page.dart';
+
+class TargetCashPage extends StatefulWidget {
+  static const routeName = "/target_cash_page";
 
   @override
-  State<WalletCashPage> createState() => _WalletCashPageState();
+  State<TargetCashPage> createState() => _TargetCashPageState();
 }
 
-class _WalletCashPageState extends State<WalletCashPage> {
+class _TargetCashPageState extends State<TargetCashPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _catatanController = TextEditingController();
   final TextEditingController _nominalController = TextEditingController();
-  bool? cashIn = true;
   @override
   Widget build(BuildContext context) {
-    final Wallet argument =
-        ModalRoute.of(context)!.settings.arguments as Wallet;
+    final SavingTarget argument =
+        ModalRoute.of(context)!.settings.arguments as SavingTarget;
 
     Widget _buildContent() {
       return Container(
@@ -46,12 +46,10 @@ class _WalletCashPageState extends State<WalletCashPage> {
                         return 'Nominal tidak boleh kosong';
                       } else if (int.parse(value) < 1000) {
                         return 'Nominal Minimal Rp. 1000';
-                      } else if ((cashIn == false) &&
-                          (int.parse(value) > argument.nominal)) {
-                        return 'Nominal anda tidak cukup';
-                      } else {
-                        return null;
+                      } else if (int.parse(value) > argument.nominal) {
+                        return 'Terlalu besar dari target';
                       }
+                      return null;
                     },
                   ),
                   const SizedBox(height: 20),
@@ -68,54 +66,6 @@ class _WalletCashPageState extends State<WalletCashPage> {
                     },
                   ),
                   const SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Expanded(
-                        child: Row(
-                          children: [
-                            Radio<bool>(
-                              value: false,
-                              groupValue: cashIn,
-                              onChanged: (value) =>
-                                  setState(() => cashIn = value!),
-                            ),
-                            Expanded(
-                              child: Text('Expense',
-                                  style: greyTextStyle.copyWith(
-                                      fontSize: 16,
-                                      fontWeight: bold,
-                                      color: kRedColor)),
-                            )
-                          ],
-                        ),
-                        flex: 1,
-                      ),
-                      Expanded(
-                        child: Row(
-                          children: [
-                            Radio<bool>(
-                              value: true,
-                              activeColor: kBlueColor,
-                              groupValue: cashIn,
-                              onChanged: (value) =>
-                                  setState(() => cashIn = value!),
-                            ),
-                            Expanded(
-                              child: Text(
-                                'Income',
-                                style: greyTextStyle.copyWith(
-                                    fontSize: 16,
-                                    fontWeight: bold,
-                                    color: kGreenColor),
-                              ),
-                            )
-                          ],
-                        ),
-                        flex: 1,
-                      ),
-                    ],
-                  ),
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: Container(
@@ -145,22 +95,17 @@ class _WalletCashPageState extends State<WalletCashPage> {
                           final isValid = _formKey.currentState!.validate();
 
                           if (isValid) {
-                            HistoryWallet history = HistoryWallet(
-                              nameWallet: argument.name,
+                            HistoryTarget history = HistoryTarget(
+                              nameTarget: argument.nameTarget,
                               nominal: int.parse(_nominalController.text),
                               description: _catatanController.text,
-                              cashIn: cashIn,
                               createdAt: DateTime.now().microsecondsSinceEpoch,
                             );
 
-                            HistoryWalletBoxes.storeHistoryWallet(history);
-                            if (cashIn == true) {
-                              WalletBoxes.updateCashIn(
-                                  argument.id!, argument, history.nominal);
-                            } else {
-                              WalletBoxes.updateCashOut(
-                                  argument.id!, argument, history.nominal);
-                            }
+                            HistoryTargetBoxes.storeHistoryTarget(history);
+                            SavingTargetBoxes.updateCurrentMoneySaving(
+                                argument.id!, argument, history.nominal);
+
                             Navigator.pushNamedAndRemoveUntil(
                               context,
                               HomePage.routeName,
@@ -194,7 +139,7 @@ class _WalletCashPageState extends State<WalletCashPage> {
           centerTitle: true,
           toolbarHeight: 80,
           title: Text(
-            argument.name,
+            argument.nameTarget,
             style: whiteTextStyle.copyWith(
               fontSize: 24,
               fontWeight: bold,

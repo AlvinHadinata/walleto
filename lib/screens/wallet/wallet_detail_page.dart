@@ -2,14 +2,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:walleto/data/hive/history_wallet_boxes.dart';
 import 'package:walleto/data/hive/wallet_boxes.dart';
 import 'package:walleto/data/model/history_wallet.dart';
 import 'package:walleto/data/model/wallet.dart';
 import 'package:walleto/screens/main_menu_page.dart';
 import 'package:walleto/screens/wallet/waller_edit_page.dart';
 import 'package:walleto/screens/wallet/wallet_cash_page.dart';
+import 'package:walleto/screens/widgets/animation_placeholder.dart';
+import 'package:walleto/screens/widgets/item_list.dart';
 import 'package:walleto/shared/theme.dart';
+
+import '../home_page.dart';
 
 class WalletDetailPage extends StatelessWidget {
   static const routeName = "/wallet_detail_page";
@@ -165,8 +171,46 @@ class WalletDetailPage extends StatelessWidget {
                     onPressed: () {
                       _deleteWalletModal(context, argument.id);
                     },
-                  )
+                  ),
                 ],
+              ),
+              Divider(height: 10, color: Colors.black),
+              Text(
+                "History Wallet",
+                style: blackTextStyle.copyWith(
+                  fontWeight: bold,
+                  fontSize: 14,
+                ),
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                child: ValueListenableBuilder<Box<HistoryWallet>>(
+                  valueListenable:
+                      HistoryWalletBoxes.getHistoryWallet().listenable(),
+                  builder: (context, Box<HistoryWallet> box, _) {
+                    if (box.values.isEmpty) {
+                      return AnimationPlaceholder(
+                        animation: "assets/no_data.svg",
+                        text: "Anda belum mempunyai History",
+                      );
+                    } else {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: histories.length,
+                        itemBuilder: (_, index) {
+                          return ItemList(
+                            wallet: histories[index],
+                          );
+                        },
+                      );
+                    }
+                  },
+                ),
               ),
             ])
           ],
@@ -241,7 +285,7 @@ class WalletDetailPage extends StatelessWidget {
 
                 Navigator.pushNamedAndRemoveUntil(
                   context,
-                  MainMenuPage.routeName,
+                  HomePage.routeName,
                   (Route<dynamic> route) => false,
                 );
               },

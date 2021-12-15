@@ -1,17 +1,17 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:walleto/data/hive/history_wallet_boxes.dart';
 import 'package:walleto/data/hive/saving_target_boxes.dart';
 import 'package:walleto/data/hive/wallet_boxes.dart';
+import 'package:walleto/data/model/history_wallet.dart';
 import 'package:walleto/data/model/saving_target.dart';
-
 import 'package:walleto/data/model/wallet.dart';
 import 'package:walleto/screens/category/category_page.dart';
-import 'package:walleto/screens/target/saving_add_page.dart';
+import 'package:walleto/screens/target/target_cash_page.dart';
 import 'package:walleto/screens/target/target_detail_page.dart';
 import 'package:walleto/screens/target/target_list_page.dart';
 import 'package:walleto/screens/wallet/wallet_detail_page.dart';
@@ -20,7 +20,6 @@ import 'package:walleto/screens/widgets/animation_placeholder.dart';
 import 'package:walleto/screens/widgets/carousel.dart';
 import 'package:walleto/screens/widgets/saving_item_widget.dart';
 import 'package:walleto/shared/theme.dart';
-import 'package:walleto/utils/helpers_utils.dart';
 
 class MainMenuPage extends StatelessWidget {
   static const routeName = "/main_menu_page";
@@ -149,259 +148,101 @@ class MainMenuPage extends StatelessWidget {
       decoration: const BoxDecoration(
         color: kBlueColor,
         borderRadius: BorderRadius.all(
-          Radius.circular(15),
+          Radius.circular(20),
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(14.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              height: 100,
-              width: 200,
-              child: CarouselSlider(
-                  options: CarouselOptions(
-                      scrollDirection: Axis.vertical,
-                      enlargeCenterPage: true,
-                      enableInfiniteScroll: false,
-                      initialPage: 0,
-                      autoPlay: true,
-                      autoPlayCurve: Curves.fastOutSlowIn),
-                  items: [
-                    Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(14),
-                          child: Row(
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Saldo Wallet',
-                                    style: blackTextStyle.copyWith(
-                                      fontSize: 13,
-                                      fontWeight: bold,
-                                    ),
-                                  ),
-                                  Text(
-                                    'Rp 15.000.000',
-                                    style: blackTextStyle.copyWith(
-                                      fontSize: 12,
-                                      fontWeight: regular,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ],
-                          ),
-                        )),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(14),
-                        child: Row(
-                          children: [
-                            Column(
+        padding: const EdgeInsets.all(10.0),
+        child: Container(
+          height: 90,
+          width: MediaQuery.of(context).size.width / 1.5,
+          child: CarouselSlider(
+              options: CarouselOptions(
+                  scrollDirection: Axis.vertical,
+                  enlargeCenterPage: true,
+                  enableInfiniteScroll: false,
+                  initialPage: 0,
+                  autoPlay: false,
+                  autoPlayCurve: Curves.fastOutSlowIn),
+              items: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(14),
+                    child: Row(
+                      children: [
+                        ValueListenableBuilder<Box<Wallet>>(
+                          valueListenable:
+                              WalletBoxes.getWallets().listenable(),
+                          builder: (context, Box<Wallet> box, _) {
+                            int currentMoney = box.values.fold(
+                                0, (sum, walletBox) => sum + walletBox.nominal);
+                            return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Saldo Saving',
+                                  'Saldo Wallet',
                                   style: blackTextStyle.copyWith(
-                                    fontSize: 13,
-                                    fontWeight: bold,
+                                    fontSize: 14,
+                                    fontWeight: medium,
                                   ),
                                 ),
                                 Text(
-                                  'Rp. 120.000',
+                                  NumberFormat.currency(
+                                    locale: 'id_ID',
+                                    decimalDigits: 0,
+                                    symbol: "Rp ",
+                                  ).format(currentMoney),
                                   style: blackTextStyle.copyWith(
-                                    fontSize: 12,
-                                    fontWeight: regular,
+                                    fontSize: 18,
                                   ),
                                 ),
                               ],
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(14),
+                    child: Row(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Saldo Saving',
+                              style: blackTextStyle.copyWith(
+                                fontSize: 14,
+                                fontWeight: medium,
+                              ),
                             ),
+                            Text(
+                              'Rp 15.000.000',
+                              style: blackTextStyle.copyWith(
+                                fontSize: 18,
+                                fontWeight: bold,
+                              ),
+                            )
                           ],
                         ),
-                      ),
+                      ],
                     ),
-                  ]),
-            ),
-            _addButton(context)
-          ],
+                  ),
+                ),
+              ]),
         ),
       ),
-    );
-  }
-
-  Widget _addButton(BuildContext context) {
-    return FloatingActionButton(
-      child: const Icon(Icons.add, color: Colors.black),
-      backgroundColor: Colors.cyanAccent,
-      onPressed: () {
-        showModalBottomSheet(
-          context: context,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topRight: Radius.circular(24),
-              topLeft: Radius.circular(24),
-            ),
-          ),
-          builder: (context) {
-            return Container(
-              width: double.infinity,
-              height: 250,
-              padding: const EdgeInsets.only(
-                top: 10,
-              ),
-              child: Column(
-                children: [
-                  Container(
-                    width: 135,
-                    height: 4.5,
-                    decoration: BoxDecoration(
-                      color: kBlueColor,
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Column(
-                        children: [
-                          SizedBox(
-                            width: 60,
-                            height: 60,
-                            child: FloatingActionButton(
-                              backgroundColor: kBlueColor,
-                              child: const Icon(
-                                Icons.savings_rounded,
-                                size: 30.0,
-                              ),
-                              onPressed: () {
-                                Navigator.pushNamed(
-                                    context, CategoryPage.routeName,
-                                    arguments: false);
-                              },
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "Buat Target Baru",
-                            style: blackTextStyle.copyWith(
-                              fontSize: 13,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          SizedBox(
-                            width: 60,
-                            height: 60,
-                            child: FloatingActionButton(
-                              backgroundColor: kBlueColor,
-                              child: const Icon(Icons.add_rounded),
-                              onPressed: () {
-                                Navigator.pushNamed(
-                                    context, CategoryPage.routeName,
-                                    arguments: true);
-                              },
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "Tambah Wallet",
-                            style: blackTextStyle.copyWith(
-                              fontSize: 13,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 24),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Column(
-                        children: [
-                          SizedBox(
-                            width: 60,
-                            height: 60,
-                            child: FloatingActionButton(
-                              backgroundColor: kBlueColor,
-                              child: const Icon(
-                                Icons.savings_rounded,
-                                size: 30.0,
-                              ),
-                              onPressed: () {
-                                Navigator.pushNamed(
-                                  context,
-                                  SavingAddPage.routeName,
-                                );
-                              },
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "Tambah Saving",
-                            style: blackTextStyle.copyWith(
-                              fontSize: 13,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          SizedBox(
-                            width: 60,
-                            height: 60,
-                            child: FloatingActionButton(
-                              backgroundColor: kBlueColor,
-                              child: const Icon(Icons.add_rounded),
-                              onPressed: () {
-                                Navigator.pushNamed(
-                                    context, CategoryPage.routeName,
-                                    arguments: true);
-                              },
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "Tambah Wallet",
-                            style: blackTextStyle.copyWith(
-                              fontSize: 13,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            );
-          },
-        );
-      },
     );
   }
 
@@ -475,18 +316,6 @@ class MainMenuPage extends StatelessWidget {
                   ],
                 ),
                 _savingListItem(context),
-                // savingList(context),
-                // SizedBox(
-                //   height: 5,
-                // ),
-                // savingList(context),
-                // SizedBox(
-                //   height: 5,
-                // ),
-                // savingList(context),
-                // SizedBox(
-                //   height: 5,
-                // ),
               ],
             ),
           ),
