@@ -23,29 +23,16 @@ class _NotePageState extends State<NotePage> {
     return Scaffold(
       extendBody: false,
       appBar: AppBar(
-        title: Text('Catatanku', style: whiteTextStyle.copyWith(
-          fontSize: 18.0, fontWeight: bold
-        )),
+        title: Text('Catatanku',
+            style: whiteTextStyle.copyWith(fontSize: 18.0, fontWeight: bold)),
         centerTitle: true,
         backgroundColor: kBlueColor,
       ),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(height: 80),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+          SizedBox(height: 80),
           listNotes(context),
         ]),
-      ),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 60.0),
-        child: FloatingActionButton(
-          child: Icon(Icons.add),
-          backgroundColor: kBlueColor,
-          onPressed: () {
-            Navigator.pushNamed(context, NoteAddPage.routeName);
-          },
-        ),
       ),
     );
   }
