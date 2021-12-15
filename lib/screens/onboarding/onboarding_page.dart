@@ -7,7 +7,7 @@ import 'package:walleto/screens/onboarding/size_config.dart';
 import 'package:walleto/shared/theme.dart';
 
 class OnBoardingPage extends StatefulWidget {
-  static const routeName = '/on_boarding_page';
+  static const routeName = 'on_boarding_page';
   const OnBoardingPage({Key? key}) : super(key: key);
 
   @override
