@@ -26,7 +26,6 @@ import 'package:walleto/screens/wallet/wallet_list_page.dart';
 import 'package:path_provider/path_provider.dart' as pathProvider;
 import 'package:hive/hive.dart';
 import 'data/model/note.dart';
-import './screens/onboarding/pages.dart';
 
 bool? seenOnboard;
 
@@ -69,7 +68,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: HomePage.routeName,
+      initialRoute: OnBoardingPage.routeName,
       routes: {
         HomePage.routeName: (context) => HomePage(),
         MainMenuPage.routeName: (context) => MainMenuPage(),

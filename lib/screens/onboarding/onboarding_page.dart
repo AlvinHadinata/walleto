@@ -5,9 +5,9 @@ import 'package:walleto/main.dart';
 import 'package:walleto/screens/main_menu_page.dart';
 import 'package:walleto/screens/onboarding/size_config.dart';
 import 'package:walleto/shared/theme.dart';
-import './pages.dart';
 
 class OnBoardingPage extends StatefulWidget {
+  static const routeName = '/on_boarding_page';
   const OnBoardingPage({Key? key}) : super(key: key);
 
   @override
@@ -88,10 +88,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                         buttonName: 'AYO KITA MULAI!',
                         bgColor: kBlueColor,
                         onPressed: (){
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) =>
-                          MainMenuPage()));
+                          Navigator.pushReplacementNamed(
+                              context, MainMenuPage.routeName);
                         },
                       )
                       : Row(
