@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:walleto/data/model/onboarding.dart';
 import 'package:walleto/main.dart';
+import 'package:walleto/screens/home_page.dart';
 import 'package:walleto/screens/main_menu_page.dart';
 
 import 'package:walleto/shared/theme.dart';
@@ -16,7 +17,7 @@ class OnBoardingPage extends StatefulWidget {
 
 class _OnBoardingPageState extends State<OnBoardingPage> {
   int currentPage = 0;
-  PageController _pageController = PageController(initialPage: 0);
+  final PageController _pageController = PageController(initialPage: 0);
 
   AnimatedContainer dotIndicator(index) {
     return AnimatedContainer(
@@ -83,7 +84,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               ),
             ),
             Expanded(
-              flex: 2,
+              flex: 3,
               child: Column(
                 children: [
                   currentPage == onboardingContents.length - 1
@@ -92,7 +93,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                           bgColor: kBlueColor,
                           onPressed: () {
                             Navigator.pushReplacementNamed(
-                                context, MainMenuPage.routeName);
+                                context, HomePage.routeName);
                           },
                         )
                       : Row(
@@ -119,7 +120,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                               name: 'NEXT',
                               onPressed: () {
                                 _pageController.nextPage(
-                                    duration: Duration(milliseconds: 400),
+                                    duration: const Duration(milliseconds: 400),
                                     curve: Curves.easeInOut);
                               },
                             ),
@@ -179,7 +180,7 @@ class OnBoardNavBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onPressed,
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(30),
       splashColor: Colors.black,
       child: Padding(
           padding: const EdgeInsets.all(4.0),

@@ -90,7 +90,7 @@ class WalletDetailPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Wallet Name",
+                                "Nama Wallet",
                                 style: whiteTextStyle.copyWith(
                                     fontSize: 18.0, fontWeight: regular),
                               ),
@@ -124,6 +124,30 @@ class WalletDetailPage extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
+              const Divider(height: 20, color: kBlackPrimary),
+              Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text('Deskripsi', style: blackTextStyle.copyWith(
+                        fontSize: 14,
+                        fontWeight: bold,
+                      ))
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(argument.decription, style: blackTextStyle.copyWith(
+                        fontSize: 12,
+                        fontWeight: regular,
+                      ))
+                    ],
+                  )
+                ],
+              ),
+              const SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -174,12 +198,12 @@ class WalletDetailPage extends StatelessWidget {
                   ),
                 ],
               ),
-              Divider(height: 10, color: Colors.black),
+              Divider(height: 40, color: Colors.black),
               Text(
                 "History Wallet",
                 style: blackTextStyle.copyWith(
                   fontWeight: bold,
-                  fontSize: 14,
+                  fontSize: 17,
                 ),
               ),
               SizedBox(

@@ -28,7 +28,7 @@ class CategoryWidget extends StatelessWidget {
               height: 35,
             ),
             style: ElevatedButton.styleFrom(
-              primary: kGradasi,
+              primary: kBlackSecondary,
               onPrimary: kBlueColor,
               padding: const EdgeInsets.symmetric(
                 horizontal: 16.0,

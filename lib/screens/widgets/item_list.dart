@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:walleto/data/model/history_wallet.dart';
-import 'package:walleto/data/model/history_wallet.dart';
 import 'package:walleto/shared/theme.dart';
 
 class ItemList extends StatelessWidget {

@@ -37,7 +37,7 @@ class _WalletCashPageState extends State<WalletCashPage> {
                 children: [
                   CustomTextField(
                     labelText: "Nominal",
-                    hintText: "Masukan Nominal Awal",
+                    hintText: "Masukan Nominal",
                     keyboardType: TextInputType.number,
                     controller: _nominalController,
                     maxLines: 1,
@@ -48,7 +48,7 @@ class _WalletCashPageState extends State<WalletCashPage> {
                         return 'Nominal Minimal Rp. 1000';
                       } else if ((cashIn == false) &&
                           (int.parse(value) > argument.nominal)) {
-                        return 'Nominal anda tidak cukup';
+                        return 'Saldo tidak mencukupi';
                       } else {
                         return null;
                       }

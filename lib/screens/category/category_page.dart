@@ -250,7 +250,7 @@ class CategoryPage extends StatelessWidget {
           centerTitle: true,
           toolbarHeight: 80,
           title: Text(
-            "Pilih Category",
+            "Pilih Kategori",
             style: whiteTextStyle.copyWith(
               fontSize: 24,
               fontWeight: bold,

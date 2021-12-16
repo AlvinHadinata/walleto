@@ -198,6 +198,7 @@ class MainMenuPage extends StatelessWidget {
                                   ).format(currentMoney),
                                   style: blackTextStyle.copyWith(
                                     fontSize: 18,
+                                    fontWeight: bold
                                   ),
                                 ),
                               ],
