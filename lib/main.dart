@@ -89,7 +89,7 @@ class MyApp extends StatelessWidget {
         CategoryPage.routeName: (context) => CategoryPage(
             isWallet: ModalRoute.of(context)!.settings.arguments as bool)
       },
-      home: seenOnboard == true ? HomePage() : OnBoardingPage(),
+      home: seenOnboard == true ? HomePage() : const OnBoardingPage(),
     );
   }
 }

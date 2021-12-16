@@ -2,14 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:walleto/data/hive/history_target_boxes.dart';
 import 'package:walleto/data/hive/saving_target_boxes.dart';
 import 'package:walleto/data/model/history_target.dart';
 import 'package:walleto/data/model/saving_target.dart';
 import 'package:walleto/screens/home_page.dart';
 import 'package:walleto/screens/target/target_cash_page.dart';
 import 'package:walleto/screens/target/target_edit_page.dart';
+import 'package:walleto/screens/widgets/animation_placeholder.dart';
+import 'package:walleto/screens/widgets/history_target_card.dart';
 import 'package:walleto/shared/theme.dart';
 import 'package:walleto/utils/helpers_utils.dart';
 
@@ -354,6 +358,36 @@ class TargetDetailPage extends StatelessWidget {
                     },
                   )
                 ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                child: ValueListenableBuilder<Box<HistoryTarget>>(
+                  valueListenable:
+                      HistoryTargetBoxes.getHistoryTarget().listenable(),
+                  builder: (context, Box<HistoryTarget> box, _) {
+                    if (box.values.isEmpty) {
+                      return AnimationPlaceholder(
+                        animation: "assets/no_data.svg",
+                        text: "Anda belum mempunyai History",
+                      );
+                    } else {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: histories.length,
+                        itemBuilder: (_, index) {
+                          return HistoryTargetCard(
+                            target: histories[index],
+                          );
+                        },
+                      );
+                    }
+                  },
+                ),
               ),
             ])
           ],

@@ -3,6 +3,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:walleto/screens/category/category_page.dart';
+import 'package:walleto/screens/notes/note_add_page.dart';
 import 'package:walleto/screens/settings_page.dart';
 import 'package:walleto/screens/wallet/wallet_list_page.dart';
 import 'package:walleto/shared/theme.dart';
@@ -180,7 +181,7 @@ class _HomePageState extends State<HomePage>
                 ),
               ),
               const SizedBox(
-                height: 24,
+                height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -241,6 +242,38 @@ class _HomePageState extends State<HomePage>
                 ],
               ),
               const SizedBox(height: 24),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    children: [
+                      SizedBox(
+                        width: 60,
+                        height: 60,
+                        child: FloatingActionButton(
+                          backgroundColor: kBlueColor,
+                          child: const Icon(
+                            Icons.note_add_rounded,
+                            size: 30.0,
+                          ),
+                          onPressed: () {
+                            Navigator.pushNamed(context, NoteAddPage.routeName);
+                          },
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Text(
+                        "Buat Catatan Baru",
+                        style: blackTextStyle.copyWith(
+                          fontSize: 13,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ],
           ),
         );

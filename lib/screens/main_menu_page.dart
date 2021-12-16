@@ -4,14 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:walleto/data/hive/history_wallet_boxes.dart';
+import 'package:walleto/data/hive/history_target_boxes.dart';
 import 'package:walleto/data/hive/saving_target_boxes.dart';
 import 'package:walleto/data/hive/wallet_boxes.dart';
-import 'package:walleto/data/model/history_wallet.dart';
+import 'package:walleto/data/model/history_target.dart';
 import 'package:walleto/data/model/saving_target.dart';
 import 'package:walleto/data/model/wallet.dart';
-import 'package:walleto/screens/category/category_page.dart';
-import 'package:walleto/screens/target/target_cash_page.dart';
 import 'package:walleto/screens/target/target_detail_page.dart';
 import 'package:walleto/screens/target/target_list_page.dart';
 import 'package:walleto/screens/wallet/wallet_detail_page.dart';
@@ -49,7 +47,7 @@ class MainMenuPage extends StatelessWidget {
                       arguments: Wallet(
                           id: index,
                           name: wallet.name,
-                          nominal: wallet.nominal ,
+                          nominal: wallet.nominal,
                           category: wallet.category,
                           decription: wallet.decription,
                           createdAt: wallet.createdAt),
@@ -72,22 +70,37 @@ class MainMenuPage extends StatelessWidget {
   }
 
   Widget _background(BuildContext context) {
+    int hour = DateTime.now().hour;
+
     return Container(
       height: MediaQuery.of(context).size.width / 2,
       decoration: const BoxDecoration(
-          gradient: LinearGradient(colors: [
-        kGradasi,
-        kBlueColor,
-      ], begin: Alignment.bottomRight)),
+        gradient: LinearGradient(
+          colors: [
+            kBlueColor,
+            kWhiteColor,
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
-              'Walleto',
-              style: whiteTextStyle.copyWith(
-                  fontSize: 22, fontWeight: FontWeight.bold),
+              (hour >= 0 && hour < 12)
+                  ? 'Selamat Pagi'
+                  : (hour >= 12 && hour < 15)
+                      ? 'Selamat Siang'
+                      : (hour >= 15 && hour < 18)
+                          ? 'Selamat Sore'
+                          : 'Selamat Malam',
+              style: blackTextStyle.copyWith(
+                fontWeight: bold,
+                fontSize: 22,
+              ),
             ),
           ],
         ),
@@ -198,7 +211,7 @@ class MainMenuPage extends StatelessWidget {
                                   ).format(currentMoney),
                                   style: blackTextStyle.copyWith(
                                     fontSize: 18,
-                                    fontWeight: bold
+                                    fontWeight: bold,
                                   ),
                                 ),
                               ],
@@ -218,24 +231,36 @@ class MainMenuPage extends StatelessWidget {
                     padding: const EdgeInsets.all(14),
                     child: Row(
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Saldo Saving',
-                              style: blackTextStyle.copyWith(
-                                fontSize: 14,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            Text(
-                              'Rp 15.000.000',
-                              style: blackTextStyle.copyWith(
-                                fontSize: 18,
-                                fontWeight: bold,
-                              ),
-                            )
-                          ],
+                        ValueListenableBuilder<Box<HistoryTarget>>(
+                          valueListenable: HistoryTargetBoxes.getHistoryTarget()
+                              .listenable(),
+                          builder: (context, Box<HistoryTarget> box, _) {
+                            int currentMoney = box.values.fold(0,
+                                (sum, historyBox) => sum + historyBox.nominal);
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Saldo Saving',
+                                  style: blackTextStyle.copyWith(
+                                    fontSize: 14,
+                                    fontWeight: medium,
+                                  ),
+                                ),
+                                Text(
+                                  NumberFormat.currency(
+                                    locale: 'id_ID',
+                                    decimalDigits: 0,
+                                    symbol: "Rp ",
+                                  ).format(currentMoney),
+                                  style: blackTextStyle.copyWith(
+                                    fontSize: 18,
+                                    fontWeight: bold,
+                                  ),
+                                )
+                              ],
+                            );
+                          },
                         ),
                       ],
                     ),
