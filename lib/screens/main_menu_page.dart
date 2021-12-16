@@ -333,9 +333,10 @@ class MainMenuPage extends StatelessWidget {
                       },
                       child: Text(
                         'Lihat Semua',
-                        style: blueTextSyle.copyWith(
+                        style: blackTextStyle.copyWith(
                           fontSize: 15,
                           fontWeight: bold,
+                          color: Colors.blue
                         ),
                       ),
                     )

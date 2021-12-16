@@ -1,4 +1,9 @@
+import 'dart:io';
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:walleto/notification/custom_dialog.dart';
+import 'package:walleto/notification/preference_provider.dart';
+import 'package:walleto/notification/scheduling_provider.dart';
 import 'package:walleto/shared/theme.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -19,21 +24,36 @@ class _SettingsPageState extends State<SettingsPage> {
         centerTitle: true,
         backgroundColor: kBlueColor,
       ),
-      body: ListView(
-        children: [
-          ListTile(
-            title: Text('Pengingat', style: blackTextStyle.copyWith(
-                fontSize: 16, fontWeight: FontWeight.bold)),
-            trailing: Switch(
-                value: isON,
-                onChanged: (newValue) {
-                  isON = newValue;
-                  setState(() {});
-                },
+      body: Consumer<PreferencesProvider>(
+        builder: (context, provider, child) {
+          return ListView(
+            children: [
+              Material(
+                child: ListTile(
+                  title: Text('Pengingat', style: blackTextStyle.copyWith(
+                    fontSize: 14, fontWeight: bold
+                  )),
+                  trailing: Consumer<SchedulingProvider>(
+                    builder: (context, scheduled, _) {
+                      return Switch.adaptive(
+                        value: provider.isPengingatAktif,
+                        onChanged: (value) async {
+                          if (Platform.isIOS) {
+                            customDialog(context);
+                          } else {
+                            scheduled.pengingat(value);
+                            provider.enablePengingat(value);
+                          }
+                        },
+                      );
+                    },
+                  ),
                 ),
-          )
-        ],
-      ),
+              ),
+            ],
+          );
+        },
+      )
     );
   }
 }
