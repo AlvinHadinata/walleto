@@ -1,10 +1,10 @@
-# walleto
+# Walleto
 
-A new Flutter project.
+Walleto merupakan aplikasi untuk mengontrol keunganan anda serta membantu anda untuk mencapai target menabung sesuai kategori yang dipilih.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Project ini dibuat menggunakan FLutter.
 
 A few resources to get you started if this is your first Flutter project:
 
