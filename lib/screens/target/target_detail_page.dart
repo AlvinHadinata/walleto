@@ -91,11 +91,11 @@ class TargetDetailPage extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    "Saving Name",
-                                    style: greyTextStyle.copyWith(
-                                        fontSize: 16.0, fontWeight: regular),
-                                  ),
+                                  // Text(
+                                  //   "Saving Name",
+                                  //   style: greyTextStyle.copyWith(
+                                  //       fontSize: 16.0, fontWeight: regular),
+                                  // ),
                                   Text(
                                     argument.nameTarget,
                                     style: blackTextStyle.copyWith(
@@ -111,7 +111,7 @@ class TargetDetailPage extends StatelessWidget {
                             height: 10,
                           ),
                           LinearPercentIndicator(
-                            width: MediaQuery.of(context).size.width / 1.28,
+                            width: MediaQuery.of(context).size.width / 1.288,
                             animation: true,
                             lineHeight: 15.0,
                             animationDuration: 2000,
@@ -148,8 +148,10 @@ class TargetDetailPage extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              Divider(height: 10, color: Colors.black),
+              Divider(height: 20, color: Colors.black),
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Row(
                     children: [
@@ -162,18 +164,12 @@ class TargetDetailPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        argument.decription,
-                        style: greyTextStyle.copyWith(
-                          fontSize: 16,
-                          fontWeight: medium,
-                        ),
-                      ),
-                    ],
+                  Text(
+                    argument.decription,
+                    style: greyTextStyle.copyWith(
+                      fontSize: 16,
+                      fontWeight: medium,
+                    ),
                   ),
                   const SizedBox(height: 30),
                   Row(
@@ -285,7 +281,7 @@ class TargetDetailPage extends StatelessWidget {
                   ),
                 ],
               ),
-              Divider(height: 10, color: Colors.black),
+              Divider(height: 20, color: Colors.black),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

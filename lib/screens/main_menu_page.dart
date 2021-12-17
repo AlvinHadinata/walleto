@@ -5,11 +5,14 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:walleto/data/hive/history_target_boxes.dart';
+import 'package:walleto/data/hive/note_boxes.dart';
 import 'package:walleto/data/hive/saving_target_boxes.dart';
 import 'package:walleto/data/hive/wallet_boxes.dart';
 import 'package:walleto/data/model/history_target.dart';
+import 'package:walleto/data/model/note.dart';
 import 'package:walleto/data/model/saving_target.dart';
 import 'package:walleto/data/model/wallet.dart';
+import 'package:walleto/screens/notes/note_page.dart';
 import 'package:walleto/screens/target/target_detail_page.dart';
 import 'package:walleto/screens/target/target_list_page.dart';
 import 'package:walleto/screens/wallet/wallet_detail_page.dart';
@@ -19,59 +22,13 @@ import 'package:walleto/screens/widgets/carousel.dart';
 import 'package:walleto/screens/widgets/saving_item_widget.dart';
 import 'package:walleto/shared/theme.dart';
 
+import 'notes/note_edit_page.dart';
+
 class MainMenuPage extends StatelessWidget {
   static const routeName = "/main_menu_page";
 
-  Widget _carousel(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      child: ValueListenableBuilder<Box<Wallet>>(
-        valueListenable: WalletBoxes.getWallets().listenable(),
-        builder: (context, Box<Wallet> box, _) {
-          if (box.values.isEmpty) {
-            return AnimationPlaceholder(
-              animation: 'assets/no_data.svg',
-              text: 'Belum ada Wallet',
-            );
-          } else {
-            return CarouselSlider.builder(
-              itemCount: box.values.take(5).length,
-              itemBuilder: (context, index, realIdx) {
-                final Wallet wallet = box.getAt(index)!;
-                return Carousel(
-                  wallet: wallet,
-                  onTap: () {
-                    Navigator.pushNamed(
-                      context,
-                      WalletDetailPage.routeName,
-                      arguments: Wallet(
-                          id: index,
-                          name: wallet.name,
-                          nominal: wallet.nominal,
-                          category: wallet.category,
-                          decription: wallet.decription,
-                          createdAt: wallet.createdAt),
-                    );
-                  },
-                );
-              },
-              options: CarouselOptions(
-                aspectRatio: 2.5,
-                enlargeCenterPage: true,
-                enableInfiniteScroll: false,
-                initialPage: 4,
-                autoPlay: true,
-              ),
-            );
-          }
-        },
-      ),
-    );
-  }
-
   Widget _background(BuildContext context) {
     int hour = DateTime.now().hour;
-
     return Container(
       height: MediaQuery.of(context).size.width / 2,
       decoration: const BoxDecoration(
@@ -104,53 +61,6 @@ class MainMenuPage extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _savingListItem(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      child: ValueListenableBuilder<Box<SavingTarget>>(
-        valueListenable: SavingTargetBoxes.getSavingTarget().listenable(),
-        builder: (context, Box<SavingTarget> box, _) {
-          if (box.values.isEmpty) {
-            return AnimationPlaceholder(
-              animation: "assets/no_data.svg",
-              text: "Anda belum mempunyai target tabungan",
-            );
-          } else {
-            return ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: box.values.take(5).length,
-              itemBuilder: (_, index) {
-                final SavingTarget saving = box.getAt(index)!;
-                return SavingItemWidget(
-                  saving: saving,
-                  onTap: () {
-                    Navigator.pushNamed(
-                      context,
-                      TargetDetailPage.routeName,
-                      arguments: SavingTarget(
-                          id: index,
-                          nameTarget: saving.nameTarget,
-                          nominal: saving.nominal,
-                          period: saving.period,
-                          durationType: saving.durationType,
-                          currentMoney: saving.currentMoney,
-                          category: saving.category,
-                          priority: saving.priority,
-                          decription: saving.decription,
-                          createdAt: saving.createdAt),
-                    );
-                  },
-                );
-              },
-            );
-          }
-        },
       ),
     );
   }
@@ -272,6 +182,174 @@ class MainMenuPage extends StatelessWidget {
     );
   }
 
+  Widget _carousel(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      child: ValueListenableBuilder<Box<Wallet>>(
+        valueListenable: WalletBoxes.getWallets().listenable(),
+        builder: (context, Box<Wallet> box, _) {
+          if (box.values.isEmpty) {
+            return AnimationPlaceholder(
+              animation: 'assets/no_data.svg',
+              text: 'Belum ada Wallet',
+            );
+          } else {
+            return CarouselSlider.builder(
+              itemCount: box.values.take(3).length,
+              itemBuilder: (context, index, realIdx) {
+                final Wallet wallet = box.getAt(index)!;
+                return Carousel(
+                  wallet: wallet,
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      WalletDetailPage.routeName,
+                      arguments: Wallet(
+                          id: index,
+                          name: wallet.name,
+                          nominal: wallet.nominal,
+                          category: wallet.category,
+                          decription: wallet.decription,
+                          createdAt: wallet.createdAt),
+                    );
+                  },
+                );
+              },
+              options: CarouselOptions(
+                aspectRatio: 2.5,
+                enlargeCenterPage: true,
+                enableInfiniteScroll: false,
+                initialPage: 4,
+                autoPlay: true,
+              ),
+            );
+          }
+        },
+      ),
+    );
+  }
+
+  Widget _savingListItem(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height / 2.3,
+      child: ValueListenableBuilder<Box<SavingTarget>>(
+        valueListenable: SavingTargetBoxes.getSavingTarget().listenable(),
+        builder: (context, Box<SavingTarget> box, _) {
+          if (box.values.isEmpty) {
+            return AnimationPlaceholder(
+              animation: "assets/no_data.svg",
+              text: "Anda belum mempunyai target tabungan",
+            );
+          } else {
+            return ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: box.values.take(3).length,
+              itemBuilder: (_, index) {
+                final SavingTarget saving = box.getAt(index)!;
+                return SavingItemWidget(
+                  saving: saving,
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      TargetDetailPage.routeName,
+                      arguments: SavingTarget(
+                          id: index,
+                          nameTarget: saving.nameTarget,
+                          nominal: saving.nominal,
+                          period: saving.period,
+                          durationType: saving.durationType,
+                          currentMoney: saving.currentMoney,
+                          category: saving.category,
+                          priority: saving.priority,
+                          decription: saving.decription,
+                          createdAt: saving.createdAt),
+                    );
+                  },
+                );
+              },
+            );
+          }
+        },
+      ),
+    );
+  }
+
+  Widget listNotes(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height / 2.3,
+      child: ValueListenableBuilder<Box<Note>>(
+        valueListenable: NoteBoxes.getNotes().listenable(),
+        builder: (context, Box<Note> box, _) {
+          if (box.values.isEmpty) {
+            return Column(
+              children: [
+                SizedBox(height: 30),
+                AnimationPlaceholder(
+                  animation: "assets/no_data.svg",
+                  text: "Belum ada catatan",
+                ),
+              ],
+            );
+          } else {
+            return ListView.builder(
+              shrinkWrap: true,
+              physics: const ClampingScrollPhysics(),
+              itemCount: box.values.take(3).length,
+              itemBuilder: (context, index) {
+                final note = box.getAt(index)!;
+                return Dismissible(
+                  key: Key(index.toString()),
+                  background: Container(color: Colors.red),
+                  onDismissed: (direction) {
+                    NoteBoxes.deleteNote(index);
+                  },
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      side: const BorderSide(
+                        color: kBlueColor,
+                        width: 1,
+                      ),
+                    ),
+                    child: ListTile(
+                      title: Text(
+                        note.title,
+                        style: blackTextStyle.copyWith(
+                          fontWeight: bold,
+                          fontSize: 16.0,
+                        ),
+                      ),
+                      subtitle: Text(
+                        note.description,
+                        style: lightGreyTextStyle.copyWith(
+                          fontSize: 14.0,
+                        ),
+                      ),
+                      onTap: () async {
+                        Navigator.pushNamed(
+                          context,
+                          NoteEditPage.routeName,
+                          arguments: Note(
+                            id: index,
+                            title: note.title,
+                            description: note.description,
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                );
+              },
+            );
+          }
+        },
+      ),
+    );
+  }
+
   Widget _buildContent(BuildContext context) {
     return SingleChildScrollView(
       child: Stack(
@@ -281,6 +359,7 @@ class MainMenuPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const SizedBox(
                   height: 130.0,
@@ -326,23 +405,46 @@ class MainMenuPage extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          TargetListPage.routeName,
-                        );
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return TargetListPage();
+                        }));
                       },
                       child: Text(
                         'Lihat Semua',
                         style: blackTextStyle.copyWith(
-                          fontSize: 15,
-                          fontWeight: bold,
-                          color: Colors.blue
-                        ),
+                            fontSize: 15, fontWeight: bold, color: Colors.blue),
                       ),
                     )
                   ],
                 ),
                 _savingListItem(context),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Daftar Catatan',
+                      style: blackTextStyle.copyWith(
+                          fontSize: 15, fontWeight: bold),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                              return NotePage();
+                            }));
+                      },
+                      child: Text(
+                        'Lihat Semua',
+                        style: blackTextStyle.copyWith(
+                            fontSize: 15, fontWeight: bold, color: Colors.blue),
+                      ),
+                    )
+                  ],
+                ),
+                listNotes(context),
+                SizedBox(height: 100)
               ],
             ),
           ),

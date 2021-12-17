@@ -29,7 +29,7 @@ class SavingItemWidget extends StatelessWidget {
       ),
     );
 
-    return InkWell(
+    return GestureDetector(
       onTap: onTap,
       child: Container(
         margin: const EdgeInsets.only(bottom: 10.0),

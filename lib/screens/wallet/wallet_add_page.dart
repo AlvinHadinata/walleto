@@ -139,7 +139,7 @@ class _WalletAddPageState extends State<WalletAddPage> {
     }
 
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
         child: AppBar(

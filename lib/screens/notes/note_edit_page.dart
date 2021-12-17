@@ -38,7 +38,7 @@ class _NoteEditPageState extends State<NoteEditPage> {
     final Note argument = ModalRoute.of(context)!.settings.arguments as Note;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tambah catatanmu'),
+        title: Text('Edit Catatan', style: whiteTextStyle.copyWith(fontWeight: bold, fontSize: 21)),
         centerTitle: true,
         backgroundColor: kBlueColor,
       ),

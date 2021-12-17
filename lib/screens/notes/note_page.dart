@@ -4,10 +4,8 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:walleto/data/hive/note_boxes.dart';
 import 'package:walleto/data/model/note.dart';
-import 'package:walleto/screens/notes/note_add_page.dart';
 import 'package:walleto/screens/notes/note_edit_page.dart';
 import 'package:walleto/screens/widgets/animation_placeholder.dart';
-
 import 'package:walleto/shared/theme.dart';
 
 class NotePage extends StatefulWidget {
@@ -24,13 +22,14 @@ class _NotePageState extends State<NotePage> {
       extendBody: false,
       appBar: AppBar(
         title: Text('Catatanku',
-            style: whiteTextStyle.copyWith(fontSize: 18.0, fontWeight: bold)),
+            style: whiteTextStyle.copyWith(fontSize: 19, fontWeight: bold)),
         centerTitle: true,
         backgroundColor: kBlueColor,
       ),
       body: SingleChildScrollView(
-        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-          SizedBox(height: 80),
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
           listNotes(context),
         ]),
       ),
@@ -42,9 +41,14 @@ class _NotePageState extends State<NotePage> {
       valueListenable: NoteBoxes.getNotes().listenable(),
       builder: (context, Box<Note> box, _) {
         if (box.values.isEmpty) {
-          return AnimationPlaceholder(
-            animation: "assets/no_data.svg",
-            text: "Belum ada catatan",
+          return Column(
+            children: [
+              SizedBox(height: 30),
+              AnimationPlaceholder(
+                animation: "assets/no_data.svg",
+                text: "Belum ada catatan",
+              ),
+            ],
           );
         } else {
           return ListView.builder(
@@ -79,7 +83,6 @@ class _NotePageState extends State<NotePage> {
                       note.description,
                       style: lightGreyTextStyle.copyWith(
                         fontSize: 14.0,
-                        fontFamily: 'Nunito',
                       ),
                     ),
                     onTap: () async {
