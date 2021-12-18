@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:walleto/data/hive/note_boxes.dart';
 import 'package:walleto/data/model/note.dart';
+import 'package:walleto/screens/home_page.dart';
 import 'package:walleto/screens/notes/note_page.dart';
 import 'package:walleto/screens/widgets/custom_text_field.dart';
 import 'package:walleto/shared/theme.dart';
@@ -18,7 +19,8 @@ class NoteAddPage extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        title: Text('Tambah Catatanmu', style: whiteTextStyle.copyWith(fontWeight: bold, fontSize: 21)),
+        title: Text('Tambah Catatanmu',
+            style: whiteTextStyle.copyWith(fontWeight: bold, fontSize: 21)),
         centerTitle: true,
         backgroundColor: kBlueColor,
       ),
@@ -93,7 +95,7 @@ class NoteAddPage extends StatelessWidget {
                               NoteBoxes.storeNote(note);
                               Navigator.pushNamedAndRemoveUntil(
                                 context,
-                                NotePage.routeName,
+                                HomePage.routeName,
                                 (Route<dynamic> route) => false,
                                 arguments: true,
                               );

@@ -29,24 +29,12 @@ class _HomePageState extends State<HomePage>
   late Animation<double> animation;
   late CurvedAnimation curve;
 
-  final List<Widget> _listWidget = [
-    MainMenuPage(),
-    NotePage(),
-    WalletListPage(),
-    SettingsPage()
-  ];
+  final List<Widget> _listWidget = [MainMenuPage(), SettingsPage()];
 
-  final List<IconData> _listIcon = [
-    Icons.dashboard_rounded,
-    Icons.sticky_note_2_rounded,
-    Icons.history_rounded,
-    Icons.settings
-  ];
+  final List<IconData> _listIcon = [Icons.dashboard_rounded, Icons.settings];
 
   final List<String> _listName = [
     "Dashboard",
-    "Note",
-    "History",
     "Setting",
   ];
 

@@ -357,7 +357,10 @@ class TargetDetailPage extends StatelessWidget {
         animationSpeed: 200,
         children: [
           SpeedDialChild(
-            child: const Icon(Icons.attach_money),
+            child: const Icon(
+              Icons.attach_money,
+              color: kBlueColor,
+            ),
             label: 'Saving',
             backgroundColor: kGradasi,
             onTap: () {
@@ -366,7 +369,7 @@ class TargetDetailPage extends StatelessWidget {
             },
           ),
           SpeedDialChild(
-            child: const Icon(Icons.email),
+            child: const Icon(Icons.email, color: kBlueColor),
             label: 'Edit',
             backgroundColor: kGradasi,
             onTap: () {
@@ -375,11 +378,11 @@ class TargetDetailPage extends StatelessWidget {
             },
           ),
           SpeedDialChild(
-            child: const Icon(Icons.delete_forever_rounded),
+            child: const Icon(Icons.delete_forever_rounded, color: kBlueColor),
             label: 'Delete',
             backgroundColor: kGradasi,
             onTap: () {
-              deleteTargetModal(context, argument.id, argument.nameTarget);
+              _deleteTargetModal(context, argument.id, argument.nameTarget);
             },
           ),
         ],
@@ -388,7 +391,7 @@ class TargetDetailPage extends StatelessWidget {
   }
 }
 
-void deleteTargetModal(context, index, name) {
+void _deleteTargetModal(context, index, name) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
