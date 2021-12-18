@@ -153,7 +153,6 @@ class MyTextButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: SizedBox(
-        height: (MediaQuery.of(context).size.height / 100) * 15.5,
         width: (MediaQuery.of(context).size.width / 100) * 100,
         child: TextButton(
           onPressed: onPressed,

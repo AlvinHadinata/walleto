@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage>
 
   final List<String> _listName = [
     "Dashboard",
-    "Setting",
+    "Pengaturan",
   ];
 
   @override
