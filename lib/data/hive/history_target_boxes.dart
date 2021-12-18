@@ -6,8 +6,15 @@ class HistoryTargetBoxes {
       Hive.box<HistoryTarget>("history_target");
 
   static void storeHistoryTarget(HistoryTarget historyTarget) {
-    Box<HistoryTarget> historyTargetBox =
-        Hive.box<HistoryTarget>("history_target");
-    historyTargetBox.add(historyTarget);
+    getHistoryTarget().add(historyTarget);
+  }
+
+  static void deleteHistoryTarget(String name) {
+    final Map<dynamic, HistoryTarget> boxMap = getHistoryTarget().toMap();
+    dynamic boxKey;
+    boxMap.forEach((key, value) {
+      if (value.nameTarget == name) boxKey = key;
+    });
+    getHistoryTarget().delete(boxKey);
   }
 }

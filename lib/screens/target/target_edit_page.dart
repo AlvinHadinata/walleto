@@ -20,10 +20,10 @@ class TargetEditPage extends StatefulWidget {
 
 class _TargetEditPageState extends State<TargetEditPage> {
   final _formKey = GlobalKey<FormState>();
-  TextEditingController _targetNameController = TextEditingController();
-  TextEditingController _nominalController = TextEditingController();
-  TextEditingController _periodController = TextEditingController();
-  TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _targetNameController = TextEditingController();
+  final TextEditingController _nominalController = TextEditingController();
+  final TextEditingController _periodController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
 
   String? _selectedPriorityLevel;
   String? _selectedDurationType;

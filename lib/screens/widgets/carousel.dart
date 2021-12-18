@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:walleto/data/model/wallet.dart';
-import 'package:walleto/screens/wallet/wallet_detail_page.dart';
 import 'package:walleto/shared/theme.dart';
 
 class Carousel extends StatelessWidget {

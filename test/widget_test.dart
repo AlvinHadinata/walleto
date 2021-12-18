@@ -1,30 +1,33 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility that Flutter provides. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
+// import 'package:hive/hive.dart';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
+// void main() async {
+//   Hive.registerAdapter(PersonAdapter());
+//   var persons = await Hive.openBox<Person>('personsWithLists');
+//   persons.clear();
 
-import 'package:walleto/main.dart';
+//   var mario = Person(name: 'Mario');
+//   var luna = Person(name: 'Luna');
+//   var alex = Person(name: 'Alex');
+//   persons.addAll([mario, luna, alex]);
 
-void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+//   mario.friends = HiveList(persons); // Create a HiveList
+//   mario.friends!.addAll([luna, alex]); // Update Mario's friends
+//   mario.save(); // make persistent the change,
+//   print(mario.friends);
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+//   luna.delete(); // Remove Luna from Hive
+//   print(mario.friends); // HiveList updates automatically
+// }
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+// @HiveType(typeId: 8)
+// class Person extends HiveObject {
+//   @HiveField(0)
+//   String name;
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
-  });
-}
+//   @HiveField(1)
+//   HiveList? friends;
+
+//   Person({required this.name});
+
+//   String toString() => name; // For print()
+// }

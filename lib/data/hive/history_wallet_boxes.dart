@@ -6,8 +6,15 @@ class HistoryWalletBoxes {
       Hive.box<HistoryWallet>("history_wallet");
 
   static void storeHistoryWallet(HistoryWallet historyWallet) {
-    Box<HistoryWallet> historyWalletBox =
-        Hive.box<HistoryWallet>("history_wallet");
-    historyWalletBox.add(historyWallet);
+    getHistoryWallet().add(historyWallet);
+  }
+
+  static void deletHistoryWallet(String name) {
+    final Map<dynamic, HistoryWallet> boxMap = getHistoryWallet().toMap();
+    dynamic boxKey;
+    boxMap.forEach((key, value) {
+      if (value.nameWallet == name) boxKey = key;
+    });
+    getHistoryWallet().delete(name);
   }
 }

@@ -6,15 +6,15 @@ class SavingTargetBoxes {
       Hive.box<SavingTarget>("savings_targets");
 
   static void storeSavingTarget(SavingTarget savingTarget) {
-    Box<SavingTarget> savingTargetBox =
-        Hive.box<SavingTarget>("savings_targets");
-    savingTargetBox.add(savingTarget);
+    // Box<SavingTarget> savingTargetBox =
+    //     Hive.box<SavingTarget>("savings_targets");
+    getSavingTarget().add(savingTarget);
   }
 
   static void updateSavingTarget(int index, SavingTarget savingTarget) {
-    Box<SavingTarget> savingTargetBox =
-        Hive.box<SavingTarget>("savings_targets");
-    savingTargetBox.putAt(
+    // Box<SavingTarget> savingTargetBox =
+    //     Hive.box<SavingTarget>("savings_targets");
+    getSavingTarget().putAt(
       index,
       SavingTarget(
         id: savingTarget.id,
@@ -34,14 +34,14 @@ class SavingTargetBoxes {
   static void deleteSavingTarget(int index) {
     Box<SavingTarget> savingTargetBox =
         Hive.box<SavingTarget>("savings_targets");
-    savingTargetBox.deleteAt(index);
+    getSavingTarget().deleteAt(index);
   }
 
   static void updateCurrentMoneySaving(
       int index, SavingTarget savingTarget, int nominal) {
-    Box<SavingTarget> savingTargetBox =
-        Hive.box<SavingTarget>("savings_targets");
-    savingTargetBox.putAt(
+    // Box<SavingTarget> savingTargetBox =
+    //     Hive.box<SavingTarget>("savings_targets");
+    getSavingTarget().putAt(
       index,
       SavingTarget(
         id: savingTarget.id,
