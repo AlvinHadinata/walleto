@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:lottie/lottie.dart';
 import 'package:walleto/shared/theme.dart';
 
 class AnimationPlaceholder extends StatelessWidget {

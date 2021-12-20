@@ -5,10 +5,12 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:walleto/data/hive/history_target_boxes.dart';
+import 'package:walleto/data/hive/history_wallet_boxes.dart';
 import 'package:walleto/data/hive/note_boxes.dart';
 import 'package:walleto/data/hive/saving_target_boxes.dart';
 import 'package:walleto/data/hive/wallet_boxes.dart';
 import 'package:walleto/data/model/history_target.dart';
+import 'package:walleto/data/model/history_wallet.dart';
 import 'package:walleto/data/model/note.dart';
 import 'package:walleto/data/model/saving_target.dart';
 import 'package:walleto/data/model/wallet.dart';
@@ -26,6 +28,10 @@ import 'notes/note_edit_page.dart';
 
 class MainMenuPage extends StatelessWidget {
   static const routeName = "/main_menu_page";
+  final int _walletLength = Hive.box<Wallet>('wallets').values.length;
+  final int _savingLength =
+      Hive.box<SavingTarget>('savings_targets').values.length;
+  final int _noteLength = Hive.box<Note>('notes').values.length;
 
   Widget _background(BuildContext context) {
     int hour = DateTime.now().hour;
@@ -77,106 +83,205 @@ class MainMenuPage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Container(
-          height: 90,
+          height: 115,
           width: MediaQuery.of(context).size.width / 1.5,
           child: CarouselSlider(
-              options: CarouselOptions(
-                  scrollDirection: Axis.vertical,
-                  enlargeCenterPage: true,
-                  enableInfiniteScroll: false,
-                  initialPage: 0,
-                  autoPlay: false,
-                  autoPlayCurve: Curves.fastOutSlowIn),
-              items: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(14),
-                    child: Row(
-                      children: [
-                        ValueListenableBuilder<Box<Wallet>>(
-                          valueListenable:
-                              WalletBoxes.getWallets().listenable(),
-                          builder: (context, Box<Wallet> box, _) {
-                            int currentMoney = box.values.fold(
-                                0, (sum, walletBox) => sum + walletBox.nominal);
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Saldo Wallet',
-                                  style: blackTextStyle.copyWith(
-                                    fontSize: 14,
-                                    fontWeight: medium,
-                                  ),
+            options: CarouselOptions(
+                scrollDirection: Axis.vertical,
+                enlargeCenterPage: true,
+                enableInfiniteScroll: false,
+                initialPage: 0,
+                autoPlay: false,
+                autoPlayCurve: Curves.fastOutSlowIn),
+            items: [
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: ValueListenableBuilder<Box<Wallet>>(
+                    valueListenable: WalletBoxes.getWallets().listenable(),
+                    builder: (context, Box<Wallet> box, _) {
+                      int currentMoney = box.values
+                          .fold(0, (sum, walletBox) => sum + walletBox.nominal);
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Saldo Wallet',
+                                style: blackTextStyle.copyWith(
+                                  fontSize: 14,
+                                  fontWeight: medium,
                                 ),
-                                Text(
-                                  NumberFormat.currency(
-                                    locale: 'id_ID',
-                                    decimalDigits: 0,
-                                    symbol: "Rp ",
-                                  ).format(currentMoney),
-                                  style: blackTextStyle.copyWith(
-                                    fontSize: 18,
-                                    fontWeight: bold,
-                                  ),
+                              ),
+                              Text(
+                                NumberFormat.currency(
+                                  locale: 'id_ID',
+                                  decimalDigits: 0,
+                                  symbol: "Rp ",
+                                ).format(currentMoney),
+                                style: blackTextStyle.copyWith(
+                                  fontSize: 18,
+                                  fontWeight: bold,
                                 ),
-                              ],
-                            );
-                          },
-                        ),
-                      ],
-                    ),
+                              ),
+                            ],
+                          ),
+                          ValueListenableBuilder<Box<HistoryWallet>>(
+                            valueListenable:
+                                HistoryWalletBoxes.getHistoryWallet()
+                                    .listenable(),
+                            builder:
+                                (context, Box<HistoryWallet> boxWallet, _) {
+                              int cashInMoney = boxWallet.values.where(
+                                  (targetBox) {
+                                int historyDate =
+                                    DateTime.fromMicrosecondsSinceEpoch(
+                                            targetBox.createdAt)
+                                        .day;
+                                bool? cashIn = targetBox.cashIn;
+                                int currentDate = DateTime.now().day;
+                                return historyDate == currentDate &&
+                                    cashIn == true;
+                              }).fold(0,
+                                  (sum, histories) => sum + histories.nominal);
+                              int cashOutMoney = boxWallet.values.where(
+                                  (targetBox) {
+                                int historyDate =
+                                    DateTime.fromMicrosecondsSinceEpoch(
+                                            targetBox.createdAt)
+                                        .day;
+                                bool? cashIn = targetBox.cashIn;
+                                int currentDate = DateTime.now().day;
+                                return historyDate == currentDate &&
+                                    cashIn == false;
+                              }).fold(0,
+                                  (sum, histories) => sum + histories.nominal);
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Hari Ini',
+                                    style: blackTextStyle.copyWith(
+                                      fontSize: 12,
+                                      fontWeight: medium,
+                                    ),
+                                  ),
+                                  Text(
+                                    "+ " +
+                                        NumberFormat.currency(
+                                          locale: 'id_ID',
+                                          decimalDigits: 0,
+                                          symbol: "Rp ",
+                                        ).format(cashInMoney),
+                                    style: greyTextStyle.copyWith(
+                                        fontSize: 14,
+                                        fontWeight: bold,
+                                        color: kGreenColor),
+                                  ),
+                                  Text(
+                                    "- " +
+                                        NumberFormat.currency(
+                                          locale: 'id_ID',
+                                          decimalDigits: 0,
+                                          symbol: "Rp ",
+                                        ).format(cashOutMoney),
+                                    style: greyTextStyle.copyWith(
+                                        fontSize: 14,
+                                        fontWeight: bold,
+                                        color: kRedColor),
+                                  ),
+                                ],
+                              );
+                            },
+                          )
+                        ],
+                      );
+                    },
                   ),
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(14),
-                    child: Row(
-                      children: [
-                        ValueListenableBuilder<Box<HistoryTarget>>(
-                          valueListenable: HistoryTargetBoxes.getHistoryTarget()
-                              .listenable(),
-                          builder: (context, Box<HistoryTarget> box, _) {
-                            int currentMoney = box.values.fold(0,
-                                (sum, historyBox) => sum + historyBox.nominal);
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Saldo Saving',
-                                  style: blackTextStyle.copyWith(
-                                    fontSize: 14,
-                                    fontWeight: medium,
-                                  ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: ValueListenableBuilder<Box<HistoryTarget>>(
+                    valueListenable:
+                        HistoryTargetBoxes.getHistoryTarget().listenable(),
+                    builder: (context, Box<HistoryTarget> box, _) {
+                      int currentMoney = box.values.fold(
+                          0, (sum, historyBox) => sum + historyBox.nominal);
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Saldo Saving',
+                                style: blackTextStyle.copyWith(
+                                  fontSize: 14,
+                                  fontWeight: medium,
                                 ),
-                                Text(
-                                  NumberFormat.currency(
-                                    locale: 'id_ID',
-                                    decimalDigits: 0,
-                                    symbol: "Rp ",
-                                  ).format(currentMoney),
-                                  style: blackTextStyle.copyWith(
-                                    fontSize: 18,
-                                    fontWeight: bold,
-                                  ),
-                                )
-                              ],
-                            );
-                          },
-                        ),
-                      ],
-                    ),
+                              ),
+                              Text(
+                                NumberFormat.currency(
+                                  locale: 'id_ID',
+                                  decimalDigits: 0,
+                                  symbol: "Rp ",
+                                ).format(currentMoney),
+                                style: blackTextStyle.copyWith(
+                                  fontSize: 18,
+                                  fontWeight: bold,
+                                ),
+                              )
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Hari Ini',
+                                style: blackTextStyle.copyWith(
+                                  fontSize: 14,
+                                  fontWeight: medium,
+                                ),
+                              ),
+                              Text(
+                                "+ " +
+                                    NumberFormat.currency(
+                                      locale: 'id_ID',
+                                      decimalDigits: 0,
+                                      symbol: "Rp ",
+                                    ).format(currentMoney),
+                                style: blackTextStyle.copyWith(
+                                  fontSize: 14,
+                                  fontWeight: bold,
+                                  color: kGreenColor,
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      );
+                    },
                   ),
                 ),
-              ]),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -255,16 +360,17 @@ class MainMenuPage extends StatelessWidget {
                       context,
                       TargetDetailPage.routeName,
                       arguments: SavingTarget(
-                          id: index,
-                          nameTarget: saving.nameTarget,
-                          nominal: saving.nominal,
-                          period: saving.period,
-                          durationType: saving.durationType,
-                          currentMoney: saving.currentMoney,
-                          category: saving.category,
-                          priority: saving.priority,
-                          decription: saving.decription,
-                          createdAt: saving.createdAt),
+                        id: index,
+                        nameTarget: saving.nameTarget,
+                        nominal: saving.nominal,
+                        period: saving.period,
+                        durationType: saving.durationType,
+                        currentMoney: saving.currentMoney,
+                        category: saving.category,
+                        priority: saving.priority,
+                        decription: saving.decription,
+                        createdAt: saving.createdAt,
+                      ),
                     );
                   },
                 );
@@ -367,6 +473,85 @@ class MainMenuPage extends StatelessWidget {
                 _saldo(context),
                 const SizedBox(height: 15.0),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: kBlueColor),
+                        child: Padding(
+                          padding: EdgeInsets.all(5),
+                          child: Column(
+                            children: [
+                              Text(
+                                "Wallet",
+                                style: whiteTextStyle.copyWith(
+                                    fontSize: 18, fontWeight: bold),
+                              ),
+                              Text(
+                                _walletLength.toString(),
+                                style: whiteTextStyle.copyWith(
+                                    fontSize: 18, fontWeight: bold),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        // margin: EdgeInsets.symmetric(horizontal: 5),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: kBlueColor),
+                        child: Padding(
+                          padding: EdgeInsets.all(5),
+                          child: Column(
+                            children: [
+                              Text(
+                                "Saving",
+                                style: whiteTextStyle.copyWith(
+                                    fontSize: 18, fontWeight: bold),
+                              ),
+                              Text(
+                                _savingLength.toString(),
+                                style: whiteTextStyle.copyWith(
+                                    fontSize: 18, fontWeight: bold),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: kBlueColor),
+                        child: Padding(
+                          padding: EdgeInsets.all(5),
+                          child: Column(
+                            children: [
+                              Text(
+                                "Notes",
+                                style: whiteTextStyle.copyWith(
+                                    fontSize: 18, fontWeight: bold),
+                              ),
+                              Text(
+                                _noteLength.toString(),
+                                style: whiteTextStyle.copyWith(
+                                    fontSize: 18, fontWeight: bold),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 15.0),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
@@ -432,8 +617,8 @@ class MainMenuPage extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                              return NotePage();
-                            }));
+                          return NotePage();
+                        }));
                       },
                       child: Text(
                         'Lihat Semua',

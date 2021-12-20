@@ -89,10 +89,10 @@ class _TargetAddPageState extends State<TargetAddPage> {
                               } else if (int.parse(value) == 0) {
                                 return 'Period tidak boleh 0';
                               } else if (_selectedDurationType == "Hari" &&
-                                  int.parse(value) >= 31) {
+                                  int.parse(value) >= 100) {
                                 return 'Pilih Ke Pekan';
                               } else if (_selectedDurationType == "Pekan" &&
-                                  int.parse(value) >= 4) {
+                                  int.parse(value) >= 48) {
                                 return 'Pilih Bulan';
                               } else if (_selectedDurationType == "Bulan" &&
                                   int.parse(value) >= 12) {

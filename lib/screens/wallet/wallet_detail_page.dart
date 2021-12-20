@@ -226,7 +226,7 @@ class WalletDetailPage extends StatelessWidget {
             },
           ),
           SpeedDialChild(
-            child: const Icon(Icons.email, color: kBlueColor),
+            child: const Icon(Icons.edit_rounded, color: kBlueColor),
             label: 'Edit',
             backgroundColor: kGradasi,
             onTap: () {
@@ -295,7 +295,7 @@ class WalletDetailPage extends StatelessWidget {
               ),
               onPressed: () {
                 WalletBoxes.deleteWallet(index);
-                HistoryTargetBoxes.deleteHistoryTarget(name);
+                HistoryWalletBoxes.deletHistoryWallet(name);
                 Navigator.pushNamedAndRemoveUntil(
                   context,
                   HomePage.routeName,

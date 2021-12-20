@@ -106,10 +106,10 @@ class _TargetEditPageState extends State<TargetEditPage> {
                               } else if (int.parse(value) == 0) {
                                 return 'Period tidak boleh 0';
                               } else if (_selectedDurationType == "Hari" &&
-                                  int.parse(value) >= 31) {
+                                  int.parse(value) >= 100) {
                                 return 'Pilih Ke Pekan';
                               } else if (_selectedDurationType == "Pekan" &&
-                                  int.parse(value) >= 4) {
+                                  int.parse(value) >= 48) {
                                 return 'Pilih Bulan';
                               } else if (_selectedDurationType == "Bulan" &&
                                   int.parse(value) >= 12) {
@@ -168,7 +168,7 @@ class _TargetEditPageState extends State<TargetEditPage> {
                     CustomTextField(
                       labelText: "Deskripsi",
                       hintText: "Masukan Deskripsi",
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.multiline,
                       controller: _descriptionController,
                       maxLines: 4,
                       validator: (value) {
@@ -212,12 +212,12 @@ class _TargetEditPageState extends State<TargetEditPage> {
                                 nameTarget: _targetNameController.text,
                                 nominal: int.parse(_nominalController.text),
                                 period: int.parse(_periodController.text),
-                                durationType: _selectedDurationType == ""
+                                durationType: _selectedDurationType == null
                                     ? argument.durationType
                                     : _selectedDurationType!,
                                 currentMoney: argument.currentMoney,
                                 category: _selectedCategory!,
-                                priority: _selectedPriorityLevel == ""
+                                priority: _selectedPriorityLevel == null
                                     ? argument.priority
                                     : _selectedPriorityLevel!,
                                 decription: _descriptionController.text,
