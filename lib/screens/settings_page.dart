@@ -33,6 +33,9 @@ class _SettingsPageState extends State<SettingsPage> {
                   title: Text('Pengingat', style: blackTextStyle.copyWith(
                     fontSize: 14, fontWeight: bold
                   )),
+                  subtitle: Text('Akan memberi notifikasi setiap hari pukul 08.00', style: blackTextStyle.copyWith(
+                    fontSize: 11, fontWeight: regular
+                  )),
                   trailing: Consumer<SchedulingProvider>(
                     builder: (context, scheduled, _) {
                       return Switch.adaptive(

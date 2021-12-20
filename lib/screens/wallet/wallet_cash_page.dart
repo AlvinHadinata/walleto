@@ -184,7 +184,7 @@ class _WalletCashPageState extends State<WalletCashPage> {
     }
 
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
         child: AppBar(
