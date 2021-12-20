@@ -9,12 +9,12 @@ class HistoryWalletBoxes {
     getHistoryWallet().add(historyWallet);
   }
 
-  static void deletHistoryWallet(String name) {
+  static void deleteHistoryWallet(String name) {
     final Map<dynamic, HistoryWallet> boxMap = getHistoryWallet().toMap();
     dynamic boxKey;
     boxMap.forEach((key, value) {
       if (value.nameWallet == name) boxKey = key;
     });
-    getHistoryWallet().delete(name);
+    getHistoryWallet().delete(boxKey);
   }
 }

@@ -50,7 +50,7 @@ class TargetDetailPage extends StatelessWidget {
               Column(
                 children: [
                   Container(
-                    height: MediaQuery.of(context).size.height / 4,
+                    height: MediaQuery.of(context).size.height / 3.2,
                     decoration: BoxDecoration(
                       color: kGradasi,
                       borderRadius: BorderRadius.circular(20.0),
@@ -121,11 +121,9 @@ class TargetDetailPage extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              SizedBox(
-                                height: 10,
-                              ),
+                              SizedBox(height: 10),
                               LinearPercentIndicator(
-                                width: MediaQuery.of(context).size.width / 1.28,
+                                // width: MediaQuery.of(context).size.width / 1.28,
                                 animation: true,
                                 lineHeight: 15.0,
                                 animationDuration: 2000,
@@ -162,151 +160,154 @@ class TargetDetailPage extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  Divider(height: 10, color: Colors.black),
-                  Column(
+                  Divider(height: 30, color: kBlackPrimary),
+                  Row(
                     children: [
-                      Row(
-                        children: [
-                          Text(
-                            'Deskripsi',
-                            style: blueTextSyle.copyWith(
-                              fontSize: 18,
-                              fontWeight: bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            argument.decription,
-                            style: greyTextStyle.copyWith(
-                              fontSize: 16,
-                              fontWeight: medium,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 30),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Terkumpul',
-                            style: blueTextSyle.copyWith(
-                              fontSize: 16,
-                              fontWeight: bold,
-                            ),
-                          ),
-                          Text(
-                            NumberFormat.currency(
-                              locale: 'id_ID',
-                              decimalDigits: 0,
-                              symbol: "Rp ",
-                            ).format(
-                              argument.currentMoney,
-                            ),
-                            style: greyTextStyle.copyWith(
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Sisa Target',
-                            style: blueTextSyle.copyWith(
-                              fontSize: 16,
-                              fontWeight: bold,
-                            ),
-                          ),
-                          Text(
-                            NumberFormat.currency(
-                              locale: 'id_ID',
-                              decimalDigits: 0,
-                              symbol: "Rp ",
-                            ).format(
-                              argument.nominal - argument.currentMoney,
-                            ),
-                            style: greyTextStyle.copyWith(
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Jangka Waktu',
-                            style: blueTextSyle.copyWith(
-                              fontSize: 16,
-                              fontWeight: bold,
-                            ),
-                          ),
-                          Text(
-                            generatePeriodProgress(argument.createdAt,
-                                argument.period, argument.durationType),
-                            style: greyTextStyle.copyWith(
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Prioritas',
-                            style: blueTextSyle.copyWith(
-                              fontSize: 16,
-                              fontWeight: bold,
-                            ),
-                          ),
-                          Text(
-                            argument.priority,
-                            style: greyTextStyle.copyWith(
-                              fontSize: 16,
-                              fontWeight: medium,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('Proses',
-                              style: blueTextSyle.copyWith(
-                                fontSize: 16,
-                                fontWeight: bold,
-                              )),
-                          Text(
-                            (argument.currentMoney == argument.nominal)
-                                ? "Completed"
-                                : "On Progress",
-                            style: greyTextStyle.copyWith(
-                                fontSize: 16,
-                                fontWeight: medium,
-                                color:
-                                    (argument.currentMoney == argument.nominal)
-                                        ? kGreenColor
-                                        : kYellowColor),
-                          ),
-                        ],
+                      Text(
+                        'Deskripsi',
+                        style: blueTextSyle.copyWith(
+                          fontSize: 18,
+                          fontWeight: bold,
+                        ),
                       ),
                     ],
                   ),
-                  Divider(height: 10, color: Colors.black),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        argument.decription,
+                        style: greyTextStyle.copyWith(
+                          fontSize: 16,
+                          fontWeight: medium,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 30),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Terkumpul',
+                        style: blueTextSyle.copyWith(
+                          fontSize: 16,
+                          fontWeight: bold,
+                        ),
+                      ),
+                      Text(
+                        NumberFormat.currency(
+                          locale: 'id_ID',
+                          decimalDigits: 0,
+                          symbol: "Rp ",
+                        ).format(
+                          argument.currentMoney,
+                        ),
+                        style: greyTextStyle.copyWith(
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Sisa Target',
+                        style: blueTextSyle.copyWith(
+                          fontSize: 16,
+                          fontWeight: bold,
+                        ),
+                      ),
+                      Text(
+                        NumberFormat.currency(
+                          locale: 'id_ID',
+                          decimalDigits: 0,
+                          symbol: "Rp ",
+                        ).format(
+                          argument.nominal - argument.currentMoney,
+                        ),
+                        style: greyTextStyle.copyWith(
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Jangka Waktu',
+                        style: blueTextSyle.copyWith(
+                          fontSize: 16,
+                          fontWeight: bold,
+                        ),
+                      ),
+                      Text(
+                        generatePeriodProgress(argument.createdAt,
+                            argument.period, argument.durationType),
+                        style: greyTextStyle.copyWith(
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Prioritas',
+                        style: blueTextSyle.copyWith(
+                          fontSize: 16,
+                          fontWeight: bold,
+                        ),
+                      ),
+                      Text(
+                        argument.priority,
+                        style: greyTextStyle.copyWith(
+                          fontSize: 16,
+                          fontWeight: medium,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Proses',
+                          style: blueTextSyle.copyWith(
+                            fontSize: 16,
+                            fontWeight: bold,
+                          )),
+                      Text(
+                        (argument.currentMoney == argument.nominal)
+                            ? "Completed"
+                            : "On Progress",
+                        style: greyTextStyle.copyWith(
+                            fontSize: 16,
+                            fontWeight: medium,
+                            color: (argument.currentMoney == argument.nominal)
+                                ? kGreenColor
+                                : kYellowColor),
+                      ),
+                    ],
+                  ),
+                  Divider(height: 30, color: kBlackPrimary),
                   SizedBox(
                     height: 10,
                   ),
+                  Row(
+                    children: [
+                      Text('History',
+                          style: blackTextStyle.copyWith(
+                              fontSize: 18, fontWeight: bold)),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
+                    height: MediaQuery.of(context).size.height / 2 ,
                     child: ValueListenableBuilder<Box<HistoryTarget>>(
                       valueListenable:
                           HistoryTargetBoxes.getHistoryTarget().listenable(),
@@ -314,7 +315,7 @@ class TargetDetailPage extends StatelessWidget {
                         if (box.values.isEmpty) {
                           return AnimationPlaceholder(
                             animation: "assets/no_data.svg",
-                            text: "Anda belum mempunyai History",
+                            text: "Belum ada history",
                           );
                         } else {
                           return ListView.builder(

@@ -202,7 +202,9 @@ class _WalletCashPageState extends State<WalletCashPage> {
           ),
         ),
       ),
-      body: SafeArea(child: _buildContent()),
+      body: SingleChildScrollView(
+          child: SafeArea(
+              child: _buildContent())),
     );
   }
 }

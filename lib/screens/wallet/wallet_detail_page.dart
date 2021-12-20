@@ -116,55 +116,50 @@ class WalletDetailPage extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                const Divider(height: 20, color: kBlackPrimary),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Deskripsi',
-                          style: blueTextSyle.copyWith(
-                            fontSize: 18,
-                            fontWeight: bold,
-                          ),
-                        )
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          argument.decription,
-                          style: blackTextStyle.copyWith(
-                            fontSize: 14,
-                            fontWeight: regular,
-                          ),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-                const SizedBox(height: 30),
-                Divider(height: 40, color: Colors.black),
+                const Divider(height: 30, color: kBlackPrimary),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      "History Wallet",
-                      style: blackTextStyle.copyWith(
+                      'Deskripsi',
+                      style: blueTextSyle.copyWith(
+                        fontSize: 18,
                         fontWeight: bold,
-                        fontSize: 17,
+                      ),
+                    )
+                  ],
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      argument.decription,
+                      style: blackTextStyle.copyWith(
+                        fontSize: 14,
+                        fontWeight: regular,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 8,
+                const SizedBox(height: 30),
+                Divider(height: 30, color: kBlackPrimary),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "History",
+                      style: blackTextStyle.copyWith(
+                        fontWeight: bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
                 ),
+                const SizedBox(height: 10),
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
+                  height: MediaQuery.of(context).size.height / 2 ,
                   child: ValueListenableBuilder<Box<HistoryWallet>>(
                     valueListenable:
                         HistoryWalletBoxes.getHistoryWallet().listenable(),
@@ -172,7 +167,7 @@ class WalletDetailPage extends StatelessWidget {
                       if (box.values.isEmpty) {
                         return AnimationPlaceholder(
                           animation: "assets/no_data.svg",
-                          text: "Anda belum mempunyai History",
+                          text: "Belum ada history",
                         );
                       } else {
                         return ListView.builder(
@@ -295,7 +290,7 @@ class WalletDetailPage extends StatelessWidget {
               ),
               onPressed: () {
                 WalletBoxes.deleteWallet(index);
-                HistoryWalletBoxes.deletHistoryWallet(name);
+                HistoryWalletBoxes.deleteHistoryWallet(name);
                 Navigator.pushNamedAndRemoveUntil(
                   context,
                   HomePage.routeName,

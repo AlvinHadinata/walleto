@@ -148,7 +148,9 @@ class _TargetCashPageState extends State<TargetCashPage> {
           ),
         ),
       ),
-      body: SafeArea(child: _buildContent()),
+      body: SingleChildScrollView(
+          child: SafeArea(
+              child: _buildContent())),
     );
   }
 }

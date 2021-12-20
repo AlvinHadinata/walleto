@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
-import 'package:walleto/data/model/saving_target.dart';
+import 'package:walleto/data/model/wallet.dart';
 import 'package:walleto/shared/theme.dart';
 import 'package:walleto/utils/helpers_utils.dart';
 
-class SavingItemWidget extends StatelessWidget {
-  final SavingTarget saving;
+class WalletItemWidget extends StatelessWidget {
+  final Wallet wallet;
   final Function()? onTap;
 
-  SavingItemWidget({
-    required this.saving,
+  WalletItemWidget({
+    required this.wallet,
     this.onTap,
   });
 
@@ -21,11 +21,7 @@ class SavingItemWidget extends StatelessWidget {
       decimalDigits: 0,
       symbol: "Rp ",
     ).format(
-      getNominalPerDay(
-        saving.nominal,
-        saving.period,
-        saving.durationType,
-      ),
+      wallet.nominal
     );
 
     return GestureDetector(
@@ -56,7 +52,7 @@ class SavingItemWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: SvgPicture.asset(
-                        saving.category.icon,
+                        wallet.category.icon,
                         width: 50,
                         height: 50,
                       ),
@@ -68,49 +64,11 @@ class SavingItemWidget extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            saving.nameTarget,
+                            wallet.name,
                             style: blueTextSyle.copyWith(
                               fontSize: 16.0,
                               fontWeight: bold,
                             ),
-                          ),
-                          const SizedBox(
-                            height: 4.0,
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                (saving.currentMoney == saving.nominal)
-                                    ? "Completed"
-                                    : "On Progress",
-                                style: blackTextStyle.copyWith(
-                                  fontSize: 12,
-                                  color: (saving.currentMoney == saving.nominal)
-                                      ? kGreenColor
-                                      : kYellowColor,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              Container(
-                                width: 3,
-                                height: 3,
-                                decoration: const BoxDecoration(
-                                  color: kLightGreyColor,
-                                  shape: BoxShape.circle,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                "${saving.period}, ${saving.durationType}",
-                                style: greyTextStyle.copyWith(
-                                  fontSize: 12,
-                                ),
-                              ),
-                            ],
                           ),
                         ],
                       ),
@@ -131,7 +89,7 @@ class SavingItemWidget extends StatelessWidget {
                           locale: 'id_ID',
                           decimalDigits: 0,
                           symbol: "Rp ",
-                        ).format(saving.nominal),
+                        ).format(wallet.nominal),
                         style: greyTextStyle.copyWith(
                           fontSize: 14,
                           fontWeight: bold,
@@ -140,12 +98,6 @@ class SavingItemWidget extends StatelessWidget {
                       ),
                       const SizedBox(
                         height: 4,
-                      ),
-                      Text(
-                        generateZeroDigit(nominalString),
-                        style: greyTextStyle.copyWith(
-                          fontSize: 12,
-                        ),
                       ),
                     ],
                   ),
@@ -158,4 +110,3 @@ class SavingItemWidget extends StatelessWidget {
     );
   }
 }
-
