@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:walleto/data/model/onboarding.dart';
 import 'package:walleto/main.dart';
@@ -44,11 +45,10 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
 
   @override
   Widget build(BuildContext context) {
-    // SizeConfig().init(context);
     double sizeV = MediaQuery.of(context).size.height / 100;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: kGradasi,
       body: SafeArea(
         child: Column(
           children: [
@@ -73,10 +73,11 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                     ),
                     SizedBox(height: sizeV * 5),
                     Container(
-                      height: sizeV * 50,
-                      child: Image.asset(
+                      width: 250,
+                      height: 250,
+                      child: SvgPicture.asset(
                         onboardingContents[index].image,
-                        fit: BoxFit.contain,
+                        // fit: BoxFit.contain,
                       ),
                     ),
                   ],

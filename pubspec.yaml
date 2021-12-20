@@ -54,6 +54,12 @@ flutter_native_splash:
   android_gravity: center
   fullscreen: true
 
+flutter_icons:
+  ios: true
+  android: true
+  image_path_ios: "assets/icons.png"
+  image_path_android: "assets/icons.png"
+
 flutter:
   uses-material-design: true
 
