@@ -5,7 +5,6 @@ import 'package:walleto/data/hive/wallet_boxes.dart';
 import 'package:walleto/data/model/history_wallet.dart';
 import 'package:walleto/data/model/wallet.dart';
 import 'package:walleto/screens/home_page.dart';
-import 'package:walleto/screens/main_menu_page.dart';
 import 'package:walleto/screens/widgets/custom_text_field.dart';
 import 'package:walleto/shared/theme.dart';
 
@@ -132,7 +131,7 @@ class _WalletCashPageState extends State<WalletCashPage> {
                         ),
                         style: ElevatedButton.styleFrom(
                           primary: kBlueColor,
-                          minimumSize: Size.fromHeight(40),
+                          minimumSize: const Size.fromHeight(40),
                           padding: const EdgeInsets.symmetric(
                             horizontal: 16.0,
                             vertical: 14.0,

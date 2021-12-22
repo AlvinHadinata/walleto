@@ -2,11 +2,11 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:walleto/notification/notification_helper.dart';
 import 'package:walleto/screens/category/category_page.dart';
 import 'package:walleto/screens/notes/note_add_page.dart';
 import 'package:walleto/screens/settings_page.dart';
 import 'package:walleto/shared/theme.dart';
+
 import 'main_menu_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,7 +18,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
-  final NotificationHelper _notificationHelper = NotificationHelper();
+
   final autoSizeGroup = AutoSizeGroup();
   int _bottomNavIndex = 0;
   late AnimationController _animationController;

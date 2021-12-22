@@ -23,7 +23,7 @@ import 'package:walleto/screens/target/target_detail_page.dart';
 import 'package:walleto/screens/target/target_add_page.dart';
 import 'package:walleto/screens/target/target_edit_page.dart';
 import 'package:walleto/screens/target/target_list_page.dart';
-import 'package:walleto/screens/wallet/waller_edit_page.dart';
+import 'package:walleto/screens/wallet/wallet_edit_page.dart';
 import 'package:walleto/screens/wallet/wallet_cash_page.dart';
 import 'package:walleto/screens/wallet/wallet_detail_page.dart';
 import 'package:walleto/screens/wallet/wallet_add_page.dart';

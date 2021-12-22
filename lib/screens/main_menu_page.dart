@@ -392,7 +392,7 @@ class MainMenuPage extends StatelessWidget {
           if (box.values.isEmpty) {
             return Column(
               children: [
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 AnimationPlaceholder(
                   animation: "assets/no_data.svg",
                   text: "Belum ada catatan",
@@ -481,7 +481,7 @@ class MainMenuPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                             color: kBlueColor),
                         child: Padding(
-                          padding: EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
                           child: Column(
                             children: [
                               Text(
@@ -506,7 +506,7 @@ class MainMenuPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                             color: kBlueColor),
                         child: Padding(
-                          padding: EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
                           child: Column(
                             children: [
                               Text(
@@ -530,7 +530,7 @@ class MainMenuPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                             color: kBlueColor),
                         child: Padding(
-                          padding: EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
                           child: Column(
                             children: [
                               Text(
@@ -604,7 +604,7 @@ class MainMenuPage extends StatelessWidget {
                   ],
                 ),
                 _savingListItem(context),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -629,7 +629,7 @@ class MainMenuPage extends StatelessWidget {
                   ],
                 ),
                 listNotes(context),
-                SizedBox(height: 100)
+                const SizedBox(height: 100)
               ],
             ),
           ),

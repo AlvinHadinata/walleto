@@ -7,6 +7,8 @@ import 'package:walleto/notification/scheduling_provider.dart';
 import 'package:walleto/shared/theme.dart';
 
 class SettingsPage extends StatefulWidget {
+  const SettingsPage({Key? key}) : super(key: key);
+
   @override
   State<SettingsPage> createState() => _SettingsPageState();
 }

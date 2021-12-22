@@ -8,12 +8,12 @@ import 'package:walleto/shared/theme.dart';
 class CategoryPage extends StatelessWidget {
   static const routeName = "/category_page";
   final bool isWallet;
-  CategoryPage({required this.isWallet});
+  const CategoryPage({required this.isWallet});
 
   Widget _buildContent(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.all(25.0),
+        padding: const EdgeInsets.all(25.0),
         child: Column(
           children: [
             Row(
@@ -75,7 +75,7 @@ class CategoryPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -135,7 +135,7 @@ class CategoryPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -189,7 +189,7 @@ class CategoryPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

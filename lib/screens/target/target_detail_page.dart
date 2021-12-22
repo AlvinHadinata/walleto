@@ -121,7 +121,7 @@ class TargetDetailPage extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               LinearPercentIndicator(
                                 // width: MediaQuery.of(context).size.width / 1.28,
                                 animation: true,
@@ -160,7 +160,7 @@ class TargetDetailPage extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  Divider(height: 30, color: kBlackPrimary),
+                  const Divider(height: 30, color: kBlackPrimary),
                   Row(
                     children: [
                       Text(
@@ -293,8 +293,8 @@ class TargetDetailPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Divider(height: 30, color: kBlackPrimary),
-                  SizedBox(
+                  const Divider(height: 30, color: kBlackPrimary),
+                  const SizedBox(
                     height: 10,
                   ),
                   Row(

@@ -91,7 +91,7 @@ class _NoteEditPageState extends State<NoteEditPage> {
                         ),
                         style: ElevatedButton.styleFrom(
                           primary: kBlueColor,
-                          minimumSize: Size.fromHeight(40),
+                          minimumSize: const Size.fromHeight(40),
                           padding: const EdgeInsets.symmetric(
                             horizontal: 16.0,
                             vertical: 14.0,

@@ -7,8 +7,6 @@ import 'package:walleto/screens/home_page.dart';
 import 'package:walleto/screens/widgets/custom_text_field.dart';
 import 'package:walleto/shared/theme.dart';
 
-import '../main_menu_page.dart';
-
 class WalletEditPage extends StatefulWidget {
   static const routeName = "/wallet_edit_page";
   const WalletEditPage({Key? key}) : super(key: key);
@@ -23,7 +21,6 @@ class _WalletEditPageState extends State<WalletEditPage> {
   final TextEditingController _descController = TextEditingController();
   Category? _selectedCategory;
   String? _nominalWallet;
-  String? _currentNominal;
   int? _selectedId;
 
   @override
@@ -98,7 +95,7 @@ class _WalletEditPageState extends State<WalletEditPage> {
                           ),
                           style: ElevatedButton.styleFrom(
                             primary: kBlueColor,
-                            minimumSize: Size.fromHeight(40),
+                            minimumSize: const Size.fromHeight(40),
                             padding: const EdgeInsets.symmetric(
                               horizontal: 16.0,
                               vertical: 14.0,

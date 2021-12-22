@@ -4,7 +4,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:walleto/data/hive/note_boxes.dart';
 import 'package:walleto/data/model/note.dart';
 import 'package:walleto/screens/home_page.dart';
-import 'package:walleto/screens/notes/note_page.dart';
 import 'package:walleto/screens/widgets/custom_text_field.dart';
 import 'package:walleto/shared/theme.dart';
 
@@ -25,7 +24,7 @@ class NoteAddPage extends StatelessWidget {
         backgroundColor: kBlueColor,
       ),
       body: SingleChildScrollView(
-        physics: ClampingScrollPhysics(),
+        physics: const ClampingScrollPhysics(),
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
           child: Column(
@@ -75,7 +74,7 @@ class NoteAddPage extends StatelessWidget {
                           ),
                           style: ElevatedButton.styleFrom(
                             primary: kBlueColor,
-                            minimumSize: Size.fromHeight(40),
+                            minimumSize: const Size.fromHeight(40),
                             padding: const EdgeInsets.symmetric(
                               horizontal: 16.0,
                               vertical: 14.0,

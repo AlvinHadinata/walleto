@@ -5,14 +5,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:walleto/data/hive/history_target_boxes.dart';
 import 'package:walleto/data/hive/history_wallet_boxes.dart';
 import 'package:walleto/data/hive/wallet_boxes.dart';
 import 'package:walleto/data/model/history_wallet.dart';
 import 'package:walleto/data/model/wallet.dart';
-import 'package:walleto/screens/main_menu_page.dart';
-import 'package:walleto/screens/wallet/waller_edit_page.dart';
 import 'package:walleto/screens/wallet/wallet_cash_page.dart';
+import 'package:walleto/screens/wallet/wallet_edit_page.dart';
 import 'package:walleto/screens/widgets/animation_placeholder.dart';
 import 'package:walleto/screens/widgets/item_list.dart';
 import 'package:walleto/shared/theme.dart';
@@ -143,7 +141,7 @@ class WalletDetailPage extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 30),
-                Divider(height: 30, color: kBlackPrimary),
+                const Divider(height: 30, color: kBlackPrimary),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [

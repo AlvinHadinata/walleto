@@ -43,7 +43,7 @@ class _NotePageState extends State<NotePage> {
         if (box.values.isEmpty) {
           return Column(
             children: [
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               AnimationPlaceholder(
                 animation: "assets/no_data.svg",
                 text: "Belum ada catatan",

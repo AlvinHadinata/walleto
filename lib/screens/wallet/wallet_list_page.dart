@@ -21,9 +21,9 @@ static const routeName = "/wallet_list_page";
           centerTitle: true,
           backgroundColor: kBlueColor),
       body: SingleChildScrollView(
-        physics: ClampingScrollPhysics(),
+        physics: const ClampingScrollPhysics(),
         scrollDirection: Axis.vertical,
-        child: Padding(padding: EdgeInsets.all(20),
+        child: Padding(padding: const EdgeInsets.all(20),
             child: _walletListItem(context)
         ),
       ),

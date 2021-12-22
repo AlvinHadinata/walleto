@@ -9,8 +9,6 @@ import 'package:walleto/screens/widgets/custom_text_field.dart';
 import 'package:walleto/screens/widgets/custome_drop_down.dart';
 import 'package:walleto/shared/theme.dart';
 
-import '../main_menu_page.dart';
-
 class TargetAddPage extends StatefulWidget {
   static const routeName = "/target_add_page";
 

@@ -1,14 +1,10 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:walleto/data/hive/saving_target_boxes.dart';
 import 'package:walleto/data/hive/wallet_boxes.dart';
 import 'package:walleto/data/model/category.dart';
 import 'package:walleto/data/model/wallet.dart';
 import 'package:walleto/screens/home_page.dart';
-import 'package:walleto/screens/main_menu_page.dart';
 import 'package:walleto/screens/widgets/custom_text_field.dart';
 import 'package:walleto/shared/theme.dart';
 
@@ -94,7 +90,7 @@ class _WalletAddPageState extends State<WalletAddPage> {
                           ),
                           style: ElevatedButton.styleFrom(
                             primary: kBlueColor,
-                            minimumSize: Size.fromHeight(40),
+                            minimumSize: const Size.fromHeight(40),
                             padding: const EdgeInsets.symmetric(
                               horizontal: 16.0,
                               vertical: 14.0,
