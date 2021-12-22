@@ -66,6 +66,9 @@ class _TargetEditPageState extends State<TargetEditPage> {
                         if (value!.isEmpty) {
                           return 'Nama tidak boleh kosong';
                         }
+                        else if(value.length > 15){
+                          return 'Nama target tidak boleh lebih dari 15 karakter';
+                        }
                         return null;
                       },
                     ),

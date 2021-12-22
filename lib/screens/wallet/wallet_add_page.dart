@@ -41,7 +41,7 @@ class _WalletAddPageState extends State<WalletAddPage> {
                       controller: _nameController,
                       maxLines: 1,
                       validator: (name) =>
-                          name != null && name.isEmpty ? 'Enter a name' : null,
+                          name != null && name.isEmpty ? 'Masukkan nama wallet' : null,
                     ),
                     const SizedBox(height: 20),
                     CustomTextField(
