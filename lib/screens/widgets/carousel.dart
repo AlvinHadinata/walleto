@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 import 'package:walleto/data/model/wallet.dart';
 import 'package:walleto/shared/theme.dart';
 
@@ -33,10 +34,16 @@ class Carousel extends StatelessWidget {
                     height: 30.0,
                   ),
                   Text(
-                    "RP. " + wallet.nominal.toString(),
+                    NumberFormat.currency(
+                      locale: 'id_ID',
+                      decimalDigits: 0,
+                      symbol: "Rp ",
+                    ).format(wallet.nominal),
                     style: whiteTextStyle.copyWith(
-                        fontSize: 15, fontWeight: regular),
-                  )
+                      fontSize: 14,
+                      fontWeight: bold,
+                    ),
+                  ),
                 ],
               ),
               Column(

@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:walleto/data/model/wallet.dart';
 import 'package:walleto/shared/theme.dart';
-import 'package:walleto/utils/helpers_utils.dart';
 
 class WalletItemWidget extends StatelessWidget {
   final Wallet wallet;
@@ -16,13 +15,6 @@ class WalletItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String nominalString = NumberFormat.currency(
-      locale: 'id_ID',
-      decimalDigits: 0,
-      symbol: "Rp ",
-    ).format(
-      wallet.nominal
-    );
 
     return GestureDetector(
       onTap: onTap,
@@ -90,10 +82,9 @@ class WalletItemWidget extends StatelessWidget {
                           decimalDigits: 0,
                           symbol: "Rp ",
                         ).format(wallet.nominal),
-                        style: greyTextStyle.copyWith(
+                        style: blackTextStyle.copyWith(
                           fontSize: 14,
                           fontWeight: bold,
-                          color: kGreenColor,
                         ),
                       ),
                       const SizedBox(
