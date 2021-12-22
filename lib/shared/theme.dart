@@ -25,7 +25,7 @@ TextStyle blackTextStyle = GoogleFonts.nunito(
   color: kBlackPrimary,
 );
 
-TextStyle blueTextSyle = GoogleFonts.nunito(
+TextStyle blueTextStyle = GoogleFonts.nunito(
   color: kBlueColor,
 );
 

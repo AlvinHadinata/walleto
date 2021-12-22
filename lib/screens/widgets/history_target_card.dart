@@ -55,7 +55,7 @@ class HistoryTargetCard extends StatelessWidget {
                       children: [
                         Text(
                           target!.nameTarget,
-                          style: blueTextSyle.copyWith(
+                          style: blueTextStyle.copyWith(
                             fontSize: 16.0,
                             fontWeight: bold,
                           ),

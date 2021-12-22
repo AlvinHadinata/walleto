@@ -52,7 +52,7 @@ class Carousel extends StatelessWidget {
                   Text(
                     wallet.name,
                     style: whiteTextStyle.copyWith(
-                      fontSize: 18,
+                      fontSize: 14,
                       fontWeight: bold,
                     ),
                   ),

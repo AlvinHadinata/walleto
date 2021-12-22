@@ -105,15 +105,9 @@ class TargetDetailPage extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "Saving Name",
-                                        style: greyTextStyle.copyWith(
-                                            fontSize: 16.0,
-                                            fontWeight: regular),
-                                      ),
-                                      Text(
                                         argument.nameTarget,
                                         style: blackTextStyle.copyWith(
-                                          fontSize: 20,
+                                          fontSize: 18,
                                           fontWeight: bold,
                                         ),
                                       ),
@@ -165,7 +159,7 @@ class TargetDetailPage extends StatelessWidget {
                     children: [
                       Text(
                         'Deskripsi',
-                        style: blueTextSyle.copyWith(
+                        style: blueTextStyle.copyWith(
                           fontSize: 18,
                           fontWeight: bold,
                         ),
@@ -191,7 +185,7 @@ class TargetDetailPage extends StatelessWidget {
                     children: [
                       Text(
                         'Terkumpul',
-                        style: blueTextSyle.copyWith(
+                        style: blueTextStyle.copyWith(
                           fontSize: 16,
                           fontWeight: bold,
                         ),
@@ -215,7 +209,7 @@ class TargetDetailPage extends StatelessWidget {
                     children: [
                       Text(
                         'Sisa Target',
-                        style: blueTextSyle.copyWith(
+                        style: blueTextStyle.copyWith(
                           fontSize: 16,
                           fontWeight: bold,
                         ),
@@ -239,7 +233,7 @@ class TargetDetailPage extends StatelessWidget {
                     children: [
                       Text(
                         'Jangka Waktu',
-                        style: blueTextSyle.copyWith(
+                        style: blueTextStyle.copyWith(
                           fontSize: 16,
                           fontWeight: bold,
                         ),
@@ -258,7 +252,7 @@ class TargetDetailPage extends StatelessWidget {
                     children: [
                       Text(
                         'Prioritas',
-                        style: blueTextSyle.copyWith(
+                        style: blueTextStyle.copyWith(
                           fontSize: 16,
                           fontWeight: bold,
                         ),
@@ -276,7 +270,7 @@ class TargetDetailPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Proses',
-                          style: blueTextSyle.copyWith(
+                          style: blueTextStyle.copyWith(
                             fontSize: 16,
                             fontWeight: bold,
                           )),

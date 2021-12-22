@@ -83,7 +83,7 @@ class MainMenuPage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Container(
-          height: 115,
+          height: MediaQuery.of(context).size.height / 6,
           width: MediaQuery.of(context).size.width / 1.5,
           child: CarouselSlider(
             options: CarouselOptions(
@@ -475,76 +475,72 @@ class MainMenuPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: kBlueColor),
-                        child: Padding(
-                          padding: const EdgeInsets.all(5),
-                          child: Column(
-                            children: [
-                              Text(
-                                "Wallet",
-                                style: whiteTextStyle.copyWith(
-                                    fontSize: 18, fontWeight: bold),
-                              ),
-                              Text(
-                                _walletLength.toString(),
-                                style: whiteTextStyle.copyWith(
-                                    fontSize: 18, fontWeight: bold),
-                              ),
-                            ],
-                          ),
+                    Container(
+                      width: MediaQuery.of(context).size.width / 4,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: kBlueColor),
+                      child: Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Column(
+                          children: [
+                            Text(
+                              "Wallet",
+                              style: whiteTextStyle.copyWith(
+                                  fontSize: 18, fontWeight: bold),
+                            ),
+                            Text(
+                              _walletLength.toString(),
+                              style: whiteTextStyle.copyWith(
+                                  fontSize: 18, fontWeight: bold),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                    Expanded(
-                      child: Container(
-                        // margin: EdgeInsets.symmetric(horizontal: 5),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: kBlueColor),
-                        child: Padding(
-                          padding: const EdgeInsets.all(5),
-                          child: Column(
-                            children: [
-                              Text(
-                                "Saving",
-                                style: whiteTextStyle.copyWith(
-                                    fontSize: 18, fontWeight: bold),
-                              ),
-                              Text(
-                                _savingLength.toString(),
-                                style: whiteTextStyle.copyWith(
-                                    fontSize: 18, fontWeight: bold),
-                              )
-                            ],
-                          ),
+                    Container(
+                      width: MediaQuery.of(context).size.width / 4,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: kBlueColor),
+                      child: Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Column(
+                          children: [
+                            Text(
+                              "Saving",
+                              style: whiteTextStyle.copyWith(
+                                  fontSize: 18, fontWeight: bold),
+                            ),
+                            Text(
+                              _savingLength.toString(),
+                              style: whiteTextStyle.copyWith(
+                                  fontSize: 18, fontWeight: bold),
+                            )
+                          ],
                         ),
                       ),
                     ),
-                    Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: kBlueColor),
-                        child: Padding(
-                          padding: const EdgeInsets.all(5),
-                          child: Column(
-                            children: [
-                              Text(
-                                "Notes",
-                                style: whiteTextStyle.copyWith(
-                                    fontSize: 18, fontWeight: bold),
-                              ),
-                              Text(
-                                _noteLength.toString(),
-                                style: whiteTextStyle.copyWith(
-                                    fontSize: 18, fontWeight: bold),
-                              )
-                            ],
-                          ),
+                    Container(
+                      width: MediaQuery.of(context).size.width / 4,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: kBlueColor),
+                      child: Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Column(
+                          children: [
+                            Text(
+                              "Notes",
+                              style: whiteTextStyle.copyWith(
+                                  fontSize: 18, fontWeight: bold),
+                            ),
+                            Text(
+                              _noteLength.toString(),
+                              style: whiteTextStyle.copyWith(
+                                  fontSize: 18, fontWeight: bold),
+                            )
+                          ],
                         ),
                       ),
                     ),

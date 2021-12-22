@@ -43,7 +43,7 @@ class WalletDetailPage extends StatelessWidget {
                 Container(
                   height: MediaQuery.of(context).size.height / 4,
                   decoration: BoxDecoration(
-                    color: kLightGreyColor,
+                    color: kBlueColor,
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: Padding(
@@ -55,17 +55,8 @@ class WalletDetailPage extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            Container(
-                              width: 50.0,
-                              height: 40.0,
-                              padding: const EdgeInsets.all(8.0),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Colors.blue.withOpacity(.8),
-                                  shape: BoxShape.rectangle),
-                              child: SvgPicture.asset(
-                                argument.category.icon,
-                              ),
+                            SvgPicture.asset(
+                              argument.category.icon,
                             ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.end,
@@ -76,7 +67,7 @@ class WalletDetailPage extends StatelessWidget {
                                     decimalDigits: 0,
                                     symbol: "Rp ",
                                   ).format(argument.nominal),
-                                  style: blackTextStyle.copyWith(
+                                  style: whiteTextStyle.copyWith(
                                     fontSize: 16,
                                     fontWeight: bold,
                                   ),
@@ -92,14 +83,9 @@ class WalletDetailPage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Nama Wallet",
-                                  style: whiteTextStyle.copyWith(
-                                      fontSize: 18.0, fontWeight: regular),
-                                ),
-                                Text(
                                   argument.name,
                                   style: whiteTextStyle.copyWith(
-                                    fontSize: 22,
+                                    fontSize: 18,
                                     fontWeight: bold,
                                   ),
                                 ),
@@ -120,7 +106,7 @@ class WalletDetailPage extends StatelessWidget {
                   children: [
                     Text(
                       'Deskripsi',
-                      style: blueTextSyle.copyWith(
+                      style: blueTextStyle.copyWith(
                         fontSize: 18,
                         fontWeight: bold,
                       ),
@@ -147,7 +133,7 @@ class WalletDetailPage extends StatelessWidget {
                   children: [
                     Text(
                       "History",
-                      style: blackTextStyle.copyWith(
+                      style: blueTextStyle.copyWith(
                         fontWeight: bold,
                         fontSize: 18,
                       ),

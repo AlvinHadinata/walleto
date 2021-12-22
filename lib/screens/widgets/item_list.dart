@@ -58,7 +58,7 @@ class ItemList extends StatelessWidget {
                       children: [
                         Text(
                           wallet!.nameWallet,
-                          style: blueTextSyle.copyWith(
+                          style: blueTextStyle.copyWith(
                             fontSize: 16.0,
                             fontWeight: bold,
                           ),

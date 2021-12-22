@@ -69,7 +69,7 @@ class SavingItemWidget extends StatelessWidget {
                         children: [
                           Text(
                             saving.nameTarget,
-                            style: blueTextSyle.copyWith(
+                            style: blueTextStyle.copyWith(
                               fontSize: 16.0,
                               fontWeight: bold,
                             ),
