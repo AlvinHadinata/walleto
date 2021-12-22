@@ -76,7 +76,7 @@ class Category {
 
   static Category get education {
     return Category(
-      name: "Sekolah",
+      name: "Pendidikan",
       color: kBlueColor.value,
       icon: "assets/ic_school.svg",
     );
