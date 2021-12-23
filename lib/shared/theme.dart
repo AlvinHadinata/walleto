@@ -12,6 +12,8 @@ const Color kRedColor = Color(0xFFFF2929);
 const Color kGreenColor = Color(0xFF13A617);
 const Color kBlackSecondary = Color(0xff252932);
 const Color kYellowColor = Color(0xffFFA235);
+const Color startColor = Color(0xff006FF8);
+const Color endColor = Color(0xff3e94ff);
 
 TextStyle whiteTextStyle = GoogleFonts.nunito(
   color: kWhiteColor,

@@ -4,8 +4,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:walleto/data/model/onboarding.dart';
 import 'package:walleto/main.dart';
 import 'package:walleto/screens/home_page.dart';
-import 'package:walleto/screens/main_menu_page.dart';
-
 import 'package:walleto/shared/theme.dart';
 
 class OnBoardingPage extends StatefulWidget {
@@ -103,12 +101,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                             OnBoardNavBtn(
                               name: 'SKIP',
                               onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => MainMenuPage(),
-                                  ),
-                                );
+                                Navigator.pushReplacementNamed(
+                                    context, HomePage.routeName);
                               },
                             ),
                             Row(

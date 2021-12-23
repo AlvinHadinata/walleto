@@ -62,6 +62,9 @@ class _TargetCashPageState extends State<TargetCashPage> {
                       if (value!.isEmpty) {
                         return 'Deskripsi tidak boleh kosong';
                       }
+                      else if(value.length > 20){
+                        return 'Tidak boleh lebih dari 20 karakter';
+                      }
                       return null;
                     },
                   ),

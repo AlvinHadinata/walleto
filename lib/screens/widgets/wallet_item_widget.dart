@@ -58,7 +58,7 @@ class WalletItemWidget extends StatelessWidget {
                           Text(
                             wallet.name,
                             style: blueTextStyle.copyWith(
-                              fontSize: 16.0,
+                              fontSize: 14,
                               fontWeight: bold,
                             ),
                           ),

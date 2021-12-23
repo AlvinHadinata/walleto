@@ -44,6 +44,7 @@ class SavingItemWidget extends StatelessWidget {
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Row(
                   children: [
@@ -70,7 +71,7 @@ class SavingItemWidget extends StatelessWidget {
                           Text(
                             saving.nameTarget,
                             style: blueTextStyle.copyWith(
-                              fontSize: 16.0,
+                              fontSize: 14.0,
                               fontWeight: bold,
                             ),
                           ),
@@ -84,7 +85,7 @@ class SavingItemWidget extends StatelessWidget {
                                     ? "Completed"
                                     : "On Progress",
                                 style: blackTextStyle.copyWith(
-                                  fontSize: 12,
+                                  fontSize: 10,
                                   color: (saving.currentMoney == saving.nominal)
                                       ? kGreenColor
                                       : kYellowColor,
@@ -107,7 +108,7 @@ class SavingItemWidget extends StatelessWidget {
                               Text(
                                 "${saving.period}, ${saving.durationType}",
                                 style: greyTextStyle.copyWith(
-                                  fontSize: 12,
+                                  fontSize: 10,
                                 ),
                               ),
                             ],
@@ -117,9 +118,9 @@ class SavingItemWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                const Spacer(
-                  flex: 1,
-                ),
+                // const Spacer(
+                //   flex: 1,
+                // ),
                 Container(
                   margin: const EdgeInsets.only(left: 8.0),
                   child: Column(
@@ -135,7 +136,6 @@ class SavingItemWidget extends StatelessWidget {
                         style: greyTextStyle.copyWith(
                           fontSize: 14,
                           fontWeight: bold,
-                          color: kGreenColor,
                         ),
                       ),
                       const SizedBox(

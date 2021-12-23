@@ -52,7 +52,14 @@ class TargetDetailPage extends StatelessWidget {
                   Container(
                     height: MediaQuery.of(context).size.height / 3.2,
                     decoration: BoxDecoration(
-                      color: kGradasi,
+                      gradient: LinearGradient(
+                        colors: [
+                          startColor,
+                          endColor,
+                        ],
+                        begin: Alignment.bottomRight,
+                        end: Alignment.topLeft,
+                      ),
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                     child: Padding(
@@ -85,7 +92,7 @@ class TargetDetailPage extends StatelessWidget {
                                       decimalDigits: 0,
                                       symbol: "Rp ",
                                     ).format(argument.nominal),
-                                    style: blackTextStyle.copyWith(
+                                    style: whiteTextStyle.copyWith(
                                       fontSize: 16,
                                       fontWeight: bold,
                                     ),
@@ -106,7 +113,7 @@ class TargetDetailPage extends StatelessWidget {
                                     children: [
                                       Text(
                                         argument.nameTarget,
-                                        style: blackTextStyle.copyWith(
+                                        style: whiteTextStyle.copyWith(
                                           fontSize: 18,
                                           fontWeight: bold,
                                         ),
@@ -166,15 +173,16 @@ class TargetDetailPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                  Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        argument.decription,
-                        style: greyTextStyle.copyWith(
-                          fontSize: 16,
-                          fontWeight: medium,
+                      Expanded(
+                        child: Text(
+                          argument.decription,
+                          style: greyTextStyle.copyWith(
+                            fontSize: 16,
+                            fontWeight: medium,
+                          ),
                         ),
                       ),
                     ],
@@ -356,7 +364,7 @@ class TargetDetailPage extends StatelessWidget {
               Icons.attach_money,
               color: kBlueColor,
             ),
-            label: 'Saving',
+            label: 'Cash',
             backgroundColor: kGradasi,
             onTap: () {
               Navigator.pushNamed(context, TargetCashPage.routeName,
@@ -364,7 +372,7 @@ class TargetDetailPage extends StatelessWidget {
             },
           ),
           SpeedDialChild(
-            child: const Icon(Icons.email, color: kBlueColor),
+            child: const Icon(Icons.edit, color: kBlueColor),
             label: 'Edit',
             backgroundColor: kGradasi,
             onTap: () {
