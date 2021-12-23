@@ -136,7 +136,6 @@ class SavingItemWidget extends StatelessWidget {
                         style: greyTextStyle.copyWith(
                           fontSize: 14,
                           fontWeight: bold,
-                          color: kGreenColor,
                         ),
                       ),
                       const SizedBox(

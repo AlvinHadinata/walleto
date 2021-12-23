@@ -113,15 +113,16 @@ class WalletDetailPage extends StatelessWidget {
                     )
                   ],
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      argument.decription,
-                      style: blackTextStyle.copyWith(
-                        fontSize: 14,
-                        fontWeight: regular,
+                    Expanded(
+                      child: Text(
+                        argument.decription,
+                        style: blackTextStyle.copyWith(
+                          fontSize: 14,
+                          fontWeight: regular,
+                        ),
                       ),
                     ),
                   ],
@@ -197,7 +198,7 @@ class WalletDetailPage extends StatelessWidget {
               Icons.attach_money,
               color: kBlueColor,
             ),
-            label: 'Saving',
+            label: 'Cash',
             backgroundColor: kGradasi,
             onTap: () {
               Navigator.pushNamed(context, WalletCashPage.routeName,
@@ -205,7 +206,7 @@ class WalletDetailPage extends StatelessWidget {
             },
           ),
           SpeedDialChild(
-            child: const Icon(Icons.edit_rounded, color: kBlueColor),
+            child: const Icon(Icons.edit, color: kBlueColor),
             label: 'Edit',
             backgroundColor: kGradasi,
             onTap: () {
