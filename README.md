@@ -7,7 +7,6 @@
 <p align="center">
   <a href="https://flutter.dev/"><img alt="Platform" src="https://img.shields.io/badge/platform-Flutter-blue.svg"></a>
   <a href="https://dart.dev/"><img alt="Dart" src="https://img.shields.io/badge/dart-2.12.2-blue.svg"></a>
-  <a href="https://docs.hivedb.dev/"><img alt="Hive" src="https://docs.hivedb.dev/assets/logo.svg"></a>
 </p>
 
 <p align="center">
