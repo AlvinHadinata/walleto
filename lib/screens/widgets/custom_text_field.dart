@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:walleto/shared/theme.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -8,6 +9,7 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final String? Function(String? val)? validator;
   final TextInputType keyboardType;
+  final List<TextInputFormatter>? inputFormatter;
   final int? maxLines;
 
   CustomTextField({
@@ -17,6 +19,7 @@ class CustomTextField extends StatelessWidget {
     required this.validator,
     this.keyboardType = TextInputType.text,
     // this.errorValidation,
+    this.inputFormatter,
     this.maxLines,
   });
 
@@ -43,6 +46,7 @@ class CustomTextField extends StatelessWidget {
             cursorColor: Theme.of(context).iconTheme.color,
             controller: controller,
             keyboardType: keyboardType,
+            inputFormatters: inputFormatter,
             maxLines: (maxLines != null) ? maxLines : 1,
             // onChanged: onChanged,
             decoration: InputDecoration(

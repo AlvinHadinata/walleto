@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:walleto/data/hive/history_wallet_boxes.dart';
 import 'package:walleto/data/hive/wallet_boxes.dart';
@@ -39,6 +40,7 @@ class _WalletCashPageState extends State<WalletCashPage> {
                     hintText: "Masukan Nominal",
                     keyboardType: TextInputType.number,
                     controller: _nominalController,
+                    inputFormatter: [FilteringTextInputFormatter.digitsOnly],
                     maxLines: 1,
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -201,9 +203,7 @@ class _WalletCashPageState extends State<WalletCashPage> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-          child: SafeArea(
-              child: _buildContent())),
+      body: SingleChildScrollView(child: SafeArea(child: _buildContent())),
     );
   }
 }

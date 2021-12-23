@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:walleto/data/hive/saving_target_boxes.dart';
 import 'package:walleto/data/model/category.dart';
@@ -65,8 +66,7 @@ class _TargetEditPageState extends State<TargetEditPage> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'Nama tidak boleh kosong';
-                        }
-                        else if(value.length > 15){
+                        } else if (value.length > 15) {
                           return 'Nama target tidak boleh lebih dari 15 karakter';
                         }
                         return null;
@@ -80,6 +80,7 @@ class _TargetEditPageState extends State<TargetEditPage> {
                       hintText: "Masukan Nominal",
                       keyboardType: TextInputType.number,
                       controller: _nominalController,
+                      inputFormatter: [FilteringTextInputFormatter.digitsOnly],
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'Nominal tidak boleh kosong';

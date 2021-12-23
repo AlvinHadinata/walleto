@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:walleto/data/hive/wallet_boxes.dart';
 import 'package:walleto/data/model/category.dart';
@@ -40,8 +41,9 @@ class _WalletAddPageState extends State<WalletAddPage> {
                       keyboardType: TextInputType.text,
                       controller: _nameController,
                       maxLines: 1,
-                      validator: (name) =>
-                          name != null && name.isEmpty ? 'Masukkan nama wallet' : null,
+                      validator: (name) => name != null && name.isEmpty
+                          ? 'Masukkan nama wallet'
+                          : null,
                     ),
                     const SizedBox(height: 20),
                     CustomTextField(
@@ -49,6 +51,7 @@ class _WalletAddPageState extends State<WalletAddPage> {
                       hintText: "Masukan Nominal Awal",
                       keyboardType: TextInputType.number,
                       controller: _nominalController,
+                      inputFormatter: [FilteringTextInputFormatter.digitsOnly],
                       maxLines: 1,
                       validator: (value) {
                         if (value!.isEmpty) {

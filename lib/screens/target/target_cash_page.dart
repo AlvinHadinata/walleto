@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:walleto/data/hive/history_target_boxes.dart';
 import 'package:walleto/data/hive/saving_target_boxes.dart';
@@ -39,6 +40,7 @@ class _TargetCashPageState extends State<TargetCashPage> {
                     hintText: "Masukan Nominal Awal",
                     keyboardType: TextInputType.number,
                     controller: _nominalController,
+                    inputFormatter: [FilteringTextInputFormatter.digitsOnly],
                     maxLines: 1,
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -61,8 +63,7 @@ class _TargetCashPageState extends State<TargetCashPage> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Deskripsi tidak boleh kosong';
-                      }
-                      else if(value.length > 20){
+                      } else if (value.length > 20) {
                         return 'Tidak boleh lebih dari 20 karakter';
                       }
                       return null;
@@ -150,9 +151,7 @@ class _TargetCashPageState extends State<TargetCashPage> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-          child: SafeArea(
-              child: _buildContent())),
+      body: SingleChildScrollView(child: SafeArea(child: _buildContent())),
     );
   }
 }
