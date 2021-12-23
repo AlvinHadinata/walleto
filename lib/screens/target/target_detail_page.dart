@@ -52,7 +52,14 @@ class TargetDetailPage extends StatelessWidget {
                   Container(
                     height: MediaQuery.of(context).size.height / 3.2,
                     decoration: BoxDecoration(
-                      color: kGradasi,
+                      gradient: LinearGradient(
+                        colors: [
+                          startColor,
+                          endColor,
+                        ],
+                        begin: Alignment.bottomRight,
+                        end: Alignment.topLeft,
+                      ),
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                     child: Padding(
@@ -85,7 +92,7 @@ class TargetDetailPage extends StatelessWidget {
                                       decimalDigits: 0,
                                       symbol: "Rp ",
                                     ).format(argument.nominal),
-                                    style: blackTextStyle.copyWith(
+                                    style: whiteTextStyle.copyWith(
                                       fontSize: 16,
                                       fontWeight: bold,
                                     ),
@@ -106,7 +113,7 @@ class TargetDetailPage extends StatelessWidget {
                                     children: [
                                       Text(
                                         argument.nameTarget,
-                                        style: blackTextStyle.copyWith(
+                                        style: whiteTextStyle.copyWith(
                                           fontSize: 18,
                                           fontWeight: bold,
                                         ),

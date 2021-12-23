@@ -43,7 +43,14 @@ class WalletDetailPage extends StatelessWidget {
                 Container(
                   height: MediaQuery.of(context).size.height / 4,
                   decoration: BoxDecoration(
-                    color: kBlueColor,
+                    gradient: LinearGradient(
+                      colors: [
+                        startColor,
+                        endColor,
+                      ],
+                      begin: Alignment.bottomRight,
+                      end: Alignment.topLeft,
+                    ),
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: Padding(
