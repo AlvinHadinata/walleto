@@ -9,12 +9,14 @@ class HistoryTargetBoxes {
     getHistoryTarget().add(historyTarget);
   }
 
-  static void deleteHistoryTarget(String name) {
+  static void deleteHistoryTarget(String foreignKey) {
     final Map<dynamic, HistoryTarget> boxMap = getHistoryTarget().toMap();
     dynamic boxKey;
     boxMap.forEach((key, value) {
-      if (value.nameTarget == name) boxKey = key;
+      if (value.foreign == foreignKey) {
+        boxKey = key;
+        getHistoryTarget().delete(boxKey);
+      }
     });
-    getHistoryTarget().delete(boxKey);
   }
 }

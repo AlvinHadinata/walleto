@@ -100,7 +100,7 @@ class _TargetCashPageState extends State<TargetCashPage> {
 
                           if (isValid) {
                             HistoryTarget history = HistoryTarget(
-                              nameTarget: argument.nameTarget,
+                              foreign: argument.foreign,
                               nominal: int.parse(_nominalController.text),
                               description: _catatanController.text,
                               createdAt: DateTime.now().microsecondsSinceEpoch,

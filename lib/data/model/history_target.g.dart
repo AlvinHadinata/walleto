@@ -18,7 +18,7 @@ class HistoryTargetAdapter extends TypeAdapter<HistoryTarget> {
     };
     return HistoryTarget(
       id: fields[0] as int?,
-      nameTarget: fields[1] as String,
+      foreign: fields[1] as String,
       nominal: fields[2] as int,
       description: fields[3] as String,
       createdAt: fields[4] as int,
@@ -32,7 +32,7 @@ class HistoryTargetAdapter extends TypeAdapter<HistoryTarget> {
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.nameTarget)
+      ..write(obj.foreign)
       ..writeByte(2)
       ..write(obj.nominal)
       ..writeByte(3)

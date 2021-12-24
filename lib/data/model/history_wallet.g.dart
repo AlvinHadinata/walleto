@@ -18,7 +18,7 @@ class HistoryWalletAdapter extends TypeAdapter<HistoryWallet> {
     };
     return HistoryWallet(
       id: fields[0] as int?,
-      nameWallet: fields[1] as String,
+      foreign: fields[1] as String,
       nominal: fields[2] as int,
       description: fields[3] as String,
       cashIn: fields[4] as bool?,
@@ -33,7 +33,7 @@ class HistoryWalletAdapter extends TypeAdapter<HistoryWallet> {
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.nameWallet)
+      ..write(obj.foreign)
       ..writeByte(2)
       ..write(obj.nominal)
       ..writeByte(3)

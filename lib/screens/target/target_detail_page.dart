@@ -29,15 +29,8 @@ class TargetDetailPage extends StatelessWidget {
     Widget _buildContent() {
       List<HistoryTarget> histories =
           Hive.box<HistoryTarget>('history_target').values.where((history) {
-        return history.nameTarget == argument.nameTarget;
+        return history.foreign == argument.foreign;
       }).toList();
-
-      List<String> namesHistory = [];
-
-      for (var i = 0; i <= histories.length - 1; i++) {
-        namesHistory.add(argument.nameTarget);
-      }
-      print(namesHistory);
 
       return SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -50,9 +43,9 @@ class TargetDetailPage extends StatelessWidget {
               Column(
                 children: [
                   Container(
-                    height: MediaQuery.of(context).size.height / 3.2,
+                    height: MediaQuery.of(context).size.height / 4,
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                         colors: [
                           startColor,
                           endColor,
@@ -77,7 +70,7 @@ class TargetDetailPage extends StatelessWidget {
                                 padding: const EdgeInsets.all(8.0),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    color: Colors.blue.withOpacity(.8),
+                                    color: kLightGreyColor,
                                     shape: BoxShape.rectangle),
                                 child: SvgPicture.asset(
                                   argument.category.icon,
@@ -132,7 +125,7 @@ class TargetDetailPage extends StatelessWidget {
                                     argument.currentMoney, argument.nominal),
                                 animateFromLastPercent: true,
                                 linearStrokeCap: LinearStrokeCap.roundAll,
-                                progressColor: kBlueColor,
+                                progressColor: kGreenColor,
                                 center: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -309,6 +302,7 @@ class TargetDetailPage extends StatelessWidget {
                   const SizedBox(height: 10),
                   Container(
                     width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height / 2,
                     child: ValueListenableBuilder<Box<HistoryTarget>>(
                       valueListenable:
                           HistoryTargetBoxes.getHistoryTarget().listenable(),
@@ -384,7 +378,7 @@ class TargetDetailPage extends StatelessWidget {
             label: 'Delete',
             backgroundColor: kGradasi,
             onTap: () {
-              _deleteTargetModal(context, argument.id, argument.nameTarget);
+              _deleteTargetModal(context, argument.id, argument.foreign);
             },
           ),
         ],
@@ -393,7 +387,7 @@ class TargetDetailPage extends StatelessWidget {
   }
 }
 
-void _deleteTargetModal(context, index, name) {
+void _deleteTargetModal(context, index, foreignKey) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -441,7 +435,7 @@ void _deleteTargetModal(context, index, name) {
             ),
             onPressed: () {
               SavingTargetBoxes.deleteSavingTarget(index);
-              HistoryTargetBoxes.deleteHistoryTarget(name);
+              HistoryTargetBoxes.deleteHistoryTarget(foreignKey);
               Navigator.pushNamedAndRemoveUntil(
                 context,
                 HomePage.routeName,

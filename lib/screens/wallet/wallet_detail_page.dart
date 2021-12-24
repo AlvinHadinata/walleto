@@ -28,7 +28,7 @@ class WalletDetailPage extends StatelessWidget {
     Widget _buildContent() {
       List<HistoryWallet> histories =
           Hive.box<HistoryWallet>('history_wallet').values.where((history) {
-        return history.nameWallet == argument.name;
+        return history.foreign == argument.foreign;
       }).toList();
 
       return SingleChildScrollView(
@@ -43,7 +43,7 @@ class WalletDetailPage extends StatelessWidget {
                 Container(
                   height: MediaQuery.of(context).size.height / 4,
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                       colors: [
                         startColor,
                         endColor,
@@ -62,8 +62,17 @@ class WalletDetailPage extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            SvgPicture.asset(
-                              argument.category.icon,
+                            Container(
+                              width: 50.0,
+                              height: 40.0,
+                              padding: const EdgeInsets.all(8.0),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: kLightGreyColor,
+                                  shape: BoxShape.rectangle),
+                              child: SvgPicture.asset(
+                                argument.category.icon,
+                              ),
                             ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.end,
@@ -89,6 +98,13 @@ class WalletDetailPage extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                Text(
+                                  "Wallet Name",
+                                  style: lightGreyTextStyle.copyWith(
+                                    fontSize: 16,
+                                    fontWeight: medium,
+                                  ),
+                                ),
                                 Text(
                                   argument.name,
                                   style: whiteTextStyle.copyWith(
@@ -151,6 +167,7 @@ class WalletDetailPage extends StatelessWidget {
                 const SizedBox(height: 10),
                 Container(
                   width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height / 2,
                   child: ValueListenableBuilder<Box<HistoryWallet>>(
                     valueListenable:
                         HistoryWalletBoxes.getHistoryWallet().listenable(),
@@ -225,7 +242,7 @@ class WalletDetailPage extends StatelessWidget {
             label: 'Delete',
             backgroundColor: kGradasi,
             onTap: () {
-              _deleteWalletModal(context, argument.id, argument.name);
+              _deleteWalletModal(context, argument.id, argument.foreign);
             },
           ),
         ],
@@ -233,7 +250,7 @@ class WalletDetailPage extends StatelessWidget {
     );
   }
 
-  void _deleteWalletModal(context, index, name) {
+  void _deleteWalletModal(context, index, foreign) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -281,7 +298,7 @@ class WalletDetailPage extends StatelessWidget {
               ),
               onPressed: () {
                 WalletBoxes.deleteWallet(index);
-                HistoryWalletBoxes.deleteHistoryWallet(name);
+                HistoryWalletBoxes.deleteHistoryWallet(foreign);
                 Navigator.pushNamedAndRemoveUntil(
                   context,
                   HomePage.routeName,

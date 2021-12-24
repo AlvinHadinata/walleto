@@ -54,7 +54,7 @@ class HistoryTargetCard extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          target!.nameTarget,
+                          target!.description,
                           style: blueTextStyle.copyWith(
                             fontSize: 16.0,
                             fontWeight: bold,
@@ -64,7 +64,7 @@ class HistoryTargetCard extends StatelessWidget {
                           height: 4.0,
                         ),
                         Text(
-                          target!.description,
+                          "Cash In",
                           style: greyTextStyle.copyWith(
                             fontSize: 12,
                           ),

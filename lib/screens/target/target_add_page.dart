@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -204,6 +206,8 @@ class _TargetAddPageState extends State<TargetAddPage> {
                                 decription: _descriptionController.text,
                                 createdAt:
                                     DateTime.now().millisecondsSinceEpoch,
+                                foreign:
+                                    "SVG-" + Random().nextInt(1000).toString(),
                               );
                               SavingTargetBoxes.storeSavingTarget(target);
                               Navigator.pushNamedAndRemoveUntil(

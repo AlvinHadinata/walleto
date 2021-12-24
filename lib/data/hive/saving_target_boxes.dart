@@ -6,14 +6,10 @@ class SavingTargetBoxes {
       Hive.box<SavingTarget>("savings_targets");
 
   static void storeSavingTarget(SavingTarget savingTarget) {
-    // Box<SavingTarget> savingTargetBox =
-    //     Hive.box<SavingTarget>("savings_targets");
     getSavingTarget().add(savingTarget);
   }
 
   static void updateSavingTarget(int index, SavingTarget savingTarget) {
-    // Box<SavingTarget> savingTargetBox =
-    //     Hive.box<SavingTarget>("savings_targets");
     getSavingTarget().putAt(
       index,
       SavingTarget(
@@ -27,34 +23,31 @@ class SavingTargetBoxes {
         priority: savingTarget.priority,
         decription: savingTarget.decription,
         createdAt: savingTarget.createdAt,
+        foreign: savingTarget.foreign,
       ),
     );
   }
 
   static void deleteSavingTarget(int index) {
-    Box<SavingTarget> savingTargetBox =
-        Hive.box<SavingTarget>("savings_targets");
     getSavingTarget().deleteAt(index);
   }
 
   static void updateCurrentMoneySaving(
       int index, SavingTarget savingTarget, int nominal) {
-    // Box<SavingTarget> savingTargetBox =
-    //     Hive.box<SavingTarget>("savings_targets");
     getSavingTarget().putAt(
       index,
       SavingTarget(
-        id: savingTarget.id,
-        nameTarget: savingTarget.nameTarget,
-        nominal: savingTarget.nominal,
-        period: savingTarget.period,
-        durationType: savingTarget.durationType,
-        currentMoney: savingTarget.currentMoney + nominal,
-        category: savingTarget.category,
-        priority: savingTarget.priority,
-        decription: savingTarget.decription,
-        createdAt: savingTarget.createdAt,
-      ),
+          id: savingTarget.id,
+          nameTarget: savingTarget.nameTarget,
+          nominal: savingTarget.nominal,
+          period: savingTarget.period,
+          durationType: savingTarget.durationType,
+          currentMoney: savingTarget.currentMoney + nominal,
+          category: savingTarget.category,
+          priority: savingTarget.priority,
+          decription: savingTarget.decription,
+          createdAt: savingTarget.createdAt,
+          foreign: savingTarget.foreign),
     );
   }
 }

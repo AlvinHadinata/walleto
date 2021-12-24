@@ -27,6 +27,7 @@ class _TargetEditPageState extends State<TargetEditPage> {
   String? _selectedPriorityLevel;
   String? _selectedDurationType;
   Category? _selectedCategory;
+  String? _foreignKey;
 
   @override
   void initState() {
@@ -39,6 +40,7 @@ class _TargetEditPageState extends State<TargetEditPage> {
       _periodController.text = argument.period.toString();
       _descriptionController.text = argument.decription;
       _selectedCategory = argument.category;
+      _foreignKey = argument.foreign;
     });
   }
 
@@ -224,6 +226,7 @@ class _TargetEditPageState extends State<TargetEditPage> {
                                     : _selectedPriorityLevel!,
                                 decription: _descriptionController.text,
                                 createdAt: argument.createdAt,
+                                foreign: _foreignKey!,
                               );
                               SavingTargetBoxes.updateSavingTarget(
                                   argument.id!, target);

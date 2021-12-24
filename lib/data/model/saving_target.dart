@@ -35,16 +35,19 @@ class SavingTarget {
   @HiveField(9)
   final int createdAt;
 
-  SavingTarget({
-    this.id,
-    required this.nameTarget,
-    required this.nominal,
-    required this.period,
-    required this.durationType,
-    required this.currentMoney,
-    required this.category,
-    required this.priority,
-    required this.decription,
-    required this.createdAt,
-  });
+  @HiveField(10)
+  final String foreign;
+
+  SavingTarget(
+      {this.id,
+      required this.nameTarget,
+      required this.nominal,
+      required this.period,
+      required this.durationType,
+      required this.currentMoney,
+      required this.category,
+      required this.priority,
+      required this.decription,
+      required this.createdAt,
+      required this.foreign});
 }

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -111,6 +113,8 @@ class _WalletAddPageState extends State<WalletAddPage> {
                                   nominal: int.parse(_nominalController.text),
                                   category: argument,
                                   decription: _descController.text,
+                                  foreign: "WLT-" +
+                                      Random().nextInt(1000).toString(),
                                   createdAt:
                                       DateTime.now().millisecondsSinceEpoch);
                               WalletBoxes.storeWallet(wallet);

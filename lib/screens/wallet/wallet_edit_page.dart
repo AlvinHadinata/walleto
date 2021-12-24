@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:hive/hive.dart';
+import 'package:walleto/data/hive/history_wallet_boxes.dart';
 import 'package:walleto/data/hive/wallet_boxes.dart';
 import 'package:walleto/data/model/category.dart';
+import 'package:walleto/data/model/history_wallet.dart';
 import 'package:walleto/data/model/wallet.dart';
 import 'package:walleto/screens/home_page.dart';
 import 'package:walleto/screens/widgets/custom_text_field.dart';
@@ -22,6 +25,7 @@ class _WalletEditPageState extends State<WalletEditPage> {
   Category? _selectedCategory;
   String? _nominalWallet;
   int? _selectedId;
+  String? _foreign;
 
   @override
   void initState() {
@@ -35,6 +39,7 @@ class _WalletEditPageState extends State<WalletEditPage> {
       _descController.text = argument.decription;
       _selectedCategory = argument.category;
       _selectedId = argument.id;
+      _foreign = argument.foreign;
       _nominalWallet = argument.nominal.toString();
     });
   }
@@ -44,7 +49,6 @@ class _WalletEditPageState extends State<WalletEditPage> {
     Widget _buildContent() {
       final Wallet argument =
           ModalRoute.of(context)!.settings.arguments as Wallet;
-
       return SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
@@ -114,8 +118,10 @@ class _WalletEditPageState extends State<WalletEditPage> {
                                   nominal: int.parse(_nominalWallet!),
                                   category: _selectedCategory!,
                                   decription: _descController.text,
+                                  foreign: _foreign!,
                                   createdAt: argument.createdAt);
                               WalletBoxes.updateWallet(argument.id!, wallet);
+
                               Navigator.pushNamedAndRemoveUntil(
                                 context,
                                 HomePage.routeName,

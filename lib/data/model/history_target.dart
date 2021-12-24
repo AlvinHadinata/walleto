@@ -7,7 +7,7 @@ class HistoryTarget {
   @HiveField(0)
   final int? id;
   @HiveField(1)
-  final String nameTarget;
+  final String foreign;
   @HiveField(2)
   final int nominal;
   @HiveField(3)
@@ -17,7 +17,7 @@ class HistoryTarget {
 
   HistoryTarget({
     this.id,
-    required this.nameTarget,
+    required this.foreign,
     required this.nominal,
     required this.description,
     required this.createdAt,

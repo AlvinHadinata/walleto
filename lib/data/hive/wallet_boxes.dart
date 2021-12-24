@@ -10,7 +10,6 @@ class WalletBoxes {
   }
 
   static void updateWallet(int index, Wallet wallets) {
-    // Box<Wallet> walletBox = Hive.box<Wallet>("wallets");
     getWallets().putAt(
       index,
       Wallet(
@@ -20,17 +19,16 @@ class WalletBoxes {
         category: wallets.category,
         decription: wallets.decription,
         createdAt: wallets.createdAt,
+        foreign: wallets.foreign,
       ),
     );
   }
 
   static void deleteWallet(int index) {
-    // Box<Wallet> walletBox = Hive.box<Wallet>("wallets");
     getWallets().deleteAt(index);
   }
 
   static void updateCashIn(int index, Wallet wallets, int cashIn) {
-    // Box<Wallet> walletBox = Hive.box<Wallet>("wallets");
     getWallets().putAt(
       index,
       Wallet(
@@ -40,6 +38,7 @@ class WalletBoxes {
         category: wallets.category,
         decription: wallets.decription,
         createdAt: wallets.createdAt,
+        foreign: wallets.foreign,
       ),
     );
   }
@@ -55,6 +54,7 @@ class WalletBoxes {
         category: wallets.category,
         decription: wallets.decription,
         createdAt: wallets.createdAt,
+        foreign: wallets.foreign,
       ),
     );
   }

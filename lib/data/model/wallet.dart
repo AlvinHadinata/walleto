@@ -24,6 +24,9 @@ class Wallet {
   @HiveField(5)
   final int createdAt;
 
+  @HiveField(6)
+  final String foreign;
+
   Wallet({
     this.id,
     required this.name,
@@ -31,5 +34,6 @@ class Wallet {
     required this.category,
     required this.decription,
     required this.createdAt,
+    required this.foreign,
   });
 }

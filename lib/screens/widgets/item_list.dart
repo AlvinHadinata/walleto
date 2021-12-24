@@ -57,7 +57,7 @@ class ItemList extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          wallet!.nameWallet,
+                          wallet!.description,
                           style: blueTextStyle.copyWith(
                             fontSize: 16.0,
                             fontWeight: bold,
@@ -67,7 +67,7 @@ class ItemList extends StatelessWidget {
                           height: 4.0,
                         ),
                         Text(
-                          wallet!.description,
+                          (wallet!.cashIn == true) ? "Cash In" : "Cash Out",
                           style: greyTextStyle.copyWith(
                             fontSize: 12,
                           ),

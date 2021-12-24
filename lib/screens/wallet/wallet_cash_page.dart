@@ -72,25 +72,31 @@ class _WalletCashPageState extends State<WalletCashPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Expanded(
-                        child: Row(
-                          children: [
-                            Radio<bool>(
-                              value: false,
-                              groupValue: cashIn,
-                              onChanged: (value) =>
-                                  setState(() => cashIn = value!),
-                            ),
-                            Expanded(
-                              child: Text('Expense',
+                      Visibility(
+                        visible: (argument.nominal == 0) ? false : true,
+                        child: Expanded(
+                          child: Row(
+                            children: [
+                              Radio<bool>(
+                                value: false,
+                                groupValue: cashIn,
+                                onChanged: (value) =>
+                                    setState(() => cashIn = value!),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  'Expense',
                                   style: greyTextStyle.copyWith(
-                                      fontSize: 16,
-                                      fontWeight: bold,
-                                      color: kRedColor)),
-                            )
-                          ],
+                                    fontSize: 16,
+                                    fontWeight: bold,
+                                    color: kRedColor,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          flex: 1,
                         ),
-                        flex: 1,
                       ),
                       Expanded(
                         child: Row(
@@ -106,9 +112,10 @@ class _WalletCashPageState extends State<WalletCashPage> {
                               child: Text(
                                 'Income',
                                 style: greyTextStyle.copyWith(
-                                    fontSize: 16,
-                                    fontWeight: bold,
-                                    color: kGreenColor),
+                                  fontSize: 16,
+                                  fontWeight: bold,
+                                  color: kGreenColor,
+                                ),
                               ),
                             )
                           ],
@@ -147,7 +154,7 @@ class _WalletCashPageState extends State<WalletCashPage> {
 
                           if (isValid) {
                             HistoryWallet history = HistoryWallet(
-                              nameWallet: argument.name,
+                              foreign: argument.foreign,
                               nominal: int.parse(_nominalController.text),
                               description: _catatanController.text,
                               cashIn: cashIn,

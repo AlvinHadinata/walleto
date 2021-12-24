@@ -315,7 +315,8 @@ class MainMenuPage extends StatelessWidget {
                           nominal: wallet.nominal,
                           category: wallet.category,
                           decription: wallet.decription,
-                          createdAt: wallet.createdAt),
+                          createdAt: wallet.createdAt,
+                          foreign: wallet.foreign),
                     );
                   },
                 );
@@ -370,6 +371,7 @@ class MainMenuPage extends StatelessWidget {
                         priority: saving.priority,
                         decription: saving.decription,
                         createdAt: saving.createdAt,
+                        foreign: saving.foreign,
                       ),
                     );
                   },

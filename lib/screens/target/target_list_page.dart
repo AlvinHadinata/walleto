@@ -9,24 +9,23 @@ import 'package:walleto/screens/widgets/animation_placeholder.dart';
 import 'package:walleto/screens/widgets/saving_item_widget.dart';
 import 'package:walleto/shared/theme.dart';
 
-class TargetListPage extends StatelessWidget{
+class TargetListPage extends StatelessWidget {
   static const routeName = "/target_list_page";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title:
-          Text('Daftar Saving', style: whiteTextStyle.copyWith(
-              fontSize: 18, fontWeight: FontWeight.bold)),
+          title: Text('Daftar Saving',
+              style: whiteTextStyle.copyWith(
+                  fontSize: 18, fontWeight: FontWeight.bold)),
           centerTitle: true,
           backgroundColor: kBlueColor),
       body: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
         scrollDirection: Axis.vertical,
-        child: Padding(padding: const EdgeInsets.all(20),
-            child: _savingListItem(context)
-        ),
+        child: Padding(
+            padding: const EdgeInsets.all(20), child: _savingListItem(context)),
       ),
     );
   }
@@ -55,16 +54,18 @@ Widget _savingListItem(BuildContext context) {
                   context,
                   TargetDetailPage.routeName,
                   arguments: SavingTarget(
-                      id: index,
-                      nameTarget: saving.nameTarget,
-                      nominal: saving.nominal,
-                      period: saving.period,
-                      durationType: saving.durationType,
-                      currentMoney: saving.currentMoney,
-                      category: saving.category,
-                      priority: saving.priority,
-                      decription: saving.decription,
-                      createdAt: saving.createdAt),
+                    id: index,
+                    nameTarget: saving.nameTarget,
+                    nominal: saving.nominal,
+                    period: saving.period,
+                    durationType: saving.durationType,
+                    currentMoney: saving.currentMoney,
+                    category: saving.category,
+                    priority: saving.priority,
+                    decription: saving.decription,
+                    createdAt: saving.createdAt,
+                    foreign: saving.foreign,
+                  ),
                 );
               },
             );

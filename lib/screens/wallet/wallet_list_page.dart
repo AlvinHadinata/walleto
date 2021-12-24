@@ -8,24 +8,23 @@ import 'package:walleto/screens/widgets/animation_placeholder.dart';
 import 'package:walleto/screens/widgets/wallet_item_widget.dart';
 import 'package:walleto/shared/theme.dart';
 
-class WalletListPage extends StatelessWidget{
-static const routeName = "/wallet_list_page";
+class WalletListPage extends StatelessWidget {
+  static const routeName = "/wallet_list_page";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title:
-          Text('Daftar Wallet', style: whiteTextStyle.copyWith(
-              fontSize: 18, fontWeight: FontWeight.bold)),
+          title: Text('Daftar Wallet',
+              style: whiteTextStyle.copyWith(
+                  fontSize: 18, fontWeight: FontWeight.bold)),
           centerTitle: true,
           backgroundColor: kBlueColor),
       body: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
         scrollDirection: Axis.vertical,
-        child: Padding(padding: const EdgeInsets.all(20),
-            child: _walletListItem(context)
-        ),
+        child: Padding(
+            padding: const EdgeInsets.all(20), child: _walletListItem(context)),
       ),
     );
   }
@@ -57,12 +56,14 @@ Widget _walletListItem(BuildContext context) {
                     context,
                     WalletDetailPage.routeName,
                     arguments: Wallet(
-                        id: index,
-                        name: wallet.name,
-                        nominal: wallet.nominal,
-                        category: wallet.category,
-                        decription: wallet.decription,
-                        createdAt: wallet.createdAt),
+                      id: index,
+                      name: wallet.name,
+                      nominal: wallet.nominal,
+                      category: wallet.category,
+                      decription: wallet.decription,
+                      foreign: wallet.foreign,
+                      createdAt: wallet.createdAt,
+                    ),
                   );
                 },
               );

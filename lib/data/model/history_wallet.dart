@@ -7,7 +7,7 @@ class HistoryWallet {
   @HiveField(0)
   final int? id;
   @HiveField(1)
-  final String nameWallet;
+  final String foreign;
   @HiveField(2)
   final int nominal;
   @HiveField(3)
@@ -19,7 +19,7 @@ class HistoryWallet {
 
   HistoryWallet({
     this.id,
-    required this.nameWallet,
+    required this.foreign,
     required this.nominal,
     required this.description,
     this.cashIn,
