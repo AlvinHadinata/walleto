@@ -151,7 +151,6 @@ class WalletDetailPage extends StatelessWidget {
                 const SizedBox(height: 10),
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height / 2 ,
                   child: ValueListenableBuilder<Box<HistoryWallet>>(
                     valueListenable:
                         HistoryWalletBoxes.getHistoryWallet().listenable(),
